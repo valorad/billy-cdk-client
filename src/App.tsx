@@ -2,24 +2,36 @@ import React from "react";
 
 import "./App.scss";
 
-function App() {
+export default () => {
   return (
     <section className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="overlay"></div>
+      <div className="scanline"></div>
+      <div className="wrapper">
+        <div className="content">
+          <section className="Home">
+            <header>
+              <h1>亲爱的用户 Billy:</h1>
+              <h2>欢迎来到Billy CDKey</h2>
+              <h2>版本：Billy CDKey 家庭豪华苹果版 Remastered Edition</h2>
+              <h2>当前主题风格：Fallout Terminal</h2>
+            </header>
+            <main className="menu">
+              <ul>
+                <li><a href="##">***************************************</a></li>
+                <li><a href="##">********-----1 -管理CDK-------*********</a></li>
+                <li><a href="##">********-----2 -管理游戏-------********</a></li>
+                <li><a href="##">********-----3 -浏览商店-------********</a></li>
+                <li><a href="##">********-----4 -索要CDK-------*********</a></li>
+                <li><a href="##">********-----5 -赠送CDK-----***********</a></li>
+                <li><a href="##">***************************************</a></li>
+                <li><a href="##">*********----0 -退出----------*********</a></li>
+              </ul>
+            </main>
+          </section>
+
+        </div>
+      </div>
     </section>
   );
 }
-
-export default App;
