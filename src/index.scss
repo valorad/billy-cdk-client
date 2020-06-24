@@ -65,6 +65,14 @@ code {
 		100% { opacity: 0.54813 }
 }
 
+@keyframes initBlink {
+  0% { opacity: 0.9251 }
+  20% { opacity: 0.1251 }
+  40% { opacity: 0.98351 }
+  60% { opacity: 0.28351 }
+  100% { opacity: 1 }
+}
+
 a {
   color: #00dd00;	
 	text-decoration: none;	
