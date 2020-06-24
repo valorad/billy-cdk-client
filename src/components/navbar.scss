@@ -9,7 +9,8 @@ div.navbar {
     display: flex;
     flex-direction: column;
 
-    header {
+    > header {
+      margin: 1em auto;
 
       ul {
         display: flex;
@@ -24,7 +25,12 @@ div.navbar {
       li:not(:last-child) {
         border-right: 1px solid #00dd00;
       }
+    }
 
+    > main {
+      h1, h2 {
+        font-size: 1.5em;
+      }
     }
 
   }

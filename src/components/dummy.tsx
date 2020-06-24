@@ -8,8 +8,8 @@ interface dummyProps {
 
 export default (props: dummyProps) => {
   return (
-    <section className="menu">
+    <div className="menu">
       Dummy works
-    </section>
+    </div>
   );
 };

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
-  title: "title0"
+  title: "欢迎来到Billy CDKey"
 };
 
 export default createSlice({

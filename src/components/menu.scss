@@ -1,0 +1,28 @@
+div.menu {
+
+  font-size: 2em;
+  display: flex;
+  flex-grow: 1;
+
+
+  a {
+    display: block;
+  }
+
+  a:hover, a:focus {
+    transition: all 0.2s ease-in;
+    background-color: rgba(0, 221, 0, 0.4);
+    outline: none;
+    color: white;
+    text-decoration: none;	
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1
+  }
+
+
+
+}

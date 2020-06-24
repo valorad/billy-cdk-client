@@ -6,21 +6,46 @@ interface menuProps {
 
 }
 
+const menuItems = [
+
+  {
+    name: "浏览商店",
+    link: "##",
+  },
+  {
+    name: "我的好友",
+    link: "##",
+  },
+  {
+    name: "我的游戏",
+    link: "##",
+  },
+  {
+    name: "我的CDKey",
+    link: "##",
+  },
+  {
+    name: "退出",
+    link: "##",
+    isExit: true,
+  },
+];
+
+const menus = menuItems.map((ele) => {
+  return (
+    <li tabIndex={-1}>
+      <a href={ele.link}>{ele.name}</a>
+    </li>
+  );
+});
 
 
 export default (props: menuProps) => {
   return (
-    <section className="menu">
+    <div className="menu">
       <ul>
-        <li tabIndex={-1}><a tabIndex={0} href="##">***************************************</a></li>
-        <li tabIndex={-1}><a tabIndex={0} href="##">********-----1 -管理CDK-------*********</a></li>
-        <li tabIndex={-1}><a tabIndex={0} href="##">********-----2 -管理游戏-------********</a></li>
-        <li tabIndex={-1}><a tabIndex={0} href="##">********-----3 -浏览商店-------********</a></li>
-        <li tabIndex={-1}><a tabIndex={0} href="##">********-----4 -索要CDK-------*********</a></li>
-        <li tabIndex={-1}><a tabIndex={0} href="##">********-----5 -赠送CDK-----***********</a></li>
-        <li tabIndex={-1}><a tabIndex={0} href="##">***************************************</a></li>
-        <li tabIndex={-1}><a tabIndex={0} href="##">*********----0 -退出----------*********</a></li>
+        {menus}
       </ul>
-    </section>
+    </div>
   );
 };

@@ -19,14 +19,19 @@ export default () => {
       <div className="overlay"></div>
       <div className="scanline"></div>
       <div className="wrapper">
-        <div className="content">
-          <Navbar title={title} description={"descr"} player={"Billy"} />
-          <section className="Home">
+        <div className="appHolder">
+          <header>
             <div className="contentBox">
-              <Menu />
+              <Navbar title={title} description={"高端黑框框版"} player={"Billy"} />
             </div>
-
-          </section>
+          </header>    
+          <main>
+            <div className="contentBox">
+              <section className="Home">
+                <Menu />
+              </section>
+            </div>
+          </main>
 
         </div>
       </div>
