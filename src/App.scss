@@ -75,15 +75,30 @@ section.App {
 
   main.menu {
     font-size: 2em;
-    li {
-      transition: all 0.2s ease-in;
-    }
-    li:hover {
-      background-color: rgba(0, 221, 0, 0.4);
-    }
+    // li {
+    //   transition: all 0.2s ease-in;
+    // }
+    // li:hover, li:focus {
+    //   background-color: rgba(0, 221, 0, 0.4);
+    //   outline: none;
+    //   a {
+    //     color: white;
+    //     text-decoration: none;	
+    //   }
+    // }
     a {
       display: block;
     }
+
+    a:hover, a:focus {
+      transition: all 0.2s ease-in;
+      background-color: rgba(0, 221, 0, 0.4);
+      outline: none;
+      color: white;
+      text-decoration: none;	
+    }
+
+
   }
 
 

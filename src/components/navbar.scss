@@ -5,8 +5,27 @@ div.navbar {
   align-items: center;
   justify-content: center;
   nav {
-    border: 2px solid forestgreen;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
+
+    header {
+
+      ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      li {
+        padding: 0 1em;
+      }
+
+      li:not(:last-child) {
+        border-right: 1px solid #00dd00;
+      }
+
+    }
+
   }
 }

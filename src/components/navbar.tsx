@@ -3,20 +3,30 @@ import React from "react";
 import "./navbar.scss";
 
 interface navbarProps {
-  title?: string
+  title?: string,
+  description?: string,
+  player?: string
 }
 
 export default (props: navbarProps) => {
 
-  // const [title, setTitle] = useState(props.title);
-  
   return (
     <div className="navbar">
-      <nav>
-        <h1>Title: {props.title || "title0"}</h1>
-        <h2>words: www</h2>
-        <h2>loggedin as xxx</h2>
-      </nav>
+      <div className="contentBox">
+        <nav>
+          <header>
+            <ul>
+              <li><small>Billy CDKey Remastered Edition</small></li>
+              <li><small>当前主题风格：Fallout Terminal</small></li>
+              <li><small>欢迎回来，{props.player}</small> {/* Player name */}</li>
+            </ul>
+          </header>
+          <main>
+            <h1>{props.title || "title0"}</h1>{/* title */}
+            <h2>{props.description}</h2>{/* Description */}
+          </main>
+        </nav>
+      </div>
     </div>
   );
 
