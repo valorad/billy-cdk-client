@@ -1,0 +1,12 @@
+div.navbar {
+  flex-grow: 1;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  nav {
+    border: 2px solid forestgreen;
+    display: flex;
+    flex-direction: column;
+  }
+}
