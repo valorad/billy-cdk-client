@@ -8,7 +8,7 @@ interface dummyProps {
 
 export default (props: dummyProps) => {
   return (
-    <div className="menu">
+    <div className="dummy">
       Dummy works
     </div>
   );

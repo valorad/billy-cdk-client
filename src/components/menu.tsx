@@ -10,23 +10,23 @@ const menuItems = [
 
   {
     name: "浏览商店",
-    link: "##",
+    link: "#/store",
   },
   {
     name: "我的好友",
-    link: "##",
+    link: "#/friends",
   },
   {
     name: "我的游戏",
-    link: "##",
+    link: "#/games",
   },
   {
     name: "我的CDKey",
-    link: "##",
+    link: "#/cdkeys",
   },
   {
     name: "退出",
-    link: "##",
+    link: "#/exit",
     isExit: true,
   },
 ];
@@ -63,7 +63,7 @@ export default (props: menuProps) => {
       case "Escape":
       case "Cancel":
         console.log("Just pressed ESC");
-
+        break;
       default:
         break;
     }
