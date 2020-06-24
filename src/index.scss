@@ -1,11 +1,12 @@
 @import "~bootstrap/dist/css/bootstrap-reboot.css";
+@import "./theme";
 
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 	background: #383838;
-	color: #00dd00;
+	color: $primary;
 	font-size: 1.4em;
 	font-family: 'Droid Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Helvetica Neue',
@@ -74,7 +75,7 @@ code {
 }
 
 a {
-  color: #00dd00;	
+  color: $primary;	
 	text-decoration: none;	
 }
 
@@ -101,13 +102,13 @@ ul {
 
 ul a:before,
 p a:before {
-	color: #00dd00;
+	color: $primary;
 	content: ' [ ';
 }
 
 ul a:after,
 p a:after {
-	color: #00dd00;
+	color: $primary;
 	content: ' ] ';	
 }
 
@@ -126,7 +127,7 @@ input[type=text],
 textarea {
   background: transparent;
   border: none;
-  color: #00dd00;
+  color: $primary;
   display: block;
   font-size: 1.2em;
   position: relative;
@@ -150,9 +151,9 @@ a.button:focus {
 input[type=submit],
 a.button {
   background: transparent;
-  border: 1px solid #00dd00;
+  border: 1px solid $primary;
   clear: both;
-  color: #00dd00;
+  color: $primary;
   cursor: hand;
   display: inline-block;
   font-size: 1em;
@@ -167,7 +168,7 @@ a.button {
 
 input[type=submit]:hover,
 a.button:hover {
-  background: #00dd00;
+  background: $primary;
   color: #383838;
   opacity: 0.8;
 }
