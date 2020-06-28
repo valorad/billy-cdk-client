@@ -97,7 +97,8 @@ p {
 .blink { animation: blink 1s infinite }
 
 ul {
-	list-style: none;
+  list-style: none;
+  padding: 0;
 }
 
 ul a:before,

@@ -2,34 +2,38 @@ import React, { useEffect, useRef, useState } from "react";
 
 import "./menu.scss";
 
-interface menuProps {
+import { menuItem } from "../models/menu.interface";
 
+
+interface menuProps {
+  menus: menuItem[],
+  isListView?: boolean,
 }
 
-const menuItems = [
+// const menuItems = [
 
-  {
-    name: "浏览商店",
-    link: "#/store",
-  },
-  {
-    name: "我的好友",
-    link: "#/friends",
-  },
-  {
-    name: "我的游戏",
-    link: "#/games",
-  },
-  {
-    name: "我的CDKey",
-    link: "#/cdkeys",
-  },
-  {
-    name: "退出",
-    link: "#/exit",
-    isExit: true,
-  },
-];
+  // {
+  //   name: "浏览商店",
+  //   link: "#/store",
+  // },
+  // {
+  //   name: "我的好友",
+  //   link: "#/friends",
+  // },
+  // {
+  //   name: "我的游戏",
+  //   link: "#/games",
+  // },
+  // {
+  //   name: "我的CDKey",
+  //   link: "#/cdkeys",
+  // },
+  // {
+  //   name: "退出",
+  //   link: "#/exit",
+  //   isExit: true,
+  // },
+// ];
 
 
 export default (props: menuProps) => {
@@ -39,6 +43,7 @@ export default (props: menuProps) => {
   const [currentMenuIndex, setCurrentMenuIndex] = useState(0);
 
   const onArrowKeyDown = (e: React.KeyboardEvent) => {
+    // e.preventDefault();
     switch (e.key) {
       case "ArrowUp":
       case "ArrowLeft":
@@ -50,6 +55,7 @@ export default (props: menuProps) => {
 
         break;
       case "ArrowDown":
+      case "ArrowRight":
         setCurrentMenuIndex(currentMenuIndex + 1);
 
         if (currentMenuIndex >= menus.length - 1) {
@@ -58,11 +64,6 @@ export default (props: menuProps) => {
           setCurrentMenuIndex(currentMenuIndex + 1);
         }
 
-        break;
-      case "GoBack":
-      case "Escape":
-      case "Cancel":
-        console.log("Just pressed ESC");
         break;
       default:
         break;
@@ -83,7 +84,7 @@ export default (props: menuProps) => {
   };
   
   
-  const menus = menuItems.map((ele, index) => {
+  const menus = props.menus.map((ele, index) => {
     return (
       <li key={index} tabIndex={-1}>
         <a
@@ -111,6 +112,8 @@ export default (props: menuProps) => {
   return (
     <div className="menu">
       <ul
+       className={props.isListView? "listView": ""}
+      //  className={"listView"}
        ref={menuList}
        onKeyDown={onArrowKeyDown}
       >

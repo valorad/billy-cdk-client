@@ -4,6 +4,7 @@ div.menu {
   display: flex;
   flex-grow: 1;
   width: 90%;
+  margin: 0 auto;
 
 
   a {
@@ -21,7 +22,19 @@ div.menu {
   ul {
     display: flex;
     flex-direction: column;
-    flex-grow: 1
+    flex-grow: 1;
+    flex-wrap: wrap;
+  }
+
+  ul.listView {
+    flex-direction: row;
+    flex-grow: 0;
+    li {
+      margin: 0.1em 1em;
+    }
+    a {
+      padding: 0.5em;
+    }
   }
 
 
