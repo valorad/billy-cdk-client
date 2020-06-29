@@ -59,14 +59,40 @@ export default (props: menuProps) => {
   
   
   const menus = props.menus.map((ele, index) => {
+
+    const onMenuClick = (e: React.MouseEvent) => {
+      if (ele.activate) {
+        e.preventDefault();
+        ele.activate();
+      }
+    };
+
+    // const onMenuKeyDown = (e: React.KeyboardEvent) => {
+    //   switch (e.key) {
+    //     case "Enter":
+    //       if (ele.activate) {
+    //         ele.activate();
+    //       }
+    //       break;
+    //     default:
+    //       break;
+    //   }
+    // };
+
+    const anchor = (
+      <a
+        href={ele.link || "##"}
+        className={`menu${index}`}
+        onMouseEnter={onMenuItemHover}
+        onClick={onMenuClick}
+        // onKeyDown={onMenuKeyDown}
+        data-index-number={index}
+      >{ele.name}</a>
+      );
+
     return (
       <li key={index} tabIndex={-1}>
-        <a
-          href={ele.link}
-          className={`menu${index}`}
-          onMouseEnter={onMenuItemHover}
-          data-index-number={index}
-        >{ele.name}</a>
+        {anchor}
       </li>
     );
   });

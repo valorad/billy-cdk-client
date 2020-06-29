@@ -1,5 +1,5 @@
 export interface MenuItem {
   name: string,
-  link: string,
-  isExit?: boolean,
+  link?: string,
+  activate?: (...args: any[]) => any,
 }

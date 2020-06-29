@@ -37,19 +37,27 @@ export default () => {
   const title = useSelector(selectTitle);
   const description = useSelector(selectDescription);
 
-  const onESCKeyDown = (e: React.KeyboardEvent) => {
+  const onAppKeyDown = (e: React.KeyboardEvent) => {
     // e.preventDefault();
 
+    
     switch (e.key) {
+      // ESC Keys
       case "GoBack":
       case "Escape":
       case "Cancel":
       case "Tab":
         window.history.back();
         break;
+
+      // Home Keys
+      case "Home":
+        window.location.href = "#";
+        break;
       default:
         break;
     }
+
   }
 
 
@@ -57,7 +65,7 @@ export default () => {
 
     <Router hook={useHashLocation}>
 
-      <section className="App" tabIndex={0} onKeyDown={onESCKeyDown}>
+      <section className="App" tabIndex={0} onKeyDown={onAppKeyDown}>
         <div className="overlay"></div>
         <div className="scanline"></div>
         <div className="wrapper">

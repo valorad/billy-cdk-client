@@ -36,8 +36,9 @@ export default () => {
     },
     {
       name: "退出",
-      link: "#/exit",
-      isExit: true,
+      activate: () => {
+        console.log(`Clicked Exit`);
+      }
     },
   ];
 
