@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import Menu from "../components/menu";
 import { useDispatch } from "react-redux";
-import { menuItem } from "../models/menu.interface";
+import { MenuItem } from "../models/menu.interface";
 import { setTitle, setDescription } from "../features/navbar";
 
-const menus: menuItem[] = [
+const menus: MenuItem[] = [
   {
     name: "返回首页",
     link: "#/index",

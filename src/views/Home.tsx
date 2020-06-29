@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import Menu from "../components/menu";
-import { menuItem } from "../models/menu.interface";
+import { MenuItem } from "../models/menu.interface";
 import { setTitle, setDescription } from "../features/navbar";
 // import "./Dummy.scss";
 
@@ -17,7 +17,7 @@ export default () => {
     
   });
 
-  const menus: menuItem[] = [
+  const menus: MenuItem[] = [
     {
       name: "浏览商店",
       link: "#/store",

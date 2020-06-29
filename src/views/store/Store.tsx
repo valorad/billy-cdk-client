@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 
 // import "./Store.scss";
-import { menuItem } from "../models/menu.interface";
+import { MenuItem } from "../../models/menu.interface";
 
-import Menu from "../components/menu";
+import Menu from "../../components/menu";
 import { useDispatch } from "react-redux";
-import { setTitle, setDescription } from "../features/navbar";
+import { setTitle, setDescription } from "../../features/navbar";
 
 export default () => {
 
   const dispatch = useDispatch();
 
-  const menus: menuItem[] = [
+  const menus: MenuItem[] = [
     {
       name: "商店游戏列表",
       link: "#/store/games",

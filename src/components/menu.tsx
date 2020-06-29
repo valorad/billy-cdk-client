@@ -2,11 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 
 import "./menu.scss";
 
-import { menuItem } from "../models/menu.interface";
+import { MenuItem } from "../models/menu.interface";
 
 
 interface menuProps {
-  menus: menuItem[],
+  menus: MenuItem[],
   isListView?: boolean,
 }
 
