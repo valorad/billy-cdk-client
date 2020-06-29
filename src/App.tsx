@@ -8,6 +8,7 @@ import Navbar from "./components/navbar";
 import HomeView from "./views/Home";
 import StoreView from "./views/store/Store";
 import StoreGamesListView from "./views/store/GameList";
+import StoreGamesDetailView from "./views/store/GameDetail";
 import HTTP404View from "./views/HTTP404";
 
 import { selectTitle, selectDescription } from "./features/navbar";
@@ -22,6 +23,7 @@ const placeRoutingTable = () => {
       <Route path="/index" component={HomeView}></Route>
       <Route path="/store" component={StoreView}></Route>
       <Route path="/store/games" component={StoreGamesListView}></Route>
+      <Route path="/store/games/:dbname" component={StoreGamesDetailView}></Route>
 
       {/* <Route path="/users" component={UserListView}></Route>
       <Route path="/users/:dbname" component={UserDetailView}></Route> */}

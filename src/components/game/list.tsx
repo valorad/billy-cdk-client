@@ -1,8 +1,9 @@
 import React from "react";
+
 import { MenuItem } from "../../models/menu.interface";
+import { Game } from "../../models/game.interface";
 
 import Menu from "../menu";
-import { Game } from "../../models/game.interface";
 
 // import "./gameList.scss";
 
