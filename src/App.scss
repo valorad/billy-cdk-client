@@ -93,8 +93,13 @@ section.App {
 
 }
 
-section.Home {
-  flex-grow: 1;
-}
+// section.Home {
+//   flex-grow: 1;
+// }
 
+.contentBox {
+  > section {
+    flex-grow: 1;
+  }
+}
 

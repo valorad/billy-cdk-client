@@ -1,11 +1,12 @@
 import React from "react";
 import { Route, Switch, Router, Redirect } from "wouter";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import "./App.scss";
 import Navbar from "./components/navbar";
 
 import HomeView from "./views/Home";
+import StoreView from "./views/Store";
 import HTTP404View from "./views/HTTP404";
 
 import { selectTitle, selectDescription } from "./features/navbar";
@@ -18,6 +19,7 @@ const placeRoutingTable = () => {
         <Redirect to="/index" />
       </Route>
       <Route path="/index" component={HomeView}></Route>
+      <Route path="/store" component={StoreView}></Route>
       {/* <Route path="/users" component={UserListView}></Route>
       <Route path="/users/:dbname" component={UserDetailView}></Route> */}
       <Route path="/:rest*" component={HTTP404View}></Route>

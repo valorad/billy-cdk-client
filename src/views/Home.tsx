@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 import Menu from "../components/menu";
 import { menuItem } from "../models/menu.interface";
+import { setTitle, setDescription } from "../features/navbar";
 // import "./Dummy.scss";
 
 export default () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    
+    dispatch(setTitle("欢迎来到Billy CDKey"));
+    dispatch(setDescription("高端黑框框版"));
+    
+  });
 
   const menus: menuItem[] = [
     {
@@ -32,7 +43,7 @@ export default () => {
 
   return (
     <section className="Home">
-      {/* Each page can only have 1 menu */}
+      {/* Each page must have at least 1 and only 1 menu */}
       <Menu menus={menus} />
     </section>
   );
