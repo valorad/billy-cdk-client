@@ -8,7 +8,7 @@ import Navbar from "./components/navbar";
 import HomeView from "./views/Home";
 import HTTP404View from "./views/HTTP404";
 
-import { selectTitle, setTitle } from "./features/navbar";
+import { selectTitle, selectDescription } from "./features/navbar";
 import useHashLocation from "./router/useHashLocation";
 
 const placeRoutingTable = () => {
@@ -28,6 +28,7 @@ const placeRoutingTable = () => {
 export default () => {
 
   const title = useSelector(selectTitle);
+  const description = useSelector(selectDescription);
 
   const onESCKeyDown = (e: React.KeyboardEvent) => {
     // e.preventDefault();
@@ -56,7 +57,7 @@ export default () => {
           <div className="appHolder">
             <header>
               <div className="contentBox">
-                <Navbar title={title} description={"高端黑框框版"} player={"Billy"} />
+                <Navbar title={title} description={description} player={"Billy"} />
               </div>
             </header>    
             <main>

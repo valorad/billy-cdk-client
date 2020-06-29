@@ -10,32 +10,6 @@ interface menuProps {
   isListView?: boolean,
 }
 
-// const menuItems = [
-
-  // {
-  //   name: "浏览商店",
-  //   link: "#/store",
-  // },
-  // {
-  //   name: "我的好友",
-  //   link: "#/friends",
-  // },
-  // {
-  //   name: "我的游戏",
-  //   link: "#/games",
-  // },
-  // {
-  //   name: "我的CDKey",
-  //   link: "#/cdkeys",
-  // },
-  // {
-  //   name: "退出",
-  //   link: "#/exit",
-  //   isExit: true,
-  // },
-// ];
-
-
 export default (props: menuProps) => {
 
   const menuList = useRef<HTMLUListElement>(null);

@@ -32,6 +32,7 @@ export default () => {
 
   return (
     <section className="Home">
+      {/* Each page can only have 1 menu */}
       <Menu menus={menus} />
     </section>
   );
