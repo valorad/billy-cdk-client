@@ -24,20 +24,46 @@ export default () => {
     price: 100,
   };
 
+  const purchase = () => {
+    console.log(`Purchase game ${game.dbname} for player "Billy" success`);
+    return {
+      ok: true,
+      message: `Success`
+    }
+  };
+
+  const updateGame = () => {
+    console.log(`Modal dialog UPDATE shows up`);
+    return {
+      ok: true,
+      message: `Success`
+    }
+  };
+
+  const deleteGame = () => {
+    console.log(`Modal dialog DELETE shows up`);
+    return {
+      ok: true,
+      message: `Success`
+    }
+  };
+
   const menus: MenuItem[] = [
     {
       name: "为自己购买",
-      link: "#/index",
+      activate: purchase,
     },
     {
       name: "修改游戏信息",
-      link: "#/index",
+      activate: updateGame,
     },
     {
       name: "从商店删除",
-      link: "#/index",
+      activate: deleteGame,
     },
   ];
+
+
 
   useEffect(() => {
     
