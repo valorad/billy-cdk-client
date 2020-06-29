@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useRoute } from "wouter";
+import MicroModal from "micromodal";
 
 import GameDetail from "../../components/game/detail";
+import DialogConfirmation from "../../components/modal/dialogConfirmation";
 import { setTitle, setDescription } from "../../features/navbar";
 import { MenuItem } from "../../models/menu.interface";
 import { Game } from "../../models/game.interface";
 
-
-// import "./Dummy.scss";
 
 export default () => {
 
@@ -25,57 +25,89 @@ export default () => {
   };
 
   const purchase = () => {
-    console.log(`Purchase game ${game.dbname} for player "Billy" success`);
-    return {
-      ok: true,
-      message: `Success`
-    }
+    MicroModal.show("dialogConfirmation-purchase");
   };
 
-  const updateGame = () => {
-    console.log(`Modal dialog UPDATE shows up`);
-    return {
-      ok: true,
-      message: `Success`
-    }
+  const editGame = () => {
+    MicroModal.show("dialogConfirmation-edit");
   };
 
   const deleteGame = () => {
-    console.log(`Modal dialog DELETE shows up`);
-    return {
-      ok: true,
-      message: `Success`
-    }
+    MicroModal.show("dialogConfirmation-delete");
   };
+
+  const dialogs = [
+    {
+      dialogID: "purchase",
+      title: "Are you sure purchase?",
+      content: "Yes / No",
+      onResultOkay: () => {
+        console.log(`Purchase game ${game.dbname} for player "Billy" success`);
+        MicroModal.close("dialogConfirmation-purchase");
+      },
+    },
+    {
+      dialogID: "edit",
+      title: "Are you sure edit?",
+      content: "Yes / No",
+      onResultOkay: () => {
+        console.log(`edit boom boom boom`);
+        MicroModal.close("dialogConfirmation-edit");
+      },
+    },
+    {
+      dialogID: "delete",
+      title: "Are you sure delete?",
+      content: "Yes / No",
+      onResultOkay: () => {
+        console.log(`Delete boom boom boom`);
+        MicroModal.close("dialogConfirmation-delete");
+      },
+    }
+  ];
 
   const menus: MenuItem[] = [
     {
       name: "为自己购买",
-      activate: purchase,
+      action: purchase,
     },
     {
       name: "修改游戏信息",
-      activate: updateGame,
+      action: editGame,
     },
     {
       name: "从商店删除",
-      activate: deleteGame,
+      action: deleteGame,
     },
   ];
 
-
+  const dialogComponents = dialogs.map((ele) => {
+    return (
+      <DialogConfirmation
+        key={ele.dialogID}
+        dialogID={ele.dialogID}
+        title={ele.title}
+        content={ele.content}
+        onResultOkay={ele.onResultOkay}
+      />
+    );
+  });
 
   useEffect(() => {
-    
+
     dispatch(setTitle(game.name));
     dispatch(setDescription(`dbname: ${game.dbname}`));
     
+
   });
 
   return (
     <section className="StoreGameDetail">
-      {/* Each page must have at least 1 and only 1 menu */}
+
       <GameDetail game={game} menus={menus} />
+
+      {dialogComponents}
+
     </section>
   );
 };

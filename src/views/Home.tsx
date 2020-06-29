@@ -36,7 +36,7 @@ export default () => {
     },
     {
       name: "退出",
-      activate: () => {
+      action: () => {
         console.log(`Clicked Exit`);
       }
     },

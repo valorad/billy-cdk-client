@@ -13,6 +13,7 @@ import HTTP404View from "./views/HTTP404";
 
 import { selectTitle, selectDescription } from "./features/navbar";
 import useHashLocation from "./router/useHashLocation";
+import MicroModal from "micromodal";
 
 const placeRoutingTable = () => {
   return (
@@ -34,12 +35,13 @@ const placeRoutingTable = () => {
 
 export default () => {
 
+  MicroModal.init();
+
   const title = useSelector(selectTitle);
   const description = useSelector(selectDescription);
 
   const onAppKeyDown = (e: React.KeyboardEvent) => {
     // e.preventDefault();
-
     
     switch (e.key) {
       // ESC Keys

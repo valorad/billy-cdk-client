@@ -61,9 +61,9 @@ export default (props: menuProps) => {
   const menus = props.menus.map((ele, index) => {
 
     const onMenuClick = (e: React.MouseEvent) => {
-      if (ele.activate) {
+      if (ele.action) {
         e.preventDefault();
-        ele.activate();
+        ele.action();
       }
     };
 
