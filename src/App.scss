@@ -1,3 +1,5 @@
+@import "./theme";
+
 section.App {
 
   .overlay {
@@ -63,7 +65,7 @@ section.App {
     > header {
       width: 100%;
       position: absolute;
-      top: 3em;
+      top: 5vh;
       left: 0;
     }
 
@@ -100,6 +102,42 @@ section.App {
 .contentBox {
   > section {
     flex-grow: 1;
+  }
+}
+
+.footTips {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  ul {
+    display: flex;
+    padding: 0em;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  ul:before {
+    content: ' [ ';
+    font-size: 3em;
+    color: $primary;
+    position: relative;
+    bottom: 0.15em;
+    left: 0.2em;
+  }
+  ul:after {
+    content: ' ] ';
+    font-size: 3em;
+    color: $primary;
+    position: relative;
+    bottom: 0.15em;
+    right: 0.2em;
+  }
+  li {
+    padding: 0.5em;
+    background-color: rgba($primary, 0.1);
   }
 }
 

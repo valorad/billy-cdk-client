@@ -87,6 +87,12 @@ export default () => {
 
           </div>
         </div>
+        <div className="footTips">
+          <ul>
+            <li>ESC) Go back</li>
+            <li>Home) Go home</li>
+          </ul>
+        </div>
       </section>
 
     </Router>
