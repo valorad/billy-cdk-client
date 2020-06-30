@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useRoute } from "wouter";
 import MicroModal from "micromodal";
 
 import GameDetail from "../../components/game/detail";
 import DialogConfirmation from "../../components/modal/dialogConfirmation";
+import DialogInput from "../../components/modal/dialogInput";
 import { setTitle, setDescription } from "../../features/navbar";
 import { MenuItem } from "../../models/menu.interface";
 import { Game } from "../../models/game.interface";
@@ -24,12 +25,14 @@ export default () => {
     price: 100,
   };
 
+  const [editDialogResult, setEditDialogResult] = useState({});
+
   const purchase = () => {
     MicroModal.show("dialogConfirmation-purchase");
   };
 
   const editGame = () => {
-    MicroModal.show("dialogConfirmation-edit");
+    MicroModal.show("dialogInput-edit");
   };
 
   const deleteGame = () => {
@@ -39,27 +42,30 @@ export default () => {
   const dialogs = [
     {
       dialogID: "purchase",
+      type: "confirmation",
       title: "Are you sure purchase?",
-      content: "Yes / No",
-      onResultOkay: () => {
+      description: "Yes / No",
+      onFinish: () => {
         console.log(`Purchase game ${game.dbname} for player "Billy" success`);
         MicroModal.close("dialogConfirmation-purchase");
       },
     },
     {
       dialogID: "edit",
-      title: "Are you sure edit?",
-      content: "Yes / No",
-      onResultOkay: () => {
-        console.log(`edit boom boom boom`);
-        MicroModal.close("dialogConfirmation-edit");
+      type: "input",
+      title: `Editting ${game.dbname}`,
+      description: "Fill out the form below",
+      onFinish: (data: any) => {
+        setEditDialogResult({...editDialogResult, data});
+        console.log(data);
       },
     },
     {
       dialogID: "delete",
+      type: "confirmation",
       title: "Are you sure delete?",
-      content: "Yes / No",
-      onResultOkay: () => {
+      description: "Yes / No",
+      onFinish: () => {
         console.log(`Delete boom boom boom`);
         MicroModal.close("dialogConfirmation-delete");
       },
@@ -81,16 +87,33 @@ export default () => {
     },
   ];
 
-  const dialogComponents = dialogs.map((ele) => {
-    return (
-      <DialogConfirmation
-        key={ele.dialogID}
-        dialogID={ele.dialogID}
-        title={ele.title}
-        content={ele.content}
-        onResultOkay={ele.onResultOkay}
-      />
-    );
+  const dialogComponents = dialogs.map((ele: any) => {
+
+    switch (ele.type) {
+      case "confirmation":
+        return (
+          <DialogConfirmation
+            key={ele.dialogID}
+            dialogID={ele.dialogID}
+            title={ele.title}
+            description={ele.description}
+            onFinish={ele.onFinish}
+          />
+        );
+      case "input":
+        return (
+          <DialogInput
+            key={ele.dialogID}
+            dialogID={ele.dialogID}
+            title={ele.title}
+            description={ele.description}
+            onFinish={ele.onFinish}
+          />
+        );
+      default:
+        return null;
+    }
+    
   });
 
   useEffect(() => {

@@ -5,8 +5,8 @@ import React from "react";
 interface dialogConfirmationProps {
   dialogID: string,
   title: string,
-  content: string,
-  onResultOkay: () => any,
+  description: string,
+  onFinish: () => any,
 }
 
 export default (props: dialogConfirmationProps) => {
@@ -22,10 +22,10 @@ export default (props: dialogConfirmationProps) => {
               <button className="modal__close" aria-label="Close modal" data-micromodal-close></button>
             </header>
             <main className="modal__content" id="modal-1-content">
-              <p>{props.content}</p>
+              <p>{props.description}</p>
             </main>
             <footer className="modal__footer">
-              <button className="modal__btn modal__btn-primary" onClick={props.onResultOkay}>Okay</button>
+              <button className="modal__btn modal__btn-primary" onClick={props.onFinish}>Okay</button>
               <button className="modal__btn" data-micromodal-close aria-label="Close this dialog window">Cancel</button>
             </footer>
           </div>
