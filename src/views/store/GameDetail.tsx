@@ -55,6 +55,12 @@ export default () => {
       type: "input",
       title: `编辑${game.dbname}`,
       description: "请填写以下信息",
+      items: [
+        {
+          id: "gameName",
+          name: "游戏名称",
+        },
+      ],
       onFinish: (data: any) => {
         setEditDialogResult({...editDialogResult, data});
         console.log(data);
@@ -107,6 +113,7 @@ export default () => {
             dialogID={ele.dialogID}
             title={ele.title}
             description={ele.description}
+            items={ele.items}
             onFinish={ele.onFinish}
           />
         );

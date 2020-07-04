@@ -48,7 +48,7 @@ export default () => {
       case "GoBack":
       case "Escape":
       case "Cancel":
-      case "Tab":
+      // case "Tab":
         window.history.back();
         break;
 

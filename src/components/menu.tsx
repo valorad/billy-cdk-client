@@ -8,9 +8,16 @@ import { MenuItem } from "../models/menu.interface";
 interface menuProps {
   menus: MenuItem[],
   isListView?: boolean,
+  isAutoFocus?: boolean,
 }
 
 export default (props: menuProps) => {
+
+  // fill default values
+  props = {
+    isAutoFocus: true,
+    ...props,
+  }
 
   const menuList = useRef<HTMLUListElement>(null);
 
@@ -53,7 +60,7 @@ export default (props: menuProps) => {
       let index = a.dataset["indexNumber"];
       if (index) {
         setCurrentMenuIndex(parseInt(index));
-      }
+      }     
     }
   };
   
@@ -66,18 +73,6 @@ export default (props: menuProps) => {
         ele.action();
       }
     };
-
-    // const onMenuKeyDown = (e: React.KeyboardEvent) => {
-    //   switch (e.key) {
-    //     case "Enter":
-    //       if (ele.activate) {
-    //         ele.activate();
-    //       }
-    //       break;
-    //     default:
-    //       break;
-    //   }
-    // };
 
     const anchor = (
       <a
@@ -102,18 +97,16 @@ export default (props: menuProps) => {
     
     let a = menuList.current?.querySelector<HTMLAnchorElement>(`a.menu${currentMenuIndex}`);
 
-    if (a) {
+    if (a && props.isAutoFocus) {
       a.focus();
     }
 
-    
   });
 
   return (
     <div className="menu">
       <ul
        className={props.isListView? "listView": ""}
-      //  className={"listView"}
        ref={menuList}
        onKeyDown={onArrowKeyDown}
       >

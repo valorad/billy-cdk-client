@@ -1,0 +1,32 @@
+div.dialogInput {
+  
+  .modal__content {
+    flex-direction: column;
+    > header {
+      display: flex;
+      justify-content: center;
+    }
+
+    > main {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      position: relative;
+      &::before {
+        content: ">";
+        position: absolute;
+        left: 0em;
+        bottom: 0.3em;
+      }
+    }
+    input[type=text] {
+      padding-left: 1em;
+    }
+
+
+  }
+
+}
+
