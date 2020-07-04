@@ -24,7 +24,7 @@ const placeRoutingTable = () => {
       <Route path="/index" component={HomeView}></Route>
       <Route path="/store" component={StoreView}></Route>
       <Route path="/store/games" component={StoreGamesListView}></Route>
-      <Route path="/store/games/:dbname" component={StoreGamesDetailView}></Route>
+      <Route path="/store/games/dbname/:dbname" component={StoreGamesDetailView}></Route>
 
       {/* <Route path="/users" component={UserListView}></Route>
       <Route path="/users/:dbname" component={UserDetailView}></Route> */}
@@ -89,8 +89,8 @@ export default () => {
         </div>
         <div className="footTips">
           <ul>
-            <li>ESC) Go back</li>
-            <li>Home) Go home</li>
+            <li> <b>ESC)</b>返回上级</li>
+            <li> <b>Home)</b>前往主页</li>
           </ul>
         </div>
       </section>

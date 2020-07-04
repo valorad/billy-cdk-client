@@ -201,11 +201,11 @@ a.button:hover {
 }
 
 .modal__container {
-  background-color: #fff;
-  padding: 30px;
+  background-color: transparent;
+  border: 2px solid $primary;
+  padding: 0.5em;
   max-width: 500px;
   max-height: 100vh;
-  border-radius: 4px;
   overflow-y: auto;
   box-sizing: border-box;
 }
@@ -214,6 +214,7 @@ a.button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-width: 20em;
 }
 
 .modal__title {
@@ -222,11 +223,12 @@ a.button:hover {
   font-weight: 600;
   font-size: 1.25rem;
   line-height: 1.25;
-  color: #00449e;
+  color: $primary;
   box-sizing: border-box;
 }
 
 .modal__close {
+  color: $primary;
   background: transparent;
   border: 0;
 }
@@ -234,10 +236,12 @@ a.button:hover {
 .modal__header .modal__close:before { content: "\2715"; }
 
 .modal__content {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  color: $primary;
+  margin: 1em;
   line-height: 1.5;
-  color: rgba(0,0,0,.8);
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
 }
 
 .modal__btn {
@@ -333,6 +337,10 @@ a.button:hover {
 }
 
 // Site
+
+.flexSpacer {
+  flex-grow: 1;
+}
 
 .contentBox {
   max-width: 1400px;

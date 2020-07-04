@@ -13,7 +13,7 @@ import { Game } from "../../models/game.interface";
 
 export default () => {
 
-  const params = useRoute("/store/games/:dbname")[1];
+  const params = useRoute("/store/games/dbname/:dbname")[1];
 
   let dbname = params?.dbname;
 
@@ -41,30 +41,30 @@ export default () => {
 
   const dialogs = [
     {
-      dialogID: "purchase",
+      dialogID: "dialogConfirmation-purchase",
       type: "confirmation",
-      title: "Are you sure purchase?",
-      description: "Yes / No",
+      title: `购买${game.dbname}`,
+      description: "是否要继续？",
       onFinish: () => {
         console.log(`Purchase game ${game.dbname} for player "Billy" success`);
-        MicroModal.close("dialogConfirmation-purchase");
+        MicroModal.close(`dialogConfirmation-purchase`);
       },
     },
     {
-      dialogID: "edit",
+      dialogID: "dialogInput-edit",
       type: "input",
-      title: `Editting ${game.dbname}`,
-      description: "Fill out the form below",
+      title: `编辑${game.dbname}`,
+      description: "请填写以下信息",
       onFinish: (data: any) => {
         setEditDialogResult({...editDialogResult, data});
         console.log(data);
       },
     },
     {
-      dialogID: "delete",
+      dialogID: "dialogConfirmation-delete",
       type: "confirmation",
-      title: "Are you sure delete?",
-      description: "Yes / No",
+      title: `删除${game.dbname}`,
+      description: "警告！操作将无法恢复！",
       onFinish: () => {
         console.log(`Delete boom boom boom`);
         MicroModal.close("dialogConfirmation-delete");

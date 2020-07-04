@@ -1,0 +1,22 @@
+.dialog {
+  div.menu {
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      a {
+        padding: 0.1em 0.5em;
+        font-size: 0.8em;
+        &:before {
+          content: none;
+        }
+        &:after {
+          content: none;
+        }
+      }
+    }
+  }
+}
+
+
+

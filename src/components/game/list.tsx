@@ -19,7 +19,7 @@ export default (props: gameListProps) => {
     gameMenuItems.push(
       {
         name: game.name,
-        link: `#/store/games/${game.dbname}`
+        link: `#/store/games/dbname/${game.dbname}`
       }
     );
   }

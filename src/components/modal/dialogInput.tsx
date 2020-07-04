@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-// import "./dummy.scss";
+import "./dialog.scss";
 
 interface InputItem {
   id: string,
@@ -38,8 +38,8 @@ export default (props: dialogInputProps) => {
   };
 
   return (
-    <div className="dialogInput">
-      <div className="modal micromodal-slide" id={`dialogInput-${props.dialogID}`} aria-hidden="true">
+    <div className="dialogInput dialog">
+      <div className="modal micromodal-slide" id={props.dialogID} aria-hidden="true">
         <div className="modal__overlay" tabIndex={-1} data-micromodal-close>
           <div className="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
             <form onSubmit={(e) => {e.preventDefault();}}>
@@ -47,6 +47,7 @@ export default (props: dialogInputProps) => {
                 <h2 className="modal__title" id="modal-1-title">
                   {props.title}
                 </h2>
+                <div className="flexSpacer"></div>
                 <button className="modal__close" aria-label="Close modal" data-micromodal-close></button>
               </header>
               <main className="modal__content" id="modal-1-content">
