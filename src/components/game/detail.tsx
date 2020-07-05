@@ -19,6 +19,7 @@ export default (props: gameDetailProps) => {
 
       <header>
         <h1>售价：{props.game.price}</h1>
+        <h1>简介：{props.game.description}</h1>
       </header>
 
       <Menu menus={props.menus} />

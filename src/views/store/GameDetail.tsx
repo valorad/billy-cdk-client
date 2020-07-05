@@ -21,6 +21,7 @@ export default () => {
 
   const game: Game = {
     dbname: dbname || "Game of Non-existance",
+    description: "反正是个游戏",
     name: "某个游戏",
     price: 100,
   };
@@ -59,6 +60,14 @@ export default () => {
         {
           id: "gameName",
           name: "游戏名称",
+        },
+        {
+          id: "gameDescription",
+          name: "游戏简介",
+        },
+        {
+          id: "gamePrice",
+          name: "游戏售价",
         },
       ],
       onFinish: (data: any) => {
@@ -125,8 +134,8 @@ export default () => {
 
   useEffect(() => {
 
-    dispatch(setTitle(game.name));
-    dispatch(setDescription(`dbname: ${game.dbname}`));
+    dispatch(setTitle("游戏详情"));
+    dispatch(setDescription(game.name));
     
 
   });
