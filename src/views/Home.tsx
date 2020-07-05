@@ -24,7 +24,7 @@ export default () => {
     },
     {
       name: "我的好友",
-      link: "#/friends",
+      link: "#/players",
     },
     {
       name: "我的游戏",
