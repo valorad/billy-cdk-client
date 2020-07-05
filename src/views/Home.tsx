@@ -24,7 +24,7 @@ export default () => {
     },
     {
       name: "我的好友",
-      link: "#/players",
+      link: "#/players/index",
     },
     {
       name: "我的游戏",
@@ -37,7 +37,7 @@ export default () => {
     {
       name: "退出",
       action: () => {
-        console.log(`Clicked Exit`);
+        window.location.href = "https://www.wcnexus.com";
       }
     },
   ];

@@ -42,8 +42,8 @@ export default () => {
 
   useEffect(() => {
     
-    dispatch(setTitle("好友列表"));
-    dispatch(setDescription("以下都是您的好友"));
+    dispatch(setTitle("玩家列表"));
+    dispatch(setDescription("所有玩家都是您的好友"));
     
   });
 

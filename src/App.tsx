@@ -11,8 +11,10 @@ import HomeView from "./views/Home";
 import StoreView from "./views/store/Store";
 import StoreGamesListView from "./views/store/GameList";
 import StoreGamesDetailView from "./views/store/GameDetail";
+import PlayerIndexView from "./views/player/Player";
 import PlayerListView from "./views/player/PlayerList";
 import PlayerDetailView from "./views/player/PlayerDetail";
+import PlayerGameListView from "./views/player/GameList";
 import HTTP404View from "./views/HTTP404";
 
 import { selectTitle, selectDescription } from "./features/navbar";
@@ -29,8 +31,10 @@ const placeRoutingTable = () => {
       <Route path="/store" component={StoreView}></Route>
       <Route path="/store/games" component={StoreGamesListView}></Route>
       <Route path="/store/games/dbname/:dbname" component={StoreGamesDetailView}></Route>
+      <Route path="/players/index" component={PlayerIndexView}></Route>
       <Route path="/players" component={PlayerListView}></Route>
       <Route path="/players/dbname/:dbname" component={PlayerDetailView}></Route>
+      <Route path="/players/dbname/:dbname/games" component={PlayerGameListView}></Route>
       <Route path="/:rest*" component={HTTP404View}></Route>
     </Switch>
   );
