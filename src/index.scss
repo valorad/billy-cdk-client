@@ -197,7 +197,7 @@ a.button:hover {
 }
 
 .modal__container {
-  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.5);
   border: 2px solid $primary;
   padding: 0.5em;
   max-width: 500px;

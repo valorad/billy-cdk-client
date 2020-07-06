@@ -6,6 +6,7 @@ import MicroModal from "micromodal";
 import GameDetail from "../../components/game/detail";
 import DialogConfirmation from "../../components/modal/dialogConfirmation";
 import DialogInput from "../../components/modal/dialogInput";
+
 import { setTitle, setDescription } from "../../features/navbar";
 import { MenuItem } from "../../models/menu.interface";
 import { Game } from "../../models/game.interface";
@@ -58,16 +59,19 @@ export default () => {
       description: "请填写以下信息",
       items: [
         {
-          id: "gameName",
+          propName: "gameName",
           name: "游戏名称",
+          value: game.name,
         },
         {
-          id: "gameDescription",
+          propName: "gameDescription",
           name: "游戏简介",
+          value: game.description,
         },
         {
-          id: "gamePrice",
+          propName: "gamePrice",
           name: "游戏售价",
+          value: game.price,
         },
       ],
       onFinish: (data: any) => {

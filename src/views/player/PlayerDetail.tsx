@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import MicroModal from "micromodal";
 
-import Menu from "../../components/menu";
 import { setTitle, setDescription } from "../../features/navbar";
 import { MenuItem } from "../../models/menu.interface";
 import { useRoute } from "wouter";
 import { Player } from "../../models/player.interface";
-import MicroModal from "micromodal";
-import { Game } from "../../models/game.interface";
+
+
+import PlayerDetail from "../../components/player/detail";
+import DialogConfirmation from "../../components/modal/dialogConfirmation";
+import DialogInput from "../../components/modal/dialogInput";
 
 // import "./Dummy.scss";
 
@@ -27,6 +30,15 @@ export default () => {
     games: [],
   };
 
+  const [editDialogResult, setEditDialogResult] = useState({});
+  const editPlayer = () => {
+    MicroModal.show("dialogInput-editPlayer");
+  };
+
+  const deletePlayer = () => {
+    MicroModal.show("dialogConfirmation-deletePlayer");
+  };
+
   const menus: MenuItem[] = [
     {
       name: "查看TA的游戏库",
@@ -38,40 +50,13 @@ export default () => {
     },
     {
       name: "编辑玩家信息",
-      link: "#/index",
+      action: editPlayer,
     },
     {
       name: "删除玩家",
-      link: "#/index",
+      action: deletePlayer,
     },
   ];
-
-  // query games
-  // const games: Game[] = [
-  //   {
-  //     dbname: "game-tesV",
-  //     name: "题伊诶四威",
-  //     description: "超大型奇幻bug游戏",
-  //     price: 123,
-  //   },
-  //   {
-  //     dbname: "game-halfLifeAlyx",
-  //     name: "Half Life Alyx",
-  //     description: "你可以用VR在白板上画一天",
-  //     price: 321,
-  //   }
-  // ];
-
-  const [editDialogResult, setEditDialogResult] = useState({});
-  const editPlayer = () => {
-    MicroModal.show("dialogInput-editPlayer");
-  };
-
-  const deletePlayer = () => {
-    MicroModal.show("dialogConfirmation-deletePlayer");
-  };
-
-
 
   useEffect(() => {
     
@@ -81,13 +66,38 @@ export default () => {
   });
 
 
-
-
-
   return (
     <section className="PlayerDetail">
-      {/* Each page must have at least 1 and only 1 menu */}
-      <Menu menus={menus} />
+      <PlayerDetail player={player} menus={menus} />
+
+      <DialogInput
+        dialogID="dialogInput-editPlayer"
+        title={`编辑信息:${player.dbname}`}
+        description="请填写以下信息"
+        items={[
+          {
+            propName: "name",
+            name: "玩家名称",
+            value: player.name,
+          },
+        ]}
+        onFinish={(data: any) => {
+          setEditDialogResult({...editDialogResult, data});
+          console.log(data);
+        }}
+      />
+
+      <DialogConfirmation
+        dialogID="dialogConfirmation-deletePlayer"
+        title={`删除玩家:${player.dbname}`}
+        description={"警告！此操作无法回滚！"}
+        onFinish={() => {
+          console.log(`Delete boom boom boom`);
+          MicroModal.close("dialogConfirmation-deletePlayer");
+        }}
+      />
+
+
     </section>
   );
 };

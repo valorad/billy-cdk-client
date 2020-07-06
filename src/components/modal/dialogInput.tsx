@@ -7,9 +7,22 @@ import Menu from "../menu";
 import { MenuItem } from "../../models/menu.interface";
 import MicroModal from "micromodal";
 
-interface InputItem {
-  id: string,
+interface ItemStore {
   name: string,
+  value: string,
+}
+
+interface InputItem extends ItemStore {
+  propName: string, // the name of the field holding the property value
+  type?: "text" | "textArea" | "checkBox",
+}
+
+interface FormStore {
+  [index: string]: InputItem,
+}
+
+interface OutputStore {
+  [index: string]: string | number | boolean | undefined,
 }
 
 interface dialogInputProps {
@@ -24,20 +37,46 @@ export default (props: dialogInputProps) => {
 
   const dialogID = `${props.dialogID}`;
 
-  const formMap = {} as any;
+  // const inputFormStore = {} as InputFormStore;
+
+  // const formMap = {} as any;
+  const formStoreInitState = {} as FormStore;
+  const outputStore = {} as OutputStore;
 
   // init form Map based on inputs
+  // for (let item of props.items) {
+  //   formMap[item.id] = {};
+  //   formMap[item.id]["name"] = item.name;
+  //   formMap[item.id]["value"] = "";
+  // }
+  // for (let item of props.items) {
+  //   inputFormStore[item.id] = {
+  //     name: item.name,
+  //     value: item.value,
+  //   };
+  // }
+
+  // init formStore
   for (let item of props.items) {
-    formMap[item.id] = {};
-    formMap[item.id]["name"] = item.name;
-    formMap[item.id]["value"] = "";
+    formStoreInitState[item.propName] = {
+      propName: item.propName,
+      name: item.name,
+      value: item.value,
+    };
   }
 
-  const [formData, setFormData] = useState<any>(formMap);
+
+  const [formStore, setFormStore] = useState({...formStoreInitState});
+  const [outputData, setOutputData] = useState(outputStore);
+  // outputData contains only the inputs that have been altered.
+  // e.g. output: {
+  //   "description": "No you will never get a single CDKey from me hahaha!",
+  //   "price": 666666
+  // } 
 
   const result = {
     ok: false,
-    data: formData,
+    data: outputData,
   }
 
   const returnResult = (data: any) => {
@@ -48,42 +87,79 @@ export default (props: dialogInputProps) => {
     {
       name: "完成",
       action: () => {
+        // -> if success
         returnResult(result);
+        setOutputData({});
+        setFormStore({...formStoreInitState});
+        // for (let key in formStore) {
+        //   delete formStore[key];
+        // }
       },
     },
     {
       name: "取消",
       action: () => {
+        setOutputData({});
+        setFormStore({...formStoreInitState});
         MicroModal.close(dialogID);
       },
     }
   ];
 
-  const placeFormGroups = () => {
-    let formGroups = [];
-    for (let key in formMap) {
-      formGroups.push(
-        <label key={key}>
-          {formMap[key].name}
+  const placeInputElement = (input: InputItem) => {
+    switch (input.type) {
+      case "textArea":
+        break;
+      case "checkBox":
+        break;
+      default:
+        // default is an one-line text input
+        return (
           <input
             type="text"
-            value={formData[key]["value"]}
+            value={input.value}
             onChange={
               (e) => {
-                setFormData(
+                setOutputData(
                   {
-                    ...formData,
-                    [key]:{
-                      ...formMap[key],
-                      value: e.target.value
+                    ...outputData,
+                    [input.propName]: e.target.value,
+                  }
+                )
+                setFormStore(
+                  {
+                    ...formStore,
+                    [input.propName]: {
+                      ...formStore[input.propName],
+                      value: e.target.value,
                     }
                   }
                 )
               }
             }/>
+        );
+    }
+  };
+
+  const placeFormGroups = () => {
+    let formGroups = [];
+    for (let key in formStore) {
+      formGroups.push(
+        <label key={key}>
+          {formStore[key].name}
+          {placeInputElement(formStore[key])}
         </label>
       );
     }
+    // for (let key in inputFormStore) {
+    //   formGroups.push(
+    //     <label key={key}>
+    //       {inputFormStore[key].name}
+    //       {placeInputElement()}
+
+    //     </label>
+    //   );
+    // }
     return formGroups;
   };
 
