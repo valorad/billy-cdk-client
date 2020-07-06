@@ -80,6 +80,12 @@ export default () => {
             name: "玩家名称",
             value: player.name,
           },
+          {
+            propName: "isPremium",
+            name: "是黄金高端土豪会员",
+            value: player.isPremium,
+            type: "checkBox",
+          },
         ]}
         onFinish={(data: any) => {
           setEditDialogResult({...editDialogResult, data});

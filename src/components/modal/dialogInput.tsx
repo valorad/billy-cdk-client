@@ -9,7 +9,7 @@ import MicroModal from "micromodal";
 
 interface ItemStore {
   name: string,
-  value: string,
+  value: string | number | boolean,
 }
 
 interface InputItem extends ItemStore {
@@ -59,9 +59,7 @@ export default (props: dialogInputProps) => {
   // init formStore
   for (let item of props.items) {
     formStoreInitState[item.propName] = {
-      propName: item.propName,
-      name: item.name,
-      value: item.value,
+      ...item,
     };
   }
 
@@ -109,15 +107,64 @@ export default (props: dialogInputProps) => {
   const placeInputElement = (input: InputItem) => {
     switch (input.type) {
       case "textArea":
-        break;
+        return (
+          <textarea
+            name={input.propName}
+            value={input.value as string}
+            onChange={
+              (e) => {
+                setOutputData(
+                  {
+                    ...outputData,
+                    [input.propName]: e.target.value,
+                  }
+                )
+                setFormStore(
+                  {
+                    ...formStore,
+                    [input.propName]: {
+                      ...formStore[input.propName],
+                      value: e.target.value,
+                    }
+                  }
+                )
+              }
+            }
+          ></textarea>
+        );
       case "checkBox":
-        break;
+        return (
+          <input
+            type="checkbox"
+            name={input.propName}
+            checked={input.value as boolean}
+            onChange={
+              (e) => {
+                setOutputData(
+                  {
+                    ...outputData,
+                    [input.propName]: e.target.checked,
+                  }
+                )
+                setFormStore(
+                  {
+                    ...formStore,
+                    [input.propName]: {
+                      ...formStore[input.propName],
+                      value: e.target.checked,
+                    }
+                  }
+                )
+              }
+            }
+          />
+        );
       default:
         // default is an one-line text input
         return (
           <input
             type="text"
-            value={input.value}
+            value={input.value as string}
             onChange={
               (e) => {
                 setOutputData(

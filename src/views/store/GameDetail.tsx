@@ -22,7 +22,7 @@ export default () => {
 
   const game: Game = {
     dbname: dbname || "Game of Non-existance",
-    description: "反正是个游戏",
+    description: "反正是个游戏，是个超级好玩的游戏。这里是一段简介，而且这段简介可不一般了，它：\n超级得长\n超级得宽\n超级得高",
     name: "某个游戏",
     price: 100,
   };
@@ -67,6 +67,7 @@ export default () => {
           propName: "gameDescription",
           name: "游戏简介",
           value: game.description,
+          type: "textArea",
         },
         {
           propName: "gamePrice",
