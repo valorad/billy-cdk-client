@@ -52,11 +52,13 @@ export default () => {
             propName: "dbname",
             name: "游戏ID",
             value: "game-[InputID]",
+            isRequired: true,
           },
           {
             propName: "name",
             name: "游戏名称",
             value: "",
+            isRequired: true,
           },
           {
             propName: "description",
@@ -69,6 +71,7 @@ export default () => {
             name: "游戏售价",
             value: 0,
             type: "number",
+            isRequired: true,
           },
         ]}
         onFinish={(data: any) => {

@@ -26,7 +26,7 @@ export default (props: playerDetailProps) => {
     <div className="playerDetail">
       <header>
         {placePremiumBadge()}
-        <h1>简介：{props.player.bio}</h1>
+        <h1>简介：{props.player.bio || "这个玩家太忙，没时间写简介"}</h1>
       </header>
 
       <Menu menus={props.menus} />

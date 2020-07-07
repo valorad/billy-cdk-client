@@ -15,6 +15,7 @@ interface ItemStore {
 interface InputItem extends ItemStore {
   propName: string, // the name of the field holding the property value
   type?: "text" | "textArea" | "checkBox" | "number",
+  isRequired?: boolean,
 }
 
 interface FormStore {
@@ -59,6 +60,9 @@ export default (props: dialogInputProps) => {
   // init formStore
   for (let item of props.items) {
     formStoreInitState[item.propName] = {
+      // set default values for input items
+      isRequired: false,
+      
       ...item,
     };
   }
@@ -110,6 +114,7 @@ export default (props: dialogInputProps) => {
           <textarea
             name={input.propName}
             value={input.value as string}
+            required={input.isRequired}
             onChange={
               (e) => {
                 setOutputData(
@@ -164,6 +169,7 @@ export default (props: dialogInputProps) => {
               type="number"
               name={input.propName}
               value={input.value as number}
+              required={input.isRequired}
               onChange={
                 (e) => {
                   setOutputData(
@@ -191,6 +197,7 @@ export default (props: dialogInputProps) => {
           <input
             type="text"
             value={input.value as string}
+            required={input.isRequired}
             onChange={
               (e) => {
                 setOutputData(

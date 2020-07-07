@@ -62,6 +62,7 @@ export default () => {
           propName: "name",
           name: "游戏名称",
           value: game.name,
+          isRequired: true,
         },
         {
           propName: "description",
@@ -74,6 +75,7 @@ export default () => {
           name: "游戏售价",
           value: game.price,
           type: "number",
+          isRequired: true,
         },
       ],
       onFinish: (data: any) => {

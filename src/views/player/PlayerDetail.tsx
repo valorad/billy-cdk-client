@@ -79,6 +79,7 @@ export default () => {
             propName: "name",
             name: "玩家名称",
             value: player.name,
+            isRequired: true,
           },
           {
             propName: "isPremium",
