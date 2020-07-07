@@ -1,15 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import MicroModal from "micromodal";
 
 // import "./Store.scss";
 import { MenuItem } from "../../models/menu.interface";
 
 import Menu from "../../components/menu";
-import { useDispatch } from "react-redux";
+import DialogInput from "../../components/modal/dialogInput";
+
 import { setTitle, setDescription } from "../../features/navbar";
+
 
 export default () => {
 
   const dispatch = useDispatch();
+
+  const [createDialogResult, setCreateDialogResult] = useState({});
+
+  const createGame = () => {
+    MicroModal.show("dialogInput-createGame");
+  };
 
   const menus: MenuItem[] = [
     {
@@ -18,7 +28,7 @@ export default () => {
     },
     {
       name: "发布新游戏",
-      link: "#/store/games/new",
+      action: createGame,
     },
   ];
 
@@ -32,6 +42,43 @@ export default () => {
   return (
     <section className="Store">
       <Menu menus={menus} />
+
+      <DialogInput
+        dialogID="dialogInput-createGame"
+        title={`添加新游戏`}
+        description="请填写以下信息"
+        items={[
+          {
+            propName: "dbname",
+            name: "游戏ID",
+            value: "game-[InputID]",
+          },
+          {
+            propName: "name",
+            name: "游戏名称",
+            value: "",
+          },
+          {
+            propName: "description",
+            name: "游戏简介",
+            value: "",
+            type: "textArea",
+          },
+          {
+            propName: "price",
+            name: "游戏售价",
+            value: 0,
+            type: "number",
+          },
+        ]}
+        onFinish={(data: any) => {
+          // -> if (data.ok)
+          setCreateDialogResult({...createDialogResult, data});
+          console.log(data);
+        }}
+      />
+
+
     </section>
   );
 };

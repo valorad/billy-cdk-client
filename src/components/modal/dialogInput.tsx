@@ -87,8 +87,10 @@ export default (props: dialogInputProps) => {
       action: () => {
         // -> if success
         returnResult(result);
-        setOutputData({});
-        setFormStore({...formStoreInitState});
+        if (result.ok) {
+          setOutputData({});
+          setFormStore({...formStoreInitState});
+        }
       },
     },
     {

@@ -59,18 +59,18 @@ export default () => {
       description: "请填写以下信息",
       items: [
         {
-          propName: "gameName",
+          propName: "name",
           name: "游戏名称",
           value: game.name,
         },
         {
-          propName: "gameDescription",
+          propName: "description",
           name: "游戏简介",
           value: game.description,
           type: "textArea",
         },
         {
-          propName: "gamePrice",
+          propName: "price",
           name: "游戏售价",
           value: game.price,
           type: "number",
