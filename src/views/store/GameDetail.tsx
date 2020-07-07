@@ -73,6 +73,7 @@ export default () => {
           propName: "gamePrice",
           name: "游戏售价",
           value: game.price,
+          type: "number",
         },
       ],
       onFinish: (data: any) => {

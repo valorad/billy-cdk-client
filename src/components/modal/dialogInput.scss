@@ -22,7 +22,9 @@ div.dialogInput {
       }
     }
 
-    input[type=text] {
+    input[type=text],
+    input[type=number]
+    {
       padding-left: 1em;
     }
 
@@ -31,6 +33,38 @@ div.dialogInput {
       height: 5em;
       margin: 0;
       padding-left: 1em;
+    }
+
+    label.checkBox {
+      padding-bottom: 2em;
+      &::before {
+        content: "[\00a0\00a0\00a0\00a0\00a0]";
+        cursor: pointer;
+      }
+
+      input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+      }
+      span {
+        display: block;
+        position: absolute;
+        left: 0.9rem;
+        top: 2.7rem;
+        cursor: pointer;
+        &::before {
+          content: "";
+        }
+      }
+
+      input[type="checkbox"]:checked + span {
+        &::before {
+          content: "X";
+        }
+      }
+
+
+
     }
 
   }

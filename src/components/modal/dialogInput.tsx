@@ -14,7 +14,7 @@ interface ItemStore {
 
 interface InputItem extends ItemStore {
   propName: string, // the name of the field holding the property value
-  type?: "text" | "textArea" | "checkBox",
+  type?: "text" | "textArea" | "checkBox" | "number",
 }
 
 interface FormStore {
@@ -89,9 +89,6 @@ export default (props: dialogInputProps) => {
         returnResult(result);
         setOutputData({});
         setFormStore({...formStoreInitState});
-        // for (let key in formStore) {
-        //   delete formStore[key];
-        // }
       },
     },
     {
@@ -159,6 +156,33 @@ export default (props: dialogInputProps) => {
             }
           />
         );
+        case "number":
+          return (
+            <input
+              type="number"
+              name={input.propName}
+              value={input.value as number}
+              onChange={
+                (e) => {
+                  setOutputData(
+                    {
+                      ...outputData,
+                      [input.propName]: e.target.value,
+                    }
+                  )
+                  setFormStore(
+                    {
+                      ...formStore,
+                      [input.propName]: {
+                        ...formStore[input.propName],
+                        value: e.target.value,
+                      }
+                    }
+                  )
+                }
+              }
+            />
+          );
       default:
         // default is an one-line text input
         return (
@@ -190,23 +214,17 @@ export default (props: dialogInputProps) => {
 
   const placeFormGroups = () => {
     let formGroups = [];
+
     for (let key in formStore) {
       formGroups.push(
-        <label key={key}>
+        <label key={key} className={formStore[key].type === "checkBox"?"checkBox":""}>
           {formStore[key].name}
           {placeInputElement(formStore[key])}
+          <span className="checkMark"></span>
         </label>
       );
     }
-    // for (let key in inputFormStore) {
-    //   formGroups.push(
-    //     <label key={key}>
-    //       {inputFormStore[key].name}
-    //       {placeInputElement()}
 
-    //     </label>
-    //   );
-    // }
     return formGroups;
   };
 

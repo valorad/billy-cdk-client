@@ -5,7 +5,7 @@ import { MenuItem } from "../../models/menu.interface";
 
 import Menu from "../menu";
 
-// import "./playerDetail.scss";
+import "./detail.scss";
 
 interface playerDetailProps {
   player: Player,

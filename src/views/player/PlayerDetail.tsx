@@ -26,7 +26,7 @@ export default () => {
     dbname: dbname,
     name: "Angular Biter",
     bio: "Angular biter's Ding-ding gas station: Zu zu zu zu zu!",
-    isPremium: false,
+    isPremium: true,
     games: [],
   };
 
