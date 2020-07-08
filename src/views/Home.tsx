@@ -32,7 +32,7 @@ export default () => {
     },
     {
       name: "我的CDKey",
-      link: `#/players/dbname/${"player-billy"}/cdkeys`,
+      link: `#/cdkeys/index`,
     },
     {
       name: "退出",

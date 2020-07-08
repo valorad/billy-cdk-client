@@ -14,8 +14,6 @@ export default () => {
 
   const dispatch = useDispatch();
 
-
-
   useEffect(() => {
     
     dispatch(setTitle("玩家管理"));
