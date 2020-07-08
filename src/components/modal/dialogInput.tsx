@@ -44,19 +44,6 @@ export default (props: dialogInputProps) => {
   const formStoreInitState = {} as FormStore;
   const outputStore = {} as OutputStore;
 
-  // init form Map based on inputs
-  // for (let item of props.items) {
-  //   formMap[item.id] = {};
-  //   formMap[item.id]["name"] = item.name;
-  //   formMap[item.id]["value"] = "";
-  // }
-  // for (let item of props.items) {
-  //   inputFormStore[item.id] = {
-  //     name: item.name,
-  //     value: item.value,
-  //   };
-  // }
-
   // init formStore
   for (let item of props.items) {
     formStoreInitState[item.propName] = {
@@ -66,7 +53,6 @@ export default (props: dialogInputProps) => {
       ...item,
     };
   }
-
 
   const [formStore, setFormStore] = useState({...formStoreInitState});
   const [outputData, setOutputData] = useState(outputStore);

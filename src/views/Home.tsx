@@ -28,11 +28,11 @@ export default () => {
     },
     {
       name: "我的游戏",
-      link: "#/games",
+      link: `#/players/dbname/${"player-billy"}/games`,
     },
     {
       name: "我的CDKey",
-      link: "#/cdkeys",
+      link: `#/players/dbname/${"player-billy"}/cdkeys`,
     },
     {
       name: "退出",

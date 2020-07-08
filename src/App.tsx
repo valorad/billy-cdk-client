@@ -15,6 +15,8 @@ import PlayerIndexView from "./views/player/Player";
 import PlayerListView from "./views/player/PlayerList";
 import PlayerDetailView from "./views/player/PlayerDetail";
 import PlayerGameListView from "./views/player/GameList";
+import PlayerCDKeyListView from "./views/player/CDKeyList";
+import CDKeyDetailView from "./views/cdkeys/Detail";
 import HTTP404View from "./views/HTTP404";
 
 import { selectTitle, selectDescription } from "./features/navbar";
@@ -35,6 +37,8 @@ const placeRoutingTable = () => {
       <Route path="/players" component={PlayerListView}></Route>
       <Route path="/players/dbname/:dbname" component={PlayerDetailView}></Route>
       <Route path="/players/dbname/:dbname/games" component={PlayerGameListView}></Route>
+      <Route path="/players/dbname/:dbname/cdkeys" component={PlayerCDKeyListView}></Route>
+      <Route path="/cdkeys/id/:id" component={CDKeyDetailView}></Route>
       <Route path="/:rest*" component={HTTP404View}></Route>
     </Switch>
   );
