@@ -1,14 +1,16 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Menu from "../components/menu";
 import { MenuItem } from "../models/menu.interface";
 import { setTitle, setDescription } from "../features/navbar";
+import { selectLoginAsPlayer } from "../features/login";
 // import "./Dummy.scss";
 
 export default () => {
 
   const dispatch = useDispatch();
+  const loginPlayer = useSelector(selectLoginAsPlayer);
 
   useEffect(() => {
     
@@ -28,7 +30,7 @@ export default () => {
     },
     {
       name: "我的游戏",
-      link: `#/players/dbname/${"player-billy"}/games`,
+      link: `#/players/dbname/${loginPlayer.dbname}/games`,
     },
     {
       name: "我的CDKey",

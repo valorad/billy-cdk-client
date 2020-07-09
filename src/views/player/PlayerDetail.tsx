@@ -61,7 +61,7 @@ export default () => {
   useEffect(() => {
     
     dispatch(setTitle("玩家详情"));
-    dispatch(setDescription(player.name));
+    dispatch(setDescription(player.name || player.dbname));
     
   });
 
@@ -78,7 +78,7 @@ export default () => {
           {
             propName: "name",
             name: "玩家名称",
-            value: player.name,
+            value: player.name || player.dbname,
             isRequired: true,
           },
           {

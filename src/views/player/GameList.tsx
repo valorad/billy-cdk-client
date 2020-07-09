@@ -47,12 +47,13 @@ export default () => {
     
     dispatch(setTitle(`${player.name}的游戏`));
     dispatch(setDescription("选择一款游戏以查看详情"));
+
+    // TODO: fetch player and games in async ...
     
   });
 
   return (
     <section className="PlayerGameList">
-
       <GameList games={games} />
     </section>
   );

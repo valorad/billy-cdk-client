@@ -18,7 +18,7 @@ export default (props: playerListProps) => {
   for (let player of props.players) {
     menuItems.push(
       {
-        name: player.name,
+        name: player.name || player.dbname,
         link: `#/players/dbname/${player.dbname}`
       }
     );

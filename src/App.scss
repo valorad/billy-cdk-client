@@ -92,26 +92,30 @@ section.App {
     z-index: 2;
   }
 
-
-}
-
-// section.Home {
-//   flex-grow: 1;
-// }
-
-.contentBox {
-  > section {
-    flex-grow: 1;
+  .contentBox {
+    > section {
+      flex-grow: 1;
+    }
   }
+  
+  div.tips {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+  
+  .loggingIn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
 }
 
-div.tips {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-}
+
 

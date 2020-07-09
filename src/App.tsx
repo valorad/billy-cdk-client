@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, Switch, Router, Redirect } from "wouter";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import MicroModal from "micromodal";
 
 import "./App.scss";
@@ -22,6 +22,8 @@ import HTTP404View from "./views/HTTP404";
 
 import { selectTitle, selectDescription } from "./features/navbar";
 import useHashLocation from "./router/useHashLocation";
+import { selectLoginAsPlayer, setLoginAsPlayer } from "./features/login";
+import { Player } from "./models/player.interface";
 
 
 const placeRoutingTable = () => {
@@ -46,12 +48,29 @@ const placeRoutingTable = () => {
   );
 };
 
+const requestLogIn = () => {
+  return new Promise<Player>((resolve, reject) => {
+    setTimeout(() => {
+      resolve({
+        dbname: "player-billy",
+        name: "Billy",
+        bio: "Master of CDKey!",
+        isPremium: true,
+        games: [],
+      })
+    }, 2000);
+  });
+}
+
 export default () => {
 
   MicroModal.init();
 
+  const dispatch = useDispatch();
   const title = useSelector(selectTitle);
   const description = useSelector(selectDescription);
+  const loginPlayer = useSelector(selectLoginAsPlayer);
+  const [isLoggingIn, setIsLoggingIn] = useState(true);
 
   const onAppKeyDown = (e: React.KeyboardEvent) => {
     // e.preventDefault();
@@ -75,6 +94,17 @@ export default () => {
 
   }
 
+  useEffect(() => {
+
+    const login = async (dbname: string, password: string) => {
+      const playerToLogIn = await requestLogIn();
+      dispatch(setLoginAsPlayer(playerToLogIn));
+      setIsLoggingIn(false);
+    };
+
+    login("player-billy", "");
+    
+  });
 
   return (
 
@@ -87,13 +117,17 @@ export default () => {
           <div className="appHolder">
             <header>
               <div className="contentBox">
-                <Navbar title={title} description={description} player={"Billy"} />
+                <Navbar title={title} description={description} player={loginPlayer.name || loginPlayer.dbname} />
               </div>
             </header>    
             <main>
               <div className="contentBox">
 
-                {placeRoutingTable()}
+              {
+                isLoggingIn?
+                <div className="loggingIn"> <h1>登录中...</h1> </div>
+                :placeRoutingTable()
+              }
 
               </div>
             </main>

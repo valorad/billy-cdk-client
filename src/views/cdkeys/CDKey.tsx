@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MicroModal from "micromodal";
 
 import Menu from "../../components/menu";
@@ -7,6 +7,7 @@ import DialogInput from "../../components/modal/dialogInput";
 
 import { setTitle, setDescription } from "../../features/navbar";
 import { MenuItem } from "../../models/menu.interface";
+import { selectLoginAsPlayer } from "../../features/login";
 
 
 // import "./CDKey.scss";
@@ -14,6 +15,7 @@ import { MenuItem } from "../../models/menu.interface";
 export default () => {
 
   const dispatch = useDispatch();
+  const loginPlayer = useSelector(selectLoginAsPlayer);
 
   useEffect(() => {
     
@@ -30,7 +32,7 @@ export default () => {
   const menus: MenuItem[] = [
     {
       name: "管理我的CDKey库存",
-      link: `#/players/dbname/${"player-billy"}/cdkeys`,
+      link: `#/players/dbname/${loginPlayer.dbname}/cdkeys`,
     },
     {
       name: "输入新的CDKey并激活",
@@ -58,7 +60,7 @@ export default () => {
         onFinish={(data: any) => {
           // -> if (data.ok)
           setActivateCDKeyDialogResult({...activateCDKeyDialogResult, data});
-          data.data.player = "player-billy";
+          data.data.player = loginPlayer.dbname;
           console.log(data);
         }}
       />
