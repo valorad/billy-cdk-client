@@ -24,6 +24,8 @@ import { selectTitle, selectDescription } from "./features/navbar";
 import useHashLocation from "./router/useHashLocation";
 import { selectLoginAsPlayer, setLoginAsPlayer } from "./features/login";
 import { Player } from "./models/player.interface";
+import { ApolloProvider } from "@apollo/client";
+import GraphQLClient from "./app/graph";
 
 
 const placeRoutingTable = () => {
@@ -110,38 +112,40 @@ export default () => {
 
   return (
 
-    <Router hook={useHashLocation}>
+    <ApolloProvider client={GraphQLClient}>
+      <Router hook={useHashLocation}>
 
-      <section className="App" tabIndex={0} onKeyDown={onAppKeyDown}>
-        <div className="overlay"></div>
-        <div className="scanline"></div>
-        <div className="wrapper">
-          <div className="appHolder">
-            <header>
-              <div className="contentBox">
-                <Navbar title={title} description={description} player={loginPlayer.name || loginPlayer.dbname} />
-              </div>
-            </header>    
-            <main>
-              <div className="contentBox">
+        <section className="App" tabIndex={0} onKeyDown={onAppKeyDown}>
+          <div className="overlay"></div>
+          <div className="scanline"></div>
+          <div className="wrapper">
+            <div className="appHolder">
+              <header>
+                <div className="contentBox">
+                  <Navbar title={title} description={description} player={loginPlayer.name || loginPlayer.dbname} />
+                </div>
+              </header>    
+              <main>
+                <div className="contentBox">
 
-              {
-                isLoggingIn?
-                <div className="loggingIn"> <h1>登录中...</h1> </div>
-                :placeRoutingTable()
-              }
+                {
+                  isLoggingIn?
+                  <div className="statusInfo"> <h1>登录中...</h1> </div>
+                  :placeRoutingTable()
+                }
 
-              </div>
-            </main>
+                </div>
+              </main>
 
+            </div>
           </div>
-        </div>
 
-        <Tips />
-        
-      </section>
+          <Tips />
+          
+        </section>
 
-    </Router>
+      </Router>
+    </ApolloProvider>
 
   );
 }
