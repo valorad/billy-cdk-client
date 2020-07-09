@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 
 import PlayerList from "../../components/player/list";
 import { setTitle, setDescription } from "../../features/navbar";
-import { Player } from "../../models/player.interface";
 import { usePlayerList } from "../../services/player";
 
 // import "./Dummy.scss";
@@ -42,6 +41,11 @@ export default () => {
   //     games: [],
   //   },
   // ];
+
+  // during test
+  // const placePlayerList = () => {
+  //   return (<PlayerList players={players} />);
+  // };
 
   const placePlayerList = () => {
 

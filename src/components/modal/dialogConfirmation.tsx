@@ -10,25 +10,55 @@ interface dialogConfirmationProps {
   dialogID: string,
   title?: string,
   description?: string,
+  mode?: "YESNO" | "OKAY" | "INFO",
   onFinish: () => any,
 }
 
 export default (props: dialogConfirmationProps) => {
 
+  props = {
+    // set default values
+    mode: "YESNO",
+    
+    ...props,
+    
+  }
+
   const dialogID = `${props.dialogID}`;
 
-  const menus: MenuItem[] = [
-    {
-      name: "确定",
-      action: props.onFinish,
-    },
-    {
-      name: "取消",
-      action: () => {
-        MicroModal.close(dialogID);
-      },
+  const setupMenu = () => {
+    let menus: MenuItem[] = [];
+    switch (props.mode) {
+      case "YESNO":
+        menus = [
+          {
+            name: "确定",
+            action: props.onFinish,
+          },
+          {
+            name: "取消",
+            action: () => {
+              MicroModal.close(dialogID);
+            },
+          },
+        ];
+        break;
+      case "OKAY":
+        menus = [
+          {
+            name: "好的",
+            action: () => {
+              MicroModal.close(dialogID);
+            },
+          }
+        ]
+        break;
+      default:
+        // no button will be displayed if no mode set (intentionally undefined)
+        break;
     }
-  ];
+    return menus;
+  };
 
   return (
     <div className="dialogConfirmation dialog">
@@ -46,7 +76,7 @@ export default (props: dialogConfirmationProps) => {
               <p>{props.description || "Please confirm."}</p>
             </main>
             <footer className="modal__footer">
-              <Menu menus={menus} />
+              <Menu menus={setupMenu()} />
               {/* <button className="modal__btn modal__btn-primary" onClick={props.onFinish}>Okay</button>
               <button className="modal__btn" data-micromodal-close aria-label="Close this dialog window">Cancel</button> */}
             </footer>
