@@ -58,7 +58,7 @@ const requestLogIn = () => {
         isPremium: true,
         games: [],
       })
-    }, 2000);
+    }, 500);
   });
 }
 
@@ -94,16 +94,18 @@ export default () => {
 
   }
 
+  const login = async (dbname: string, password: string) => {
+    const playerToLogIn = await requestLogIn();
+    dispatch(setLoginAsPlayer(playerToLogIn));
+    setIsLoggingIn(false);
+  };
+
   useEffect(() => {
 
-    const login = async (dbname: string, password: string) => {
-      const playerToLogIn = await requestLogIn();
-      dispatch(setLoginAsPlayer(playerToLogIn));
-      setIsLoggingIn(false);
-    };
+    if (loginPlayer.dbname === "") {
+      login("player-billy", "");
+    }
 
-    login("player-billy", "");
-    
   });
 
   return (
