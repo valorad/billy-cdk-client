@@ -1,9 +1,27 @@
 import { Player } from "../models/player.interface";
-import { useQuery, gql } from "@apollo/client";
+import { useQuery, gql, useMutation } from "@apollo/client";
+import { CUDMessage } from "../models/cudmessage.interface";
 
 interface FieldSwitch {
   [index: string]: boolean
 }
+
+// default queries
+const GET_PLAYERS = gql`
+  query getPlayers($condition: String, $options: String) {
+    players: players(condition: $condition, options: $options) {
+      dbname,name,games,isPremium
+    }
+  }
+`;
+
+const ADD_PLAYER = gql`
+  mutation addPlayer($newPlayer: PlayerView!) {
+    addPlayer(newPlayer: $newPlayer) {
+      ok, numAffected, message
+    }
+  }
+`;
 
 const fieldSwitch0: FieldSwitch = {
   id: true,
@@ -29,19 +47,6 @@ const buildIncludedFields = (fieldSwitch: FieldSwitch) => {
 };
 
 export const usePlayerList = (conditions: any = {}, fieldSwitch: FieldSwitch = {}, options: any = {}) => {
-
-  // const mainFieldSwitch: FieldSwitch = {
-  //   ...fieldSwitch0,
-  //   ...fieldSwitch,
-  // }
-
-  // const fieldToken: string[] = [];
-
-  // for (let key in mainFieldSwitch) {
-  //   if (mainFieldSwitch[key]) {
-  //     fieldToken.push(key);
-  //   }
-  // }
 
   const includedFields = buildIncludedFields(fieldSwitch);
 
@@ -130,3 +135,37 @@ export const usePlayerDetail = (dbname: string, fieldSwitch: FieldSwitch = {}, o
 
 
 };
+
+export const usePlayerAddition = (newPlayer: Player) => {
+
+  return useMutation(
+    ADD_PLAYER,
+    {
+      update: (cache, response) => {
+        const message = response.data.addPlayer as CUDMessage;
+        
+        if (!message.ok) {
+          return;
+        }
+
+        // update local cache
+
+        const cacheResponse = cache.readQuery<{players: Player[]}>({ query: GET_PLAYERS });
+
+        if (!cacheResponse) {
+          return;
+        }
+
+        cache.writeQuery({
+          query: GET_PLAYERS,
+          data: { players: cacheResponse.players.concat(newPlayer)},
+        });
+
+      }
+    }
+
+  )
+
+
+
+}

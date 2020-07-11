@@ -1,6 +1,6 @@
-export interface InputDialogResult {
+export interface InputDialogResult<T> {
   ok: boolean,
-  data: any,
+  data: T,
 }
 
 export interface InputItemStore {

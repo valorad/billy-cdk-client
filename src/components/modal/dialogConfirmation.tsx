@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Menu from "../menu";
 import { MenuItem } from "../../models/menu.interface";
@@ -11,6 +11,7 @@ interface dialogConfirmationProps {
   title?: string,
   description?: string,
   mode?: "YESNO" | "OKAY" | "INFO",
+  isAutoShow?: boolean,
   onFinish?: () => any,
 }
 
@@ -19,6 +20,7 @@ export default (props: dialogConfirmationProps) => {
   props = {
     // set default values
     mode: "YESNO",
+    isAutoShow: false,
     
     ...props,
     
@@ -60,8 +62,14 @@ export default (props: dialogConfirmationProps) => {
     return menus;
   };
 
+  useEffect(() => {
+    if (props.isAutoShow) {
+      MicroModal.show(dialogID);
+    }
+  });
+
   return (
-    <div className="dialogConfirmation dialog">
+    <div className={`dialogConfirmation dialog`}>
       <div className="modal micromodal-slide" id={dialogID} aria-hidden="true">
         <div className="modal__overlay" tabIndex={-1} data-micromodal-close>
           <div className="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
