@@ -11,7 +11,7 @@ interface dialogConfirmationProps {
   title?: string,
   description?: string,
   mode?: "YESNO" | "OKAY" | "INFO",
-  onFinish: () => any,
+  onFinish?: () => any,
 }
 
 export default (props: dialogConfirmationProps) => {
@@ -33,13 +33,13 @@ export default (props: dialogConfirmationProps) => {
         menus = [
           {
             name: "确定",
-            action: props.onFinish,
+            action: props.onFinish || (() => {}),
           },
           {
             name: "取消",
-            action: () => {
+            action: props.onFinish || (() => {
               MicroModal.close(dialogID);
-            },
+            }),
           },
         ];
         break;
@@ -47,9 +47,9 @@ export default (props: dialogConfirmationProps) => {
         menus = [
           {
             name: "好的",
-            action: () => {
+            action: props.onFinish || (() => {
               MicroModal.close(dialogID);
-            },
+            }),
           }
         ]
         break;
@@ -77,8 +77,6 @@ export default (props: dialogConfirmationProps) => {
             </main>
             <footer className="modal__footer">
               <Menu menus={setupMenu()} />
-              {/* <button className="modal__btn modal__btn-primary" onClick={props.onFinish}>Okay</button>
-              <button className="modal__btn" data-micromodal-close aria-label="Close this dialog window">Cancel</button> */}
             </footer>
           </div>
         </div>
