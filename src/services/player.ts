@@ -13,68 +13,10 @@ const GET_PLAYERS = loader("./playerGraph/getList.graphql");
 
 
 const ADD_PLAYER = loader("./playerGraph/addSingle.graphql");
-
-// default queries
-// const GET_PLAYERS = gql`
-//   query getPlayers($condition: String, $options: String) {
-//     players: players(condition: $condition, options: $options) {
-//       dbname,name,games,isPremium
-//     }
-//   }
-// `;
-
-// const ADD_PLAYER = gql`
-//   mutation addPlayer($newPlayer: PlayerView!) {
-//     addPlayer(newPlayer: $newPlayer) {
-//       ok, numAffected, message
-//     }
-//   }
-// `;
-
-// const fieldSwitch0: FieldSwitch = {
-//   id: true,
-//   dbname: true,
-//   name: true,
-//   bio: false,
-//   isPremium: true,
-//   games: false,
-// }
-
-// const buildIncludedFields = (fieldSwitch: FieldSwitch) => {
-//   const includedFields: string[] = [];
-//   const mainFieldSwitch: FieldSwitch = {
-//     ...fieldSwitch0,
-//     ...fieldSwitch,
-//   }
-//   for (let key in mainFieldSwitch) {
-//     if (mainFieldSwitch[key]) {
-//       includedFields.push(key);
-//     }
-//   }
-//   return includedFields;
-// };
+const UPDATE_PLAYER = loader("./playerGraph/updateSingle.graphql");
+const DELETE_PLAYER = loader("./playerGraph/deleteSingle.graphql");
 
 export const usePlayerList = (condition: any = {}, options: any = {}) => {
-
-  // const includedFields = buildIncludedFields(fieldSwitch);
-
-  // let queryToken = `
-  //   query getPlayers($condition: String, $options: String) {
-  //     players: players(condition: $condition, options: $options) {
-  //       ${includedFields.join(",")}
-  //     }
-  //   }
-  // `;
-
-  // queryToken = queryToken.replace(/\s/, "");
-
-  // const queryVariables: any = {
-  //   condition: conditions,
-  //   options: options,
-  // };
-
-  // queryVariables.condition = JSON.stringify(queryVariables.condition);
-  // queryVariables.options = JSON.stringify(queryVariables.options);
 
   const { loading: isQueryLoading, error: queryError, data } = useQuery<{players: Player[]}>(
     GET_PLAYERS,
@@ -145,33 +87,69 @@ export const usePlayerAddition = (newPlayer: Player) => {
 
   return useMutation(
     ADD_PLAYER,
-    {
-      update: (cache, response) => {
-        const message = response.data.addPlayer as CUDMessage;
+    // {
+    //   update: (cache, response) => {
+    //     const message = response.data.addPlayer as CUDMessage;
         
-        if (!message.ok) {
-          return;
-        }
+    //     if (!message.ok) {
+    //       return;
+    //     }
 
-        // update local cache
+    //     // update local cache
+    //     // variables are essential, don't forget them
+    //     const cacheResponse = cache.readQuery<{players: Player[]}>({ query: GET_PLAYERS, variables: {condition: "{}", options: "{}"} });
 
-        const cacheResponse = cache.readQuery<{players: Player[]}>({ query: GET_PLAYERS, variables: {condition: "{}", options: "{}"} });
+    //     if (!cacheResponse) {
+    //       return;
+    //     }
 
-        if (!cacheResponse) {
-          return;
-        }
+    //     cache.writeQuery({
+    //       query: GET_PLAYERS,
+    //       variables: {condition: "{}", options: "{}"},
+    //       data: { players: cacheResponse.players.concat(newPlayer)},
+    //     });
 
-        cache.writeQuery({
-          query: GET_PLAYERS,
-          variables: {condition: "{}", options: "{}"},
-          data: { players: cacheResponse.players.concat(newPlayer)},
-        });
-
-      }
-    }
+    //   }
+    // }
 
   )
 
 
 
+}
+
+export const usePlayerUpdate = (updatedPlayer?: Player) => {
+  return useMutation(
+    UPDATE_PLAYER,
+    // {
+    //   update: (cache, response) => {
+    //     const message = response.data.updatePlayer as CUDMessage;
+        
+    //     if (!message.ok) {
+    //       return;
+    //     }
+
+    //     if (!updatedPlayer) {
+    //       return;
+    //     }
+  
+    //     // update getSingle cache
+  
+    //     cache.writeQuery({
+    //       query: UPDATE_PLAYER,
+    //       variables: {
+    //         dbname: updatedPlayer.dbname
+    //       },
+    //       data: { player: updatedPlayer },
+    //     });
+  
+    //   }
+    // }
+  );
+}
+
+export const usePlayerDeletion = (dbname?: string) => {
+  return useMutation(
+    DELETE_PLAYER,
+  )
 }

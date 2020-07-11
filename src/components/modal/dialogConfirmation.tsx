@@ -39,9 +39,9 @@ export default (props: dialogConfirmationProps) => {
           },
           {
             name: "取消",
-            action: props.onFinish || (() => {
+            action: () => {
               MicroModal.close(dialogID);
-            }),
+            },
           },
         ];
         break;

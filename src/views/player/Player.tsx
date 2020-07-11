@@ -113,7 +113,6 @@ export default () => {
         items={inputItems}
         onFinish={async (result: InputDialogResult<any>) => {
 
-          console.log(result.data);
           newPlayer = {
             isPremium: false,
             ...result.data
