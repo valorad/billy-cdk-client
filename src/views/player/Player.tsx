@@ -129,12 +129,9 @@ export default () => {
             newPlayer: newPlayer
           }});
 
-          if (addError) {
-            console.error(addError);
-          } else {
-            // MicroModal.close("dialogConfirmation-creatingPlayer");
-            window.location.href = `#/players/dbname/${newPlayer.dbname}`;
-          }
+          // <- will stop here automatically if addPlayer fails
+
+          window.location.href = `#/players/dbname/${newPlayer.dbname}`;
           
         }}
       />

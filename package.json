@@ -7,6 +7,7 @@
     "@reduxjs/toolkit": "^1.4.0",
     "bootstrap": "^4.5.0",
     "graphql": "^15.3.0",
+    "graphql.macro": "^1.4.2",
     "micromodal": "^0.4.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

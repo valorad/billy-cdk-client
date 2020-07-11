@@ -1,0 +1,7 @@
+mutation addPlayer($newPlayer: PlayerView!) {
+  addPlayer(newPlayer: $newPlayer) {
+    ok
+    numAffected
+    message
+  }
+}

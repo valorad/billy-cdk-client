@@ -1,0 +1,10 @@
+query getPlayers($condition: String, $options: String) {
+  players: players(condition: $condition, options: $options) {
+    id
+    dbname
+    name
+    bio
+    isPremium
+    games
+  }
+}
