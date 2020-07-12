@@ -115,8 +115,8 @@ export default () => {
   // };
 
   let updatedPlayer = {} as Player;
-  const [updatePlayer, { loading: isUpdateExecuting, error: updateError }] = usePlayerUpdate(updatedPlayer);
-  const [deletePlayer, { loading: isDeleteExecuting, error: deleteError }] = usePlayerDeletion();
+  const [updatePlayer, { loading: isUpdateExecuting }] = usePlayerUpdate(updatedPlayer);
+  const [deletePlayer, { loading: isDeleteExecuting }] = usePlayerDeletion();
 
   const placePlayerDetail = () => {
 
@@ -148,7 +148,7 @@ export default () => {
             <DialogConfirmation
               dialogID="dialogConfirmation-updatingPlayer"
               mode="INFO"
-              title="编辑玩家"
+              title="修改中..."
               description="正在修改玩家信息中，请稍后..."
               isAutoShown={true}
             />
@@ -160,7 +160,7 @@ export default () => {
             <DialogConfirmation
               dialogID="dialogConfirmation-deletingPlayer"
               mode="INFO"
-              title="删除玩家"
+              title="删除中..."
               description="正在删除玩家中，请稍后..."
               isAutoShown={true}
             />
@@ -170,7 +170,7 @@ export default () => {
           <DialogConfirmation
             dialogID="dialogConfirmation-failedToUpdatePlayer"
             mode="OKAY"
-            title="编辑玩家"
+            title="失败"
             description="修改玩家信息失败，请重试。更多详情请查阅控制台或后台记录。"
             onFinish={() => {
               MicroModal.close("dialogConfirmation-failedToUpdatePlayer");
@@ -181,7 +181,7 @@ export default () => {
           <DialogConfirmation
             dialogID="dialogConfirmation-failedToDeletePlayer"
             mode="OKAY"
-            title="删除玩家"
+            title="失败"
             description="删除玩家失败，请重试。更多详情请查阅控制台或后台记录。"
             onFinish={() => {
               MicroModal.close("dialogConfirmation-failedToDeletePlayer");
@@ -231,7 +231,7 @@ export default () => {
                   token: updateToken,
                 }});
               } catch (error) {
-                console.error(updateError);
+                console.error(error);
                 MicroModal.show("dialogConfirmation-failedToUpdatePlayer");
                 return;
               }
@@ -254,12 +254,11 @@ export default () => {
                   dbname: dbname
                 }});
               } catch (error) {
-                console.error(updateError);
+                console.error(error);
                 MicroModal.show("dialogConfirmation-failedToDeletePlayer");
                 return;
               }
 
-              // <- will stop here automatically if fails
               window.location.href = `#/players`;
 
             }}
