@@ -1,0 +1,7 @@
+mutation addGame($newGame: GameView!) {
+  addGame(newGame: $newGame) {
+    ok
+    numAffected
+    message
+  }
+}

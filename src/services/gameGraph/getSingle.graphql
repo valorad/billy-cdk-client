@@ -1,0 +1,9 @@
+query getGame($dbname: String!, $options: String) {
+  game: game(dbname: $dbname, options: $options) {
+    id
+    dbname
+    name
+    description
+    price
+  }
+}

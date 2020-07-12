@@ -1,8 +1,7 @@
 import { loader } from 'graphql.macro';
 
 import { Player } from "../models/player.interface";
-import { useQuery, gql, useMutation } from "@apollo/client";
-import { CUDMessage } from "../models/cudmessage.interface";
+import { useQuery, useMutation } from "@apollo/client";
 
 // interface FieldSwitch {
 //   [index: string]: boolean
