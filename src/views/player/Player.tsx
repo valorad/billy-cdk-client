@@ -46,7 +46,7 @@ export default () => {
     {
       propName: "dbname",
       name: "玩家ID",
-      value: "player-[InputID]",
+      value: "player-<请替换英文ID>",
       isRequired: true,
     },
     {
@@ -70,13 +70,53 @@ export default () => {
   ];
 
   let newPlayer = {} as Player;
+
   const [addPlayer, { loading: isAddExecuting, error: addError }] = usePlayerAddition(newPlayer);
+
+  // const onCreatePlayerFinish = async (result: InputDialogResult<any>) => {
+    
+
+  //   newPlayer = {
+  //     isPremium: false,
+  //     ...result.data
+  //   };
+  //   if (!result.ok) {
+  //     return;
+  //   }
+
+  //   MicroModal.close("dialogInput-createPlayer");
+    
+  //   // create new user
+  //   await addPlayer({variables: {
+  //     newPlayer: newPlayer
+  //   }});
+
+  //   // <- will stop here automatically if addPlayer fails
+
+  //   window.location.href = `#/players/dbname/${newPlayer.dbname}`;
+
+
+  // };
+
+  
+  
 
 
   return (
     <section className="Player">
       {/* Each page must have at least 1 and only 1 menu */}
       <Menu menus={menus} />
+
+      <DialogConfirmation
+        dialogID="dialogConfirmation-failedToCreatePlayer"
+        mode="OKAY"
+        title="添加玩家"
+        description="添加玩家失败，请重试。更多详情请查阅控制台或后台记录。"
+        onFinish={() => {
+          MicroModal.close("dialogConfirmation-failedToCreatePlayer");
+          MicroModal.show("dialogInput-createPlayer");
+        }}
+      />
 
       {
         isAddExecuting?
@@ -85,23 +125,7 @@ export default () => {
           mode="INFO"
           title="添加玩家"
           description="正在添加玩家中，请稍后..."
-          isAutoShow={true}
-        />
-        :null
-      }
-
-      {
-        addError?
-        <DialogConfirmation
-          dialogID="dialogConfirmation-failedToCreatePlayer"
-          mode="OKAY"
-          title="添加玩家"
-          description="添加玩家失败，请重试。更多详情请查阅控制台或后台记录。"
-          isAutoShow={true}
-          onFinish={() => {
-            MicroModal.close("dialogConfirmation-failedToCreatePlayer");
-            MicroModal.show("dialogInput-createPlayer");
-          }}
+          isAutoShown={true}
         />
         :null
       }
@@ -122,13 +146,16 @@ export default () => {
           }
 
           MicroModal.close("dialogInput-createPlayer");
-          
-          // create new user
-          await addPlayer({variables: {
-            newPlayer: newPlayer
-          }});
 
-          // <- will stop here automatically if addPlayer fails
+          try {
+            await addPlayer({variables: {
+              newPlayer: newPlayer
+            }});
+          } catch (error) {
+            MicroModal.show("dialogConfirmation-failedToCreatePlayer");
+            console.log(addError);
+            return;
+          }
 
           window.location.href = `#/players/dbname/${newPlayer.dbname}`;
           

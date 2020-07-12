@@ -11,7 +11,7 @@ interface dialogConfirmationProps {
   title?: string,
   description?: string,
   mode?: "YESNO" | "OKAY" | "INFO",
-  isAutoShow?: boolean,
+  isAutoShown?: boolean,
   onFinish?: () => any,
 }
 
@@ -20,7 +20,7 @@ export default (props: dialogConfirmationProps) => {
   props = {
     // set default values
     mode: "YESNO",
-    isAutoShow: false,
+    isAutoShown: false,
     
     ...props,
     
@@ -63,7 +63,7 @@ export default (props: dialogConfirmationProps) => {
   };
 
   useEffect(() => {
-    if (props.isAutoShow) {
+    if (props.isAutoShown) {
       MicroModal.show(dialogID);
     }
   });

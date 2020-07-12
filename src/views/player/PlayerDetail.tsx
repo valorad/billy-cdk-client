@@ -21,9 +21,11 @@ export default () => {
   const params = useRoute("/players/dbname/:dbname")[1];
 
   let dbname = params?.dbname || "mr-stranger";
+  const name0 = "神秘的陌生人";
 
   const dispatch = useDispatch();
   const { isQueryLoading, queryError, player } = usePlayerDetail(dbname, {bio: true});
+  const playerDisplayName = player?.name || player?.dbname || name0;
 
   // test data
   // const player: Player = {
@@ -64,7 +66,7 @@ export default () => {
   useEffect(() => {
     
     dispatch(setTitle("玩家详情"));
-    dispatch(setDescription(player?.name || player?.dbname || "神秘的陌生人"));
+    dispatch(setDescription(playerDisplayName));
     
   });
 
@@ -148,23 +150,7 @@ export default () => {
               mode="INFO"
               title="编辑玩家"
               description="正在修改玩家信息中，请稍后..."
-              isAutoShow={true}
-            />
-            :null
-          }
-
-          {
-            updateError?
-            <DialogConfirmation
-              dialogID="dialogConfirmation-failedToUpdatePlayer"
-              mode="OKAY"
-              title="编辑玩家"
-              description="修改玩家信息失败，请重试。更多详情请查阅控制台或后台记录。"
-              isAutoShow={true}
-              onFinish={() => {
-                MicroModal.close("dialogConfirmation-failedToUpdatePlayer");
-                MicroModal.show("dialogInput-editPlayer");
-              }}
+              isAutoShown={true}
             />
             :null
           }
@@ -176,35 +162,41 @@ export default () => {
               mode="INFO"
               title="删除玩家"
               description="正在删除玩家中，请稍后..."
-              isAutoShow={true}
+              isAutoShown={true}
             />
             :null
           }
 
-          {
-            deleteError?
-            <DialogConfirmation
-              dialogID="dialogConfirmation-failedToDeletePlayer"
-              mode="OKAY"
-              title="删除玩家"
-              description="删除玩家失败，请重试。更多详情请查阅控制台或后台记录。"
-              isAutoShow={true}
-              onFinish={() => {
-                MicroModal.close("dialogConfirmation-failedToDeletePlayer");
-              }}
-            />
-            :null
-          }
+          <DialogConfirmation
+            dialogID="dialogConfirmation-failedToUpdatePlayer"
+            mode="OKAY"
+            title="编辑玩家"
+            description="修改玩家信息失败，请重试。更多详情请查阅控制台或后台记录。"
+            onFinish={() => {
+              MicroModal.close("dialogConfirmation-failedToUpdatePlayer");
+              MicroModal.show("dialogInput-editPlayer");
+            }}
+          />
+
+          <DialogConfirmation
+            dialogID="dialogConfirmation-failedToDeletePlayer"
+            mode="OKAY"
+            title="删除玩家"
+            description="删除玩家失败，请重试。更多详情请查阅控制台或后台记录。"
+            onFinish={() => {
+              MicroModal.close("dialogConfirmation-failedToDeletePlayer");
+            }}
+          />
 
           <DialogInput
             dialogID="dialogInput-editPlayer"
-            title={`编辑信息:${player.dbname}`}
+            title={`编辑信息: ${playerDisplayName}`}
             description="请填写以下信息"
             items={[
               {
                 propName: "name",
                 name: "玩家名称",
-                value: player.name || player.dbname,
+                value: playerDisplayName,
                 isRequired: true,
               },
               {
@@ -231,14 +223,18 @@ export default () => {
               // edit player
               const updateToken = JSON.stringify({
                   $set: result.data
-              })  
+              })
 
-              await updatePlayer({variables: {
-                dbname: dbname,
-                token: updateToken,
-              }});
-    
-              // <- will stop here automatically if fails
+              try {
+                await updatePlayer({variables: {
+                  dbname: dbname,
+                  token: updateToken,
+                }});
+              } catch (error) {
+                console.error(updateError);
+                MicroModal.show("dialogConfirmation-failedToUpdatePlayer");
+                return;
+              }
     
               window.location.href = `#/players/dbname/${dbname}`;
 
@@ -247,15 +243,21 @@ export default () => {
 
           <DialogConfirmation
             dialogID="dialogConfirmation-deletePlayer"
-            title={`删除玩家:${player.dbname}`}
+            title={`删除玩家: ${playerDisplayName}`}
             description={"警告！此操作无法回滚！"}
             onFinish={async () => {
               MicroModal.close("dialogConfirmation-deletePlayer");
 
               // update user
-              await deletePlayer({variables: {
-                dbname: dbname
-              }});
+              try {
+                await deletePlayer({variables: {
+                  dbname: dbname
+                }});
+              } catch (error) {
+                console.error(updateError);
+                MicroModal.show("dialogConfirmation-failedToDeletePlayer");
+                return;
+              }
 
               // <- will stop here automatically if fails
               window.location.href = `#/players`;
