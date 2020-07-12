@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useRoute } from "wouter";
 import MicroModal from "micromodal";
 
@@ -12,6 +12,7 @@ import { MenuItem } from "../../models/menu.interface";
 import { Game } from "../../models/game.interface";
 import { useGameUpdate, useGameDeletion, useGameDetail } from "../../services/game";
 import { InputDialogResult } from "../../models/dialog.interface";
+import { selectLoginAsPlayer } from "../../features/login";
 
 
 export default () => {
@@ -24,6 +25,11 @@ export default () => {
   const dispatch = useDispatch();
   const { isQueryLoading, queryError, game } = useGameDetail(dbname, {bio: true});
   const gameDisplayName = game?.name || game?.dbname || name0;
+
+  // logged in player
+  const loggedInPlayer = useSelector(selectLoginAsPlayer);
+
+
 
   // test data
   // const game: Game = {
@@ -49,65 +55,7 @@ export default () => {
   const [updateGame, { loading: isUpdateExecuting }] = useGameUpdate(updatedGame);
   const [deleteGame, { loading: isDeleteExecuting }] = useGameDeletion();
 
-  // const dialogs = [
-  //   {
-  //     dialogID: "dialogConfirmation-purchase",
-  //     type: "confirmation",
-  //     title: `购买${gameDisplayName}`,
-  //     description: "是否要继续？",
-  //     onFinish: async () => {
-  //       console.log(`Purchase game ${gameDisplayName} for player "Billy" success`);
-  //       MicroModal.close(`dialogConfirmation-purchase`);
-  //     },
-  //   },
-  //   {
-  //     dialogID: "dialogInput-edit",
-  //     type: "input",
-  //     title: `编辑${gameDisplayName}`,
-  //     description: "请填写以下信息",
-  //     items: [
-  //       {
-  //         propName: "name",
-  //         name: "游戏名称",
-  //         value: gameDisplayName,
-  //         isRequired: true,
-  //       },
-  //       {
-  //         propName: "description",
-  //         name: "游戏简介",
-  //         value: game.description,
-  //         type: "textArea",
-  //       },
-  //       {
-  //         propName: "price",
-  //         name: "游戏售价",
-  //         value: game.price,
-  //         type: "number",
-  //         isRequired: true,
-  //       },
-  //     ],
-  //     onFinish: async (result: InputDialogResult<any>) => {
-  //       setEditDialogResult({...editDialogResult, data});
-  //       console.log(data);
-  //     },
-  //   },
-  //   {
-  //     dialogID: "dialogConfirmation-delete",
-  //     type: "confirmation",
-  //     title: `删除${game.dbname}`,
-  //     description: "警告！操作将无法恢复！",
-  //     onFinish: async () => {
-  //       console.log(`Delete boom boom boom`);
-  //       MicroModal.close("dialogConfirmation-delete");
-  //     },
-  //   }
-  // ];
-
   const menus: MenuItem[] = [
-    {
-      name: "为自己购买",
-      action: purchasePopUp,
-    },
     {
       name: "修改游戏信息",
       action: editGamePopUp,
@@ -118,47 +66,22 @@ export default () => {
     },
   ];
 
-  // TODO: hide "purchase for me" if already owns the game
+  const doesPlayerOwnThisGame = loggedInPlayer?.games.includes(dbname) || false;
 
-  // const dialogComponents = dialogs.map((ele: any) => {
-
-  //   switch (ele.type) {
-  //     case "confirmation":
-  //       return (
-  //         <DialogConfirmation
-  //           key={ele.dialogID}
-  //           dialogID={ele.dialogID}
-  //           title={ele.title}
-  //           description={ele.description}
-  //           onFinish={ele.onFinish}
-  //         />
-  //       );
-  //     case "input":
-  //       return (
-  //         <DialogInput
-  //           key={ele.dialogID}
-  //           dialogID={ele.dialogID}
-  //           title={ele.title}
-  //           description={ele.description}
-  //           items={ele.items}
-  //           onFinish={ele.onFinish}
-  //         />
-  //       );
-  //     default:
-  //       return null;
-  //   }
-    
-  // });
+  // add but menu if game not owned by logged in player
+  if (!doesPlayerOwnThisGame) {
+    menus.unshift({
+      name: "为自己购买",
+      action: purchasePopUp,
+    });
+  }
 
   useEffect(() => {
 
     dispatch(setTitle("游戏详情"));
     dispatch(setDescription(gameDisplayName));
     
-
   });
-
-
 
   const placeGameDetail = () => {
 
@@ -183,6 +106,14 @@ export default () => {
     } else {
       return (
         <section className="GameDetail">
+
+          {
+            doesPlayerOwnThisGame?
+            <h1>您已拥有此游戏。</h1>
+            :null
+          }
+
+          <h1></h1>
           <GameDetail game={game} menus={menus} />
 
           {
