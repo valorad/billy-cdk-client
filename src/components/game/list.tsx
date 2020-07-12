@@ -18,7 +18,7 @@ export default (props: gameListProps) => {
   for (let game of props.games) {
     gameMenuItems.push(
       {
-        name: game.name,
+        name: game.name || game.dbname,
         link: `#/store/games/dbname/${game.dbname}`
       }
     );

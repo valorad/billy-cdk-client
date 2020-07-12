@@ -73,35 +73,6 @@ export default () => {
 
   const [addPlayer, { loading: isAddExecuting, error: addError }] = usePlayerAddition(newPlayer);
 
-  // const onCreatePlayerFinish = async (result: InputDialogResult<any>) => {
-    
-
-  //   newPlayer = {
-  //     isPremium: false,
-  //     ...result.data
-  //   };
-  //   if (!result.ok) {
-  //     return;
-  //   }
-
-  //   MicroModal.close("dialogInput-createPlayer");
-    
-  //   // create new user
-  //   await addPlayer({variables: {
-  //     newPlayer: newPlayer
-  //   }});
-
-  //   // <- will stop here automatically if addPlayer fails
-
-  //   window.location.href = `#/players/dbname/${newPlayer.dbname}`;
-
-
-  // };
-
-  
-  
-
-
   return (
     <section className="Player">
       {/* Each page must have at least 1 and only 1 menu */}
@@ -110,7 +81,7 @@ export default () => {
       <DialogConfirmation
         dialogID="dialogConfirmation-failedToCreatePlayer"
         mode="OKAY"
-        title="添加玩家"
+        title="失败"
         description="添加玩家失败，请重试。更多详情请查阅控制台或后台记录。"
         onFinish={() => {
           MicroModal.close("dialogConfirmation-failedToCreatePlayer");
@@ -123,7 +94,7 @@ export default () => {
         <DialogConfirmation
           dialogID="dialogConfirmation-creatingPlayer"
           mode="INFO"
-          title="添加玩家"
+          title="添加中..."
           description="正在添加玩家中，请稍后..."
           isAutoShown={true}
         />
@@ -153,7 +124,7 @@ export default () => {
             }});
           } catch (error) {
             MicroModal.show("dialogConfirmation-failedToCreatePlayer");
-            console.log(addError);
+            console.error(error);
             return;
           }
 

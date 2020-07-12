@@ -7,17 +7,19 @@ import { MenuItem } from "../../models/menu.interface";
 
 import Menu from "../../components/menu";
 import DialogInput from "../../components/modal/dialogInput";
+import DialogConfirmation from "../../components/modal/dialogConfirmation";
 
 import { setTitle, setDescription } from "../../features/navbar";
+import { InputDialogResult } from "../../models/dialog.interface";
+import { Game } from "../../models/game.interface";
+import { useGameAddition } from "../../services/game";
 
 
 export default () => {
 
   const dispatch = useDispatch();
 
-  const [createDialogResult, setCreateDialogResult] = useState({});
-
-  const createGame = () => {
+  const createGamePopUp = () => {
     MicroModal.show("dialogInput-createGame");
   };
 
@@ -28,7 +30,7 @@ export default () => {
     },
     {
       name: "发布新游戏",
-      action: createGame,
+      action: createGamePopUp,
     },
   ];
 
@@ -39,19 +41,46 @@ export default () => {
     
   });
 
+  let newGame = {} as Game;
+
+  const [addGame, { loading: isAddExecuting, error: addError }] = useGameAddition(newGame);
+
   return (
     <section className="Store">
       <Menu menus={menus} />
 
+      <DialogConfirmation
+        dialogID="dialogConfirmation-failedToCreateGame"
+        mode="OKAY"
+        title="失败"
+        description="创建新游戏失败，请重试。更多详情请查阅控制台或后台记录。"
+        onFinish={() => {
+          MicroModal.close("dialogConfirmation-failedToCreateGame");
+          MicroModal.show("dialogInput-createGame");
+        }}
+      />
+
+      {
+        isAddExecuting?
+        <DialogConfirmation
+          dialogID="dialogConfirmation-creatingGame"
+          mode="INFO"
+          title="创建中..."
+          description="正在创建新游戏中，请稍后..."
+          isAutoShown={true}
+        />
+        :null
+      }
+
       <DialogInput
         dialogID="dialogInput-createGame"
-        title={`添加新游戏`}
+        title={`创建新游戏`}
         description="请填写以下信息"
         items={[
           {
             propName: "dbname",
             name: "游戏ID",
-            value: "game-[InputID]",
+            value: "game-<请替换英文ID>",
             isRequired: true,
           },
           {
@@ -74,11 +103,31 @@ export default () => {
             isRequired: true,
           },
         ]}
-        onFinish={(data: any) => {
-          // -> if (data.ok)
-          setCreateDialogResult({...createDialogResult, data});
-          console.log(data);
+        onFinish={async (result: InputDialogResult<any>) => {
+
+          newGame = {
+            price: 0,
+            ...result.data
+          };
+          if (!result.ok) {
+            return;
+          }
+
+          MicroModal.close("dialogInput-createGame");
+
+          try {
+            await addGame({variables: {
+              newGame: newGame
+            }});
+          } catch (error) {
+            MicroModal.show("dialogConfirmation-failedToCreateGame");
+            console.error(error);
+            return;
+          }
+
+          window.location.href = `#/store/games/dbname/${newGame.dbname}`;
         }}
+
       />
 
 
