@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useRoute } from "wouter";
 
 import GameList from "../../components/game/list";
 import { setTitle, setDescription } from "../../features/navbar";
-import { Game } from "../../models/game.interface";
-import { useRoute } from "wouter";
-import { Player } from "../../models/player.interface";
+
 import { usePlayerDetail } from "../../services/player";
 import { useGameList } from "../../services/game";
 
@@ -17,7 +16,7 @@ export default () => {
 
   let dbname = params?.dbname || "mr-stranger";
   const playerName0 = "神秘的陌生人";
-  const { isQueryLoading: isPlayerLoading, queryError: playerLoadingError, player } = usePlayerDetail(dbname, {bio: true});
+  const { isQueryLoading: isPlayerLoading, queryError: playerLoadingError, player } = usePlayerDetail(dbname);
   const playerDisplayName = player?.name || player?.dbname || playerName0;
   const { isQueryLoading: isGameListLoading, queryError: gameListLoadingError, games } = useGameList({$or: player?.games.map((ele) => {return {dbname: ele}})});
 
@@ -54,10 +53,6 @@ export default () => {
     dispatch(setTitle(`${playerDisplayName}的游戏`));
     dispatch(setDescription("选择一款游戏以查看详情"));
 
-    // TODO: fetch player and games in async ...
-
-
-    
   });
 
   const placePlayerGameList = () => {

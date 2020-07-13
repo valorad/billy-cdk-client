@@ -24,7 +24,7 @@ export default () => {
   const name0 = "神秘的陌生人";
 
   const dispatch = useDispatch();
-  const { isQueryLoading, queryError, player } = usePlayerDetail(dbname, {bio: true});
+  const { isQueryLoading, queryError, player } = usePlayerDetail(dbname);
   const playerDisplayName = player?.name || player?.dbname || name0;
 
   // test data

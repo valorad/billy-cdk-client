@@ -11,13 +11,15 @@ import HomeView from "./views/Home";
 import StoreView from "./views/store/Store";
 import StoreGamesListView from "./views/store/GameList";
 import StoreGamesDetailView from "./views/store/GameDetail";
+import StoreGamesCDKeyIndexView from "./views/store/CDKey";
+import StoreGamesCDKeyListView from "./views/store/CDKeyList";
 import PlayerIndexView from "./views/player/Player";
 import PlayerListView from "./views/player/PlayerList";
 import PlayerDetailView from "./views/player/PlayerDetail";
 import PlayerGameListView from "./views/player/GameList";
 import PlayerCDKeyListView from "./views/player/CDKeyList";
-import CDKeyIndexView from "./views/cdkeys/CDKey";
-import CDKeyDetailView from "./views/cdkeys/Detail";
+import CDKeyIndexView from "./views/cdkey/CDKey";
+import CDKeyDetailView from "./views/cdkey/Detail";
 import HTTP404View from "./views/HTTP404";
 
 import { selectTitle, selectDescription } from "./features/navbar";
@@ -38,6 +40,8 @@ const placeRoutingTable = () => {
       <Route path="/store" component={StoreView}></Route>
       <Route path="/store/games" component={StoreGamesListView}></Route>
       <Route path="/store/games/dbname/:dbname" component={StoreGamesDetailView}></Route>
+      <Route path="/store/games/dbname/:dbname/cdkeys/index" component={StoreGamesCDKeyIndexView}></Route>
+      <Route path="/store/games/dbname/:dbname/cdkeys" component={StoreGamesCDKeyListView}></Route>
       <Route path="/players/index" component={PlayerIndexView}></Route>
       <Route path="/players" component={PlayerListView}></Route>
       <Route path="/players/dbname/:dbname" component={PlayerDetailView}></Route>

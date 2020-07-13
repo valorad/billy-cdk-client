@@ -23,7 +23,7 @@ export default () => {
   const cdkey: CDKey = {
     // discalimer: value generated from 3rd party website
     // it is NOT actual game serial activation key!
-    ID: "5f060823483666ad38510545",
+    id: "5f060823483666ad38510545",
     player: "player-billy",
     game: "game-deathStranding",
     value: "MX6L5-NYQYZ-Q7GXV",
@@ -34,7 +34,7 @@ export default () => {
   // get cdkey detailed info
   // const detailedCDKey = await xxx
   const detailedCDKey: DetailedCDKey = {
-    ID: "5f060823483666ad38510545",
+    id: "5f060823483666ad38510545",
     player: "player-billy",
     playerName: "Billy",
     game: "game-deathStranding",

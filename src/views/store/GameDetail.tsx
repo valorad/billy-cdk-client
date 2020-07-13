@@ -23,7 +23,7 @@ export default () => {
   const name0 = "不存在的游戏";
 
   const dispatch = useDispatch();
-  const { isQueryLoading, queryError, game } = useGameDetail(dbname, {bio: true});
+  const { isQueryLoading, queryError, game } = useGameDetail(dbname);
   const gameDisplayName = game?.name || game?.dbname || name0;
 
   // logged in player
@@ -63,6 +63,10 @@ export default () => {
     {
       name: "从商店删除",
       action: deleteGamePopUp,
+    },
+    {
+      name: `管理${gameDisplayName}的CDKey`,
+      link: `#/store/games/dbname/${dbname}/cdkeys/index`,
     },
   ];
 

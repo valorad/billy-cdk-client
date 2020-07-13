@@ -23,21 +23,21 @@ export default () => {
     // discalimer: values generated from 3rd party website
     // they are NOT actual game serial activation key!
     {
-      ID: "5f06013bdd27c4b4eb8eb930",
+      id: "5f06013bdd27c4b4eb8eb930",
       game: "game-diablo4",
       player: "player-billy",
       value: "4PN3D-VAZCR-38RYW",
       isActivated: false,
     },
     {
-      ID: "5f060141bae59a2aa8815a88",
+      id: "5f060141bae59a2aa8815a88",
       game: "game-portal2",
       player: "player-billy",
       value: "WLWED-M2CWA-YWX4E",
       isActivated: false,
     },
     {
-      ID: "5f06014891f6aecbd1ea154b",
+      id: "5f06014891f6aecbd1ea154b",
       game: "game-assassinsCreedValhalla",
       player: "player-billy",
       value: "VT7BX-3VV9C-ZVCBN",
@@ -53,7 +53,7 @@ export default () => {
   // in dev
   const gameNamedCDkeys: DetailedCDKey[] = [
     {
-      ID: "5f06013bdd27c4b4eb8eb930",
+      id: "5f06013bdd27c4b4eb8eb930",
       game: "game-diablo4",
       gameName: "大菠萝4",
       player: "player-billy",
@@ -61,7 +61,7 @@ export default () => {
       isActivated: false,
     },
     {
-      ID: "5f060141bae59a2aa8815a88",
+      id: "5f060141bae59a2aa8815a88",
       game: "game-portal2",
       gameName: "传送门2",
       player: "player-billy",
@@ -69,7 +69,7 @@ export default () => {
       isActivated: false,
     },
     {
-      ID: "5f06014891f6aecbd1ea154b",
+      id: "5f06014891f6aecbd1ea154b",
       game: "game-assassinsCreedValhalla",
       gameName: "刺客信条哇啦啦",
       player: "player-billy",
@@ -81,7 +81,7 @@ export default () => {
   return (
     <section className="CDKeyList">
       {/* Each page must have at least 1 and only 1 menu */}
-      <CDKeyList cdkeys={gameNamedCDkeys} />
+      <CDKeyList detailedCDKeys={gameNamedCDkeys} />
     </section>
   );
 };

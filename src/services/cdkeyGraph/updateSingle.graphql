@@ -1,0 +1,7 @@
+mutation updateCDKey($id: ID!, $token: String!) {
+  updateCDKey(id: $id, token: $token) {
+    ok
+    numAffected
+    message
+  } 
+}
