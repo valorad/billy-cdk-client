@@ -1,0 +1,13 @@
+mutation activateCDKey($playerDBName: String!, $value: String!) {
+  activateCDKey(playerDBName: $playerDBName, value: $value) {
+    message
+    numAffected
+    ok
+    instance {
+      id
+      game
+      isActivated
+      platform
+    }
+  } 
+}

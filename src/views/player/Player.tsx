@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import MicroModal from "micromodal";
 
@@ -71,7 +71,7 @@ export default () => {
 
   let newPlayer = {} as Player;
 
-  const [addPlayer, { loading: isAddExecuting, error: addError }] = usePlayerAddition(newPlayer);
+  const [addPlayer, { loading: isAddExecuting }] = usePlayerAddition(newPlayer);
 
   return (
     <section className="Player">

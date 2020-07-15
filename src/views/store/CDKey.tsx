@@ -73,7 +73,7 @@ export default () => {
 
   let newCDKey = {} as CDKey;
 
-  const [addCDKey, { loading: isAddExecuting, error: addError }] = useCDKeyAddition(newCDKey);
+  const [addCDKey, { loading: isAddExecuting }] = useCDKeyAddition(newCDKey);
 
   const placeGameCDKeyIndex = () => {
     if (isGameQueryLoading) {
@@ -139,6 +139,7 @@ export default () => {
               game: dbname,
               price: game.price,
               isActivated: false,
+              platform: "Steam",
               ...result.data,
             };
   

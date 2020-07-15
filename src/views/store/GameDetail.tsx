@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRoute } from "wouter";
 import MicroModal from "micromodal";
@@ -117,7 +117,6 @@ export default () => {
             :null
           }
 
-          <h1></h1>
           <GameDetail game={game} menus={menus} />
 
           {

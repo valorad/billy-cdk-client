@@ -1,5 +1,5 @@
 import { loader } from 'graphql.macro';
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery, useMutation, useLazyQuery } from '@apollo/client';
 import { Game } from '../models/game.interface';
 
 const GET_GAME = loader("./gameGraph/getSingle.graphql");
@@ -36,6 +36,33 @@ export const useGameDetail = (dbname: string, options: any = {}) => {
     isQueryLoading,
     queryError,
     game,
+  }
+
+
+};
+
+export const useLazyGameDetail = () => {
+
+  // const queryVariables: any = {
+  //   dbname: dbname,
+  //   options: options,
+  // };
+
+  // queryVariables.options = JSON.stringify(queryVariables.options);
+
+  const [getGameDetail, { loading: isQueryLoading, error: queryError, data  }] = useLazyQuery<{game: Game}>(
+    GET_GAME
+  );
+
+  if (queryError) {
+    console.error(queryError);
+  }
+
+  return {
+    isQueryLoading,
+    queryError,
+    data,
+    getGameDetail,
   }
 
 

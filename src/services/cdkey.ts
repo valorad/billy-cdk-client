@@ -10,6 +10,8 @@ const ADD_CDKEY = loader("./cdkeyGraph/addSingle.graphql");
 const UPDATE_CDKEY = loader("./cdkeyGraph/updateSingle.graphql");
 const DELETE_CDKEY = loader("./cdkeyGraph/deleteSingle.graphql");
 
+const ACTIVATE_CDKEY = loader("./cdkeyGraph/activate.graphql");
+
 export const useCDKeyDetail = (dbname: string, options: any = {}) => {
 
   const queryVariables: any = {
@@ -90,3 +92,9 @@ export const useCDKeyDeletion = (dbname?: string) => {
   );
 
 }
+
+export const useCDKeyActivation = (playerDBName: string, value: string) => {
+  return useMutation(
+    ACTIVATE_CDKEY,
+  );
+};

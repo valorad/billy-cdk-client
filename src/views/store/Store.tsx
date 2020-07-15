@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import MicroModal from "micromodal";
 
@@ -43,7 +43,7 @@ export default () => {
 
   let newGame = {} as Game;
 
-  const [addGame, { loading: isAddExecuting, error: addError }] = useGameAddition(newGame);
+  const [addGame, { loading: isAddExecuting }] = useGameAddition(newGame);
 
   return (
     <section className="Store">
