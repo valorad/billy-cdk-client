@@ -12,14 +12,21 @@ const DELETE_CDKEY = loader("./cdkeyGraph/deleteSingle.graphql");
 
 const ACTIVATE_CDKEY = loader("./cdkeyGraph/activate.graphql");
 
-export const useCDKeyDetail = (dbname: string, options: any = {}) => {
+interface CDKeyQueryMethod {
+  id?: string,
+  value?: string,
+}
+
+export const useCDKeyDetail = (keyword: CDKeyQueryMethod, options: any = {}) => {
 
   const queryVariables: any = {
-    dbname: dbname,
-    options: options,
+    parameters: {
+      ...keyword,
+      options: options,
+    }
   };
 
-  queryVariables.options = JSON.stringify(queryVariables.options);
+  queryVariables.parameters.options = JSON.stringify(queryVariables.parameters.options);
 
   const { loading: isQueryLoading, error: queryError, data } = useQuery<{cdkey: CDKey}>(
     GET_CDKEY,
