@@ -63,8 +63,7 @@ const requestLogIn = () => {
         bio: "Master of CDKey!",
         isPremium: true,
         games: [
-          "game-cyberpunk2077",
-          "game-typoorrr"
+          "game-cyberpunk2077"
         ],
       })
     }, 500);

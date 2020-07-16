@@ -18,6 +18,7 @@ export default (props: cdkeyDetailProps) => {
     <div className="cdkeyDetail">
 
       <header>
+        <h1>{props.CDKey.isActivated? "！注意：此CDKey已被激活！": null}</h1>
         <h1>持有玩家：{props.CDKey.playerName || props.CDKey.player || "未知"}</h1>
         <h1>激活码：{props.CDKey.value || "未知"}</h1>
         <h1>激活游戏：{props.CDKey.gameName || props.CDKey.game || "未知"}</h1>
