@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRoute } from "wouter";
 import MicroModal from "micromodal";
@@ -13,6 +13,8 @@ import { Game } from "../../models/game.interface";
 import { useGameUpdate, useGameDeletion, useGameDetail } from "../../services/game";
 import { InputDialogResult } from "../../models/dialog.interface";
 import { selectLoginAsPlayer } from "../../features/login";
+import { usePlayerGameAddition } from "../../services/player";
+import { CUDMessage } from "../../models/cudmessage.interface";
 
 
 export default () => {
@@ -28,6 +30,8 @@ export default () => {
 
   // logged in player
   const loggedInPlayer = useSelector(selectLoginAsPlayer);
+
+  const [playerAddGame, { loading: isAddGameExecuting }] = usePlayerGameAddition(loggedInPlayer.dbname, game?.dbname || "");
 
 
 
@@ -80,6 +84,8 @@ export default () => {
     });
   }
 
+  const [addGameResponse, setAddGameResponse] = useState({} as CUDMessage);
+
   useEffect(() => {
 
     dispatch(setTitle("游戏详情"));
@@ -120,6 +126,18 @@ export default () => {
           <GameDetail game={game} menus={menus} />
 
           {
+            isAddGameExecuting?
+            <DialogConfirmation
+              dialogID="dialogConfirmation-purchasingGame"
+              mode="INFO"
+              title="购买中..."
+              description="正在为您购买游戏中，请稍后..."
+              isAutoShown={true}
+            />
+            :null
+          }
+
+          {
             isUpdateExecuting?
             <DialogConfirmation
               dialogID="dialogConfirmation-updatingGame"
@@ -141,6 +159,30 @@ export default () => {
               isAutoShown={true}
             />
             :null
+          }
+
+          <DialogConfirmation
+            dialogID="dialogConfirmation-failedToPurchaseAGame"
+            mode="OKAY"
+            title="失败"
+            description="购买游戏失败，请重试。如有疑问请联系管理员。"
+            onFinish={() => {
+              MicroModal.close("dialogConfirmation-failedToPurchaseAGame");
+            }}
+          />
+
+          {
+            !addGameResponse.ok && addGameResponse.message?
+            <DialogConfirmation
+              dialogID="dialogConfirmation-failedToPurchaseAGameOther"
+              mode="OKAY"
+              title="失败"
+              description={`购买游戏失败，原因:${addGameResponse.message}`}
+              isAutoShown={true}
+              onFinish={() => {
+                MicroModal.close("dialogConfirmation-failedToPurchaseAGameOther");
+              }}
+            />:null
           }
 
           <DialogConfirmation
@@ -170,8 +212,32 @@ export default () => {
             title={`购买${gameDisplayName}`}
             description={`即将为您自己购买${gameDisplayName}，是否继续？`}
             onFinish={async () => {
-              console.log(`Purchase game ${gameDisplayName} for player ${"Billy"} success`);
-              MicroModal.close(`dialogConfirmation-purchaseAGame`);
+
+              MicroModal.close("dialogConfirmation-purchaseAGame");
+
+              let mutationTuple: any = {};
+              try {
+                mutationTuple = await playerAddGame({variables: {
+                  player: loggedInPlayer.dbname,
+                  game: dbname,
+                }});
+              } catch (error) {
+                MicroModal.show("dialogConfirmation-failedToPurchaseAGame");
+                console.error(error);
+                return;
+              }
+
+              if (!mutationTuple.data.playerAddGame) {
+                MicroModal.show("dialogConfirmation-failedToPurchaseAGame");
+                return;
+              }
+
+              setAddGameResponse({...mutationTuple.data.playerAddGame})
+
+              if (mutationTuple.data.playerAddGame.ok) {
+                window.location.href = `#/players/dbname/${loggedInPlayer.dbname}/games`;
+              }
+
             }}
           />
 

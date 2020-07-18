@@ -1,0 +1,5 @@
+mutation playerAddGame($player: String!, $game: String!) {
+  playerAddGame(player: $player, game: $game) {
+    message, numAffected, ok 
+  } 
+}

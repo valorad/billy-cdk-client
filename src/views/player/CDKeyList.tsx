@@ -4,10 +4,8 @@ import { useDispatch } from "react-redux";
 import CDKeyList from "../../components/cdkey/list";
 
 import { setTitle, setDescription } from "../../features/navbar";
-import { CDKey, DetailedCDKey } from "../../models/cdkey.interface";
 import { useRoute } from "wouter";
 import { useCDKeyList } from "../../services/cdkey";
-import { useGameDetail, useLazyGameDetail } from "../../services/game";
 import { usePlayerDetail } from "../../services/player";
 
 // import "./Dummy.scss";

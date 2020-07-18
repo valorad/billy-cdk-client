@@ -16,6 +16,8 @@ const ADD_PLAYER = loader("./playerGraph/addSingle.graphql");
 const UPDATE_PLAYER = loader("./playerGraph/updateSingle.graphql");
 const DELETE_PLAYER = loader("./playerGraph/deleteSingle.graphql");
 
+const PLAYER_ADD_GAME = loader("./playerGraph/addGame.graphql");
+
 export const usePlayerList = (condition: any = {}, options: DBViewOption = {}) => {
 
   const { loading: isQueryLoading, error: queryError, data } = useQuery<{players: Player[]}>(
@@ -153,3 +155,34 @@ export const usePlayerDeletion = (dbname?: string) => {
     DELETE_PLAYER,
   )
 }
+
+export const usePlayerGameAddition = (player: string, game: string) => {
+  return useMutation(
+    PLAYER_ADD_GAME,
+    // {
+    //   update: (cache, response) => {
+    //     const message = response.data.playerAddGame as CUDMessage;
+        
+    //     if (!message.ok) {
+    //       return;
+    //     }
+
+    //     // update local cache
+    //     // variables are essential, don't forget them
+    //     const cacheResponse = cache.readQuery<{players: Player[]}>({ query: GET_PLAYERS, variables: {condition: "{}", options: "{}"} });
+
+    //     if (!cacheResponse) {
+    //       return;
+    //     }
+
+    //     cache.writeQuery({
+    //       query: GET_PLAYERS,
+    //       variables: {condition: "{}", options: "{}"},
+    //       data: { players: cacheResponse.players.concat(newPlayer)},
+    //     });
+
+    //   }
+    // }
+
+  )
+};
