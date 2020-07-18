@@ -18,7 +18,7 @@ export default () => {
   const playerName0 = "神秘的陌生人";
   const { isQueryLoading: isPlayerLoading, queryError: playerLoadingError, player } = usePlayerDetail(dbname);
   const playerDisplayName = player?.name || player?.dbname || playerName0;
-  const { isQueryLoading: isGameListLoading, queryError: gameListLoadingError, games } = useGameList({$or: player?.games.map((ele) => {return {dbname: ele}})});
+  const { isQueryLoading: isGameListLoading, queryError: gameListLoadingError, games } = useGameList({$or: player?.games.map((ele) => {return {dbname: ele}})}, {perPage: 1000});
 
   // const player: Player = {
   //   dbname: dbname || "Mr. Stranger",

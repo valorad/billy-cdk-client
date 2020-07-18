@@ -10,7 +10,7 @@ import { usePlayerList } from "../../services/player";
 export default () => {
 
   const dispatch = useDispatch();
-  const { isQueryLoading, queryError, players } = usePlayerList();
+  const { isQueryLoading, queryError, players } = usePlayerList({}, {perPage: 1000});
 
   // test data
   // const players: Player[] = [

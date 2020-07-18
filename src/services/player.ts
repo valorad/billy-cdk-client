@@ -2,6 +2,7 @@ import { loader } from 'graphql.macro';
 
 import { Player } from "../models/player.interface";
 import { useQuery, useMutation } from "@apollo/client";
+import { DBViewOption } from '../models/dbViewOption.interface';
 
 // interface FieldSwitch {
 //   [index: string]: boolean
@@ -15,7 +16,7 @@ const ADD_PLAYER = loader("./playerGraph/addSingle.graphql");
 const UPDATE_PLAYER = loader("./playerGraph/updateSingle.graphql");
 const DELETE_PLAYER = loader("./playerGraph/deleteSingle.graphql");
 
-export const usePlayerList = (condition: any = {}, options: any = {}) => {
+export const usePlayerList = (condition: any = {}, options: DBViewOption = {}) => {
 
   const { loading: isQueryLoading, error: queryError, data } = useQuery<{players: Player[]}>(
     GET_PLAYERS,

@@ -1,6 +1,7 @@
 import { loader } from 'graphql.macro';
 import { useQuery, useMutation } from '@apollo/client';
 import { CDKey } from '../models/cdkey.interface';
+import { DBViewOption } from '../models/dbViewOption.interface';
 
 const GET_CDKEY = loader("./cdkeyGraph/getSingle.graphql");
 const GET_CDKEYS = loader("./cdkeyGraph/getList.graphql");
@@ -50,7 +51,7 @@ export const useCDKeyDetail = (keyword: CDKeyQueryMethod, options: any = {}) => 
 
 };
 
-export const useCDKeyList = (condition: any = {}, options: any = {}) => {
+export const useCDKeyList = (condition: any = {}, options: DBViewOption = {}) => {
 
   const { loading: isQueryLoading, error: queryError, data } = useQuery<{cdkeys: CDKey[]}>(
     GET_CDKEYS,

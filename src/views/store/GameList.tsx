@@ -10,7 +10,7 @@ import { useGameList } from "../../services/game";
 export default () => {
 
   const dispatch = useDispatch();
-  const { isQueryLoading, queryError, games } = useGameList();
+  const { isQueryLoading, queryError, games } = useGameList({}, {perPage: 1000});
 
   useEffect(() => {
     

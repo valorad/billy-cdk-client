@@ -22,7 +22,7 @@ export default () => {
   const name0 = "不存在的游戏";
   const { isQueryLoading: isGameQueryLoading, queryError: gameQueryError, game } = useGameDetail(dbname);
   const gameDisplayName = game?.name || game?.dbname || name0;
-  const { isQueryLoading: isCDKeyQueryLoading, queryError: cdkeyQueryError, cdkeys } = useCDKeyList({game: dbname});
+  const { isQueryLoading: isCDKeyQueryLoading, queryError: cdkeyQueryError, cdkeys } = useCDKeyList({game: dbname}, {perPage: 1000});
 
 
   useEffect(() => {
