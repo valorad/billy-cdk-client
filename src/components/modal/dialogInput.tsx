@@ -6,20 +6,21 @@ import "./dialogInput.scss";
 import Menu from "../menu";
 import { MenuItem } from "../../models/menu.interface";
 import MicroModal from "micromodal";
+import { DialogInputItem } from "../../models/dialog.interface";
 
-interface ItemStore {
-  name: string,
-  value: string | number | boolean,
-}
+// interface ItemStore {
+//   name: string,
+//   value: string | number | boolean,
+// }
 
-interface InputItem extends ItemStore {
-  propName: string, // the name of the field holding the property value
-  type?: "text" | "textArea" | "checkBox" | "number",
-  isRequired?: boolean,
-}
+// interface InputItem extends ItemStore {
+//   propName: string, // the name of the field holding the property value
+//   type?: "text" | "textArea" | "checkBox" | "number",
+//   isRequired?: boolean,
+// }
 
 interface FormStore {
-  [index: string]: InputItem,
+  [index: string]: DialogInputItem,
 }
 
 interface OutputStore {
@@ -30,7 +31,7 @@ interface dialogInputProps {
   dialogID: string,
   title: string,
   description: string,
-  items: InputItem[],
+  items: DialogInputItem[],
   onFinish: (data: any) => any,
 }
 
@@ -63,7 +64,7 @@ export default (props: dialogInputProps) => {
   // } 
 
   const result = {
-    ok: false,
+    ok: true,
     data: outputData,
   }
 
@@ -77,10 +78,10 @@ export default (props: dialogInputProps) => {
       action: () => {
         // -> if success
         returnResult(result);
-        if (result.ok) {
-          setOutputData({});
-          setFormStore({...formStoreInitState});
-        }
+        // if (result.ok) {
+        //   setOutputData({});
+        //   setFormStore({...formStoreInitState});
+        // }
       },
     },
     {
@@ -93,7 +94,7 @@ export default (props: dialogInputProps) => {
     }
   ];
 
-  const placeInputElement = (input: InputItem) => {
+  const placeInputElement = (input: DialogInputItem) => {
     switch (input.type) {
       case "textArea":
         return (

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import MicroModal from "micromodal";
 
@@ -11,6 +11,8 @@ import { Player } from "../../models/player.interface";
 import PlayerDetail from "../../components/player/detail";
 import DialogConfirmation from "../../components/modal/dialogConfirmation";
 import DialogInput from "../../components/modal/dialogInput";
+import { usePlayerDetail, usePlayerUpdate, usePlayerDeletion } from "../../services/player";
+import { InputDialogResult } from "../../models/dialog.interface";
 
 // import "./Dummy.scss";
 
@@ -19,23 +21,26 @@ export default () => {
   const params = useRoute("/players/dbname/:dbname")[1];
 
   let dbname = params?.dbname || "mr-stranger";
+  const name0 = "神秘的陌生人";
 
   const dispatch = useDispatch();
+  const { isQueryLoading, queryError, player } = usePlayerDetail(dbname);
+  const playerDisplayName = player?.name || player?.dbname || name0;
 
-  const player: Player = {
-    dbname: dbname,
-    name: "Angular Biter",
-    bio: "Angular biter's Ding-ding gas station: Zu zu zu zu zu!",
-    isPremium: true,
-    games: [],
-  };
+  // test data
+  // const player: Player = {
+  //   dbname: dbname,
+  //   name: "Angular Biter",
+  //   bio: "Angular biter's Ding-ding gas station: Zu zu zu zu zu!",
+  //   isPremium: true,
+  //   games: [],
+  // };
 
-  const [editDialogResult, setEditDialogResult] = useState({});
-  const editPlayer = () => {
+  const editPlayerPopUp = () => {
     MicroModal.show("dialogInput-editPlayer");
   };
 
-  const deletePlayer = () => {
+  const deletePlayerPopUp = () => {
     MicroModal.show("dialogConfirmation-deletePlayer");
   };
 
@@ -50,61 +55,220 @@ export default () => {
     },
     {
       name: "编辑玩家信息",
-      action: editPlayer,
+      action: editPlayerPopUp,
     },
     {
       name: "删除玩家",
-      action: deletePlayer,
+      action: deletePlayerPopUp,
     },
   ];
 
   useEffect(() => {
     
     dispatch(setTitle("玩家详情"));
-    dispatch(setDescription(player.name || player.dbname));
+    dispatch(setDescription(playerDisplayName));
     
   });
 
+  // during test
+  // const placePlayerList = () => {
+  //   return (
+        // <section className="PlayerDetail">
+        //   <PlayerDetail player={player} menus={menus} />
 
-  return (
-    <section className="PlayerDetail">
-      <PlayerDetail player={player} menus={menus} />
+        //   <DialogInput
+        //     dialogID="dialogInput-editPlayer"
+        //     title={`编辑信息:${player.dbname}`}
+        //     description="请填写以下信息"
+        //     items={[
+        //       {
+        //         propName: "name",
+        //         name: "玩家名称",
+        //         value: player.name || player.dbname,
+        //         isRequired: true,
+        //       },
+        //       {
+        //         propName: "isPremium",
+        //         name: "是黄金高端土豪会员",
+        //         value: player.isPremium,
+        //         type: "checkBox",
+        //       },
+        //     ]}
+        //     onFinish={(data: any) => {
+        //       setEditDialogResult({...editDialogResult, data});
+        //       console.log(data);
+        //     }}
+        //   />
 
-      <DialogInput
-        dialogID="dialogInput-editPlayer"
-        title={`编辑信息:${player.dbname}`}
-        description="请填写以下信息"
-        items={[
+        //   <DialogConfirmation
+        //     dialogID="dialogConfirmation-deletePlayer"
+        //     title={`删除玩家:${player.dbname}`}
+        //     description={"警告！此操作无法回滚！"}
+        //     onFinish={() => {
+        //       console.log(`Delete boom boom boom`);
+        //       MicroModal.close("dialogConfirmation-deletePlayer");
+        //     }}
+        //   />
+
+        // </section>
+  //   );
+  // };
+
+  let updatedPlayer = {} as Player;
+  const [updatePlayer, { loading: isUpdateExecuting }] = usePlayerUpdate(updatedPlayer);
+  const [deletePlayer, { loading: isDeleteExecuting }] = usePlayerDeletion();
+
+  const placePlayerDetail = () => {
+
+    if (isQueryLoading) {
+      return (
+        <div className="statusInfo">
+          <h1>载入中，请稍后...</h1>
+        </div>
+      );
+    } else if (queryError || player === undefined) {
+      return (
+        <div className="statusInfo">
+          <h1>错误！无法进行玩家查询。请联系管理员。</h1>
+        </div>
+      );
+    } else if (player === null) {
+      return (
+        <div className="statusInfo">
+          <h1>错误！未找到该玩家。请联系管理员。</h1>
+        </div>
+      );
+    } else {
+      return (
+        <section className="PlayerDetail">
+          <PlayerDetail player={player} menus={menus} />
+
           {
-            propName: "name",
-            name: "玩家名称",
-            value: player.name || player.dbname,
-            isRequired: true,
-          },
+            isUpdateExecuting?
+            <DialogConfirmation
+              dialogID="dialogConfirmation-updatingPlayer"
+              mode="INFO"
+              title="修改中..."
+              description="正在修改玩家信息中，请稍后..."
+              isAutoShown={true}
+            />
+            :null
+          }
+
           {
-            propName: "isPremium",
-            name: "是黄金高端土豪会员",
-            value: player.isPremium,
-            type: "checkBox",
-          },
-        ]}
-        onFinish={(data: any) => {
-          setEditDialogResult({...editDialogResult, data});
-          console.log(data);
-        }}
-      />
+            isDeleteExecuting?
+            <DialogConfirmation
+              dialogID="dialogConfirmation-deletingPlayer"
+              mode="INFO"
+              title="删除中..."
+              description="正在删除玩家中，请稍后..."
+              isAutoShown={true}
+            />
+            :null
+          }
 
-      <DialogConfirmation
-        dialogID="dialogConfirmation-deletePlayer"
-        title={`删除玩家:${player.dbname}`}
-        description={"警告！此操作无法回滚！"}
-        onFinish={() => {
-          console.log(`Delete boom boom boom`);
-          MicroModal.close("dialogConfirmation-deletePlayer");
-        }}
-      />
+          <DialogConfirmation
+            dialogID="dialogConfirmation-failedToUpdatePlayer"
+            mode="OKAY"
+            title="失败"
+            description="修改玩家信息失败，请重试。更多详情请查阅控制台或后台记录。"
+            onFinish={() => {
+              MicroModal.close("dialogConfirmation-failedToUpdatePlayer");
+              MicroModal.show("dialogInput-editPlayer");
+            }}
+          />
 
+          <DialogConfirmation
+            dialogID="dialogConfirmation-failedToDeletePlayer"
+            mode="OKAY"
+            title="失败"
+            description="删除玩家失败，请重试。更多详情请查阅控制台或后台记录。"
+            onFinish={() => {
+              MicroModal.close("dialogConfirmation-failedToDeletePlayer");
+            }}
+          />
 
-    </section>
-  );
+          <DialogInput
+            dialogID="dialogInput-editPlayer"
+            title={`编辑信息: ${playerDisplayName}`}
+            description="请填写以下信息"
+            items={[
+              {
+                propName: "name",
+                name: "玩家名称",
+                value: playerDisplayName,
+                isRequired: true,
+              },
+              {
+                propName: "bio",
+                name: "玩家简介",
+                value: player.bio || "",
+                type: "textArea",
+              },
+              {
+                propName: "isPremium",
+                name: "是黄金高端土豪会员",
+                value: player.isPremium,
+                type: "checkBox",
+              },
+            ]}
+            onFinish={async (result: InputDialogResult<any>) => {
+              
+              if (!result.ok) {
+                return;
+              }
+    
+              MicroModal.close("dialogInput-editPlayer");
+              
+              // edit player
+              const updateToken = JSON.stringify({
+                  $set: result.data
+              })
+
+              try {
+                await updatePlayer({variables: {
+                  dbname: dbname,
+                  token: updateToken,
+                }});
+              } catch (error) {
+                console.error(error);
+                MicroModal.show("dialogConfirmation-failedToUpdatePlayer");
+                return;
+              }
+    
+              window.location.href = `#/players/dbname/${dbname}`;
+
+            }}
+          />
+
+          <DialogConfirmation
+            dialogID="dialogConfirmation-deletePlayer"
+            title={`删除玩家: ${playerDisplayName}`}
+            description={"警告！此操作无法回滚！"}
+            onFinish={async () => {
+              MicroModal.close("dialogConfirmation-deletePlayer");
+
+              // update user
+              try {
+                await deletePlayer({variables: {
+                  dbname: dbname
+                }});
+              } catch (error) {
+                console.error(error);
+                MicroModal.show("dialogConfirmation-failedToDeletePlayer");
+                return;
+              }
+
+              window.location.href = `#/players`;
+
+            }}
+          />
+
+        </section>
+      );
+    }
+
+  };
+
+  return placePlayerDetail();
 };

@@ -17,7 +17,7 @@ export default (props: playerDetailProps) => {
   const placePremiumBadge = () => {
     if (props.player.isPremium) {
       return (
-        <h1>黄金土豪高端会员</h1>
+        <h1>🌟黄金高端土豪会员🌟</h1>
       );
     }
   };

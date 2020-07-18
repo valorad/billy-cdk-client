@@ -1,6 +1,6 @@
 export interface CDKey {
-  ID: string,
-  player?: string, // the player who holds the cdkey (not necessarily activated)
+  id: string,
+  player?: string | null, // the player who holds the cdkey (not necessarily activated)
   game: string,
   value: string,
   isActivated: boolean,

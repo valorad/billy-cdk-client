@@ -1,0 +1,7 @@
+mutation deleteCDKey($id: ID!) {
+  deleteCDKey(id: $id) {
+    ok
+    numAffected
+    message
+  } 
+}

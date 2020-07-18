@@ -1,0 +1,7 @@
+mutation updateGame($dbname: String!, $token: String!) {
+  updateGame(dbname: $dbname, token: $token) {
+    ok
+    numAffected
+    message
+  } 
+}

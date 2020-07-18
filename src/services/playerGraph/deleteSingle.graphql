@@ -1,0 +1,7 @@
+mutation deletePlayer($dbname: String!) {
+  deletePlayer(dbname: $dbname) {
+    ok
+    numAffected
+    message
+  } 
+}

@@ -1,0 +1,7 @@
+mutation updatePlayer($dbname: String!, $token: String!) {
+  updatePlayer(dbname: $dbname, token: $token) {
+    ok
+    numAffected
+    message
+  } 
+}

@@ -1,0 +1,11 @@
+query getCDKeys($condition: String, $options: String) {
+  cdkeys: cdkeys(condition: $condition, options: $options) {
+    id,
+    player,
+    game,
+    value,
+    isActivated,
+    price,
+    platform,
+  }
+}

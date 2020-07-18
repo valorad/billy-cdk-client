@@ -1,0 +1,7 @@
+mutation addCDKey($newCDKey: CDKeyView!) {
+  addCDKey(newCDKey: $newCDKey) {
+    ok
+    numAffected
+    message
+  }
+}

@@ -11,19 +11,23 @@ import HomeView from "./views/Home";
 import StoreView from "./views/store/Store";
 import StoreGamesListView from "./views/store/GameList";
 import StoreGamesDetailView from "./views/store/GameDetail";
+import StoreGamesCDKeyIndexView from "./views/store/CDKey";
+import StoreGamesCDKeyListView from "./views/store/CDKeyList";
 import PlayerIndexView from "./views/player/Player";
 import PlayerListView from "./views/player/PlayerList";
 import PlayerDetailView from "./views/player/PlayerDetail";
 import PlayerGameListView from "./views/player/GameList";
 import PlayerCDKeyListView from "./views/player/CDKeyList";
-import CDKeyIndexView from "./views/cdkeys/CDKey";
-import CDKeyDetailView from "./views/cdkeys/Detail";
+import CDKeyIndexView from "./views/cdkey/CDKey";
+import CDKeyDetailView from "./views/cdkey/Detail";
 import HTTP404View from "./views/HTTP404";
 
 import { selectTitle, selectDescription } from "./features/navbar";
 import useHashLocation from "./router/useHashLocation";
 import { selectLoginAsPlayer, setLoginAsPlayer } from "./features/login";
 import { Player } from "./models/player.interface";
+import { ApolloProvider } from "@apollo/client";
+import GraphQLClient from "./app/graph";
 
 
 const placeRoutingTable = () => {
@@ -36,6 +40,8 @@ const placeRoutingTable = () => {
       <Route path="/store" component={StoreView}></Route>
       <Route path="/store/games" component={StoreGamesListView}></Route>
       <Route path="/store/games/dbname/:dbname" component={StoreGamesDetailView}></Route>
+      <Route path="/store/games/dbname/:dbname/cdkeys/index" component={StoreGamesCDKeyIndexView}></Route>
+      <Route path="/store/games/dbname/:dbname/cdkeys" component={StoreGamesCDKeyListView}></Route>
       <Route path="/players/index" component={PlayerIndexView}></Route>
       <Route path="/players" component={PlayerListView}></Route>
       <Route path="/players/dbname/:dbname" component={PlayerDetailView}></Route>
@@ -56,7 +62,9 @@ const requestLogIn = () => {
         name: "Billy",
         bio: "Master of CDKey!",
         isPremium: true,
-        games: [],
+        games: [
+          "game-cyberpunk2077"
+        ],
       })
     }, 500);
   });
@@ -110,38 +118,40 @@ export default () => {
 
   return (
 
-    <Router hook={useHashLocation}>
+    <ApolloProvider client={GraphQLClient}>
+      <Router hook={useHashLocation}>
 
-      <section className="App" tabIndex={0} onKeyDown={onAppKeyDown}>
-        <div className="overlay"></div>
-        <div className="scanline"></div>
-        <div className="wrapper">
-          <div className="appHolder">
-            <header>
-              <div className="contentBox">
-                <Navbar title={title} description={description} player={loginPlayer.name || loginPlayer.dbname} />
-              </div>
-            </header>    
-            <main>
-              <div className="contentBox">
+        <section className="App" tabIndex={0} onKeyDown={onAppKeyDown}>
+          <div className="overlay"></div>
+          <div className="scanline"></div>
+          <div className="wrapper">
+            <div className="appHolder">
+              <header>
+                <div className="contentBox">
+                  <Navbar title={title} description={description} player={loginPlayer.name || loginPlayer.dbname} />
+                </div>
+              </header>    
+              <main>
+                <div className="contentBox">
 
-              {
-                isLoggingIn?
-                <div className="loggingIn"> <h1>登录中...</h1> </div>
-                :placeRoutingTable()
-              }
+                {
+                  isLoggingIn?
+                  <div className="statusInfo"> <h1>登录中...</h1> </div>
+                  :placeRoutingTable()
+                }
 
-              </div>
-            </main>
+                </div>
+              </main>
 
+            </div>
           </div>
-        </div>
 
-        <Tips />
-        
-      </section>
+          <Tips />
+          
+        </section>
 
-    </Router>
+      </Router>
+    </ApolloProvider>
 
   );
 }

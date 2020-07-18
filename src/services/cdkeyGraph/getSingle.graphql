@@ -1,0 +1,11 @@
+query getCDKey($parameters: CDKeyQueryParameters!) {
+  cdkey: cdkey(parameters: $parameters) {
+    id,
+    player,
+    game,
+    value,
+    isActivated,
+    price,
+    platform,
+  }
+}
