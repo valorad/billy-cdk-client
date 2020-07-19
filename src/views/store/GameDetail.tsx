@@ -12,7 +12,7 @@ import { MenuItem } from "../../models/menu.interface";
 import { Game } from "../../models/game.interface";
 import { useGameUpdate, useGameDeletion, useGameDetail } from "../../services/game";
 import { InputDialogResult } from "../../models/dialog.interface";
-import { selectLoginAsPlayer } from "../../features/login";
+import { selectLoginAsPlayer, setLoginAsPlayer } from "../../features/login";
 import { usePlayerGameAddition } from "../../services/player";
 import { CUDMessage } from "../../models/cudmessage.interface";
 
@@ -87,10 +87,8 @@ export default () => {
   const [addGameResponse, setAddGameResponse] = useState({} as CUDMessage);
 
   useEffect(() => {
-
     dispatch(setTitle("游戏详情"));
     dispatch(setDescription(gameDisplayName));
-    
   });
 
   const placeGameDetail = () => {
@@ -235,6 +233,21 @@ export default () => {
               setAddGameResponse({...mutationTuple.data.playerAddGame})
 
               if (mutationTuple.data.playerAddGame.ok) {
+                
+
+                // sync local store
+                dispatch(
+                  setLoginAsPlayer(
+                    {
+                      ...loggedInPlayer,
+                      games: [
+                        ...loggedInPlayer.games,
+                        dbname,
+                      ]
+                    }
+                  )
+                );
+
                 window.location.href = `#/players/dbname/${loggedInPlayer.dbname}/games`;
               }
 

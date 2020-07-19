@@ -12,7 +12,7 @@ import { DetailedCDKey, CDKey } from "../../models/cdkey.interface";
 import { useCDKeyDetail, useCDKeyUpdate, useCDKeyDeletion, useCDKeyActivation } from "../../services/cdkey";
 import { useGameDetail } from "../../services/game";
 import { usePlayerDetail } from "../../services/player";
-import { selectLoginAsPlayer } from "../../features/login";
+import { selectLoginAsPlayer, setLoginAsPlayer } from "../../features/login";
 import { InputDialogResult } from "../../models/dialog.interface";
 import MicroModal from "micromodal";
 import { CDKeyCUDMessage } from "../../models/instanceCUDMessage.interface";
@@ -101,7 +101,7 @@ export default () => {
 
   // get cdkey detailed info
   let detailedCDKey = {  } as DetailedCDKey;
-  let doesPlayerOwnThisGame = false;
+  // let doesPlayerOwnThisGame = false;
 
   // test data
   // const detailedCDKey: DetailedCDKey = {
@@ -146,11 +146,8 @@ export default () => {
     }
   };
 
-  const menus: MenuItem[] = [
-    {
-      name: "赠予他人",
-      action: updateCDKeyPopUp,
-    },
+  let menus: MenuItem[] = [
+
     {
       name: "丢弃此CDKey",
       action: deleteCDKeyPopUp,
@@ -159,12 +156,26 @@ export default () => {
 
   // add activate menu if game not owned by logged-in player
   if (cdkey) {
-    doesPlayerOwnThisGame = loggedInPlayer?.games.includes(cdkey.game) || false;
-    if (!doesPlayerOwnThisGame) {
-      menus.unshift({
-        name: "为自己激活",
-        action: activateCDKeyPopUp,
-      });
+
+    if (!cdkey.isActivated) {
+      menus = [
+        {
+          name: "赠予他人",
+          action: updateCDKeyPopUp,
+        },
+        ...menus
+      ]
+    }
+
+    if (!loggedInPlayer?.games.includes(cdkey.game) || false) {
+      menus = [
+        {
+          name: "为自己激活",
+          action: activateCDKeyPopUp,
+        },
+        ...menus
+      ]
+      // menus.unshift();
     }
   }
 
@@ -393,13 +404,28 @@ export default () => {
             }
           );
 
+          if (mutationTuple.data.activateCDKey.instance) {
+            // sync local store
+            dispatch(
+              setLoginAsPlayer(
+                {
+                  ...loginPlayer,
+                  games: [
+                    ...loginPlayer.games,
+                    mutationTuple.data.activateCDKey.instance.dbname,
+                  ]
+                }
+              )
+            );
+          }
+
           return;
 
         }}
       />
 
       {
-        doesPlayerOwnThisGame?
+        loggedInPlayer?.games.includes(cdkey?.game || "") || false?
         <h1>您已拥有此游戏。</h1>
         :null
       }

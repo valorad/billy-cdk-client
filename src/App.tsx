@@ -1,84 +1,72 @@
-import React, { useEffect, useState } from "react";
-import { Route, Switch, Router, Redirect } from "wouter";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { Router } from "wouter";
+import { useSelector } from "react-redux";
 import MicroModal from "micromodal";
 
 import "./App.scss";
 import Navbar from "./components/navbar";
 import Tips from "./components/tips";
 
-import HomeView from "./views/Home";
-import StoreView from "./views/store/Store";
-import StoreGamesListView from "./views/store/GameList";
-import StoreGamesDetailView from "./views/store/GameDetail";
-import StoreGamesCDKeyIndexView from "./views/store/CDKey";
-import StoreGamesCDKeyListView from "./views/store/CDKeyList";
-import PlayerIndexView from "./views/player/Player";
-import PlayerListView from "./views/player/PlayerList";
-import PlayerDetailView from "./views/player/PlayerDetail";
-import PlayerGameListView from "./views/player/GameList";
-import PlayerCDKeyListView from "./views/player/CDKeyList";
-import CDKeyIndexView from "./views/cdkey/CDKey";
-import CDKeyDetailView from "./views/cdkey/Detail";
-import HTTP404View from "./views/HTTP404";
+import AppContentView from "./views/AppContent";
 
 import { selectTitle, selectDescription } from "./features/navbar";
 import useHashLocation from "./router/useHashLocation";
-import { selectLoginAsPlayer, setLoginAsPlayer } from "./features/login";
-import { Player } from "./models/player.interface";
+import { selectLoginAsPlayer } from "./features/login";
 import { ApolloProvider } from "@apollo/client";
 import GraphQLClient from "./app/graph";
 
+// const placeRoutingTable = () => {
+//   return (
+//     <Switch>
+//       <Route path="/">
+//         <Redirect to="/index" />
+//       </Route>
+//       <Route path="/index" component={HomeView}></Route>
+//       <Route path="/store" component={StoreView}></Route>
+//       <Route path="/store/games" component={StoreGamesListView}></Route>
+//       <Route path="/store/games/dbname/:dbname" component={StoreGamesDetailView}></Route>
+//       <Route path="/store/games/dbname/:dbname/cdkeys/index" component={StoreGamesCDKeyIndexView}></Route>
+//       <Route path="/store/games/dbname/:dbname/cdkeys" component={StoreGamesCDKeyListView}></Route>
+//       <Route path="/players/index" component={PlayerIndexView}></Route>
+//       <Route path="/players" component={PlayerListView}></Route>
+//       <Route path="/players/dbname/:dbname" component={PlayerDetailView}></Route>
+//       <Route path="/players/dbname/:dbname/games" component={PlayerGameListView}></Route>
+//       <Route path="/players/dbname/:dbname/cdkeys" component={PlayerCDKeyListView}></Route>
+//       <Route path="/cdkeys/index" component={CDKeyIndexView}></Route>
+//       <Route path="/cdkeys/id/:id" component={CDKeyDetailView}></Route>
+//       <Route path="/:rest*" component={HTTP404View}></Route>
+//     </Switch>
+//   );
+// };
 
-const placeRoutingTable = () => {
-  return (
-    <Switch>
-      <Route path="/">
-        <Redirect to="/index" />
-      </Route>
-      <Route path="/index" component={HomeView}></Route>
-      <Route path="/store" component={StoreView}></Route>
-      <Route path="/store/games" component={StoreGamesListView}></Route>
-      <Route path="/store/games/dbname/:dbname" component={StoreGamesDetailView}></Route>
-      <Route path="/store/games/dbname/:dbname/cdkeys/index" component={StoreGamesCDKeyIndexView}></Route>
-      <Route path="/store/games/dbname/:dbname/cdkeys" component={StoreGamesCDKeyListView}></Route>
-      <Route path="/players/index" component={PlayerIndexView}></Route>
-      <Route path="/players" component={PlayerListView}></Route>
-      <Route path="/players/dbname/:dbname" component={PlayerDetailView}></Route>
-      <Route path="/players/dbname/:dbname/games" component={PlayerGameListView}></Route>
-      <Route path="/players/dbname/:dbname/cdkeys" component={PlayerCDKeyListView}></Route>
-      <Route path="/cdkeys/index" component={CDKeyIndexView}></Route>
-      <Route path="/cdkeys/id/:id" component={CDKeyDetailView}></Route>
-      <Route path="/:rest*" component={HTTP404View}></Route>
-    </Switch>
-  );
-};
-
-const requestLogIn = () => {
-  return new Promise<Player>((resolve, reject) => {
-    setTimeout(() => {
-      resolve({
-        dbname: "player-billy",
-        name: "Billy",
-        bio: "Master of CDKey!",
-        isPremium: true,
-        games: [
-          "game-cyberpunk2077"
-        ],
-      })
-    }, 500);
-  });
-}
+// const requestLogIn = () => {
+//   return new Promise<Player>((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve({
+//         dbname: "player-billy",
+//         name: "Billy",
+//         bio: "Master of CDKey!",
+//         isPremium: true,
+//         games: [
+//           "game-cyberpunk2077"
+//         ],
+//       })
+//     }, 500);
+//   });
+// }
 
 export default () => {
 
+  // const { isQueryLoading, queryError, player: playerToLogin } = usePlayerDetail(`${"player-billy"}`);
+  // const playerDisplayName = playerToLogin?.name || playerToLogin?.dbname;
+
   MicroModal.init();
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const title = useSelector(selectTitle);
   const description = useSelector(selectDescription);
   const loginPlayer = useSelector(selectLoginAsPlayer);
-  const [isLoggingIn, setIsLoggingIn] = useState(true);
+  // const [isLoggingIn, setIsLoggingIn] = useState(true);
 
   const onAppKeyDown = (e: React.KeyboardEvent) => {
     // e.preventDefault();
@@ -102,17 +90,49 @@ export default () => {
 
   }
 
-  const login = async (dbname: string, password: string) => {
-    const playerToLogIn = await requestLogIn();
-    dispatch(setLoginAsPlayer(playerToLogIn));
-    setIsLoggingIn(false);
-  };
+  // const login = async (dbname: string, password: string) => {
+  //   const playerToLogIn = await requestLogIn();
+  //   dispatch(setLoginAsPlayer(playerToLogIn));
+  //   setIsLoggingIn(false);
+  // };
+
+  // const placeMainMenu = () => {
+  //   if (isQueryLoading) {
+  //     return (
+  //       <div className="statusInfo">
+  //         <h1>登录中，请稍后...</h1>
+  //       </div>
+  //     );
+  //   } else if (queryError || playerToLogin === undefined) {
+  //     return (
+  //       <div className="statusInfo">
+  //         <h1>错误！无法登录。请联系管理员。</h1>
+  //       </div>
+  //     );
+  //   } else if (playerToLogin === null) {
+  //     return (
+  //       <div className="statusInfo">
+  //         <h1>登录失败，未找到该玩家。请联系管理员。</h1>
+  //       </div>
+  //     );
+  //   } else {
+  //     return placeRoutingTable();
+  //   }
+  // }
 
   useEffect(() => {
 
-    if (loginPlayer.dbname === "") {
-      login("player-billy", "");
-    }
+    // if (loginPlayer.dbname === "") {
+    //   console.log("login");
+      
+    //   dispatch(
+    //     setLoginAsPlayer(playerToLogin || {dbname: "",
+    //       name: "朋友",
+    //       isPremium: false,
+    //       games: [],} as Player
+    //     )
+    //   );
+    // }
 
   });
 
@@ -134,11 +154,7 @@ export default () => {
               <main>
                 <div className="contentBox">
 
-                {
-                  isLoggingIn?
-                  <div className="statusInfo"> <h1>登录中...</h1> </div>
-                  :placeRoutingTable()
-                }
+                  <AppContentView />
 
                 </div>
               </main>

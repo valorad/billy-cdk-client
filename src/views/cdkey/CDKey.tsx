@@ -8,7 +8,7 @@ import DialogInput from "../../components/modal/dialogInput";
 
 import { setTitle, setDescription } from "../../features/navbar";
 import { MenuItem } from "../../models/menu.interface";
-import { selectLoginAsPlayer } from "../../features/login";
+import { selectLoginAsPlayer, setLoginAsPlayer } from "../../features/login";
 import { InputDialogResult } from "../../models/dialog.interface";
 import { useCDKeyActivation } from "../../services/cdkey";
 import { CDKey } from "../../models/cdkey.interface";
@@ -166,7 +166,7 @@ export default () => {
               playerDBName: loginPlayer.dbname,
               value: cdkeyToActivate.value,
             }});
-            
+
           } catch (error) {
             console.error(error);
             MicroModal.show("dialogConfirmation-failedToActivateCDKey");
@@ -177,6 +177,19 @@ export default () => {
           
           // activation successful
           if (mutationTuple.data.activateCDKey.instance) {
+
+            // sync local store
+            dispatch(
+              setLoginAsPlayer(
+                {
+                  ...loginPlayer,
+                  games: [
+                    ...loginPlayer.games,
+                    mutationTuple.data.activateCDKey.instance.dbname,
+                  ]
+                }
+              )
+            );
 
             getGameDetail({ variables: { dbname: mutationTuple.data.activateCDKey.instance.dbname } })
 
