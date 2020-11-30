@@ -16,7 +16,7 @@ import PlayerCDKeyListView from "./player/CDKeyList";
 import CDKeyIndexView from "./cdkey/CDKey";
 import CDKeyDetailView from "./cdkey/Detail";
 import HTTP404View from "./HTTP404";
-
+import I18nView from "./I18n";
 
 import { Switch, Route, Redirect } from "react-router-dom";
 import { selectLoginAsPlayer, setLoginAsPlayer } from "../features/login";
@@ -48,6 +48,7 @@ const AppContentView = () => {
         <Route exact path="/players/dbname/:dbname/cdkeys" component={PlayerCDKeyListView}></Route>
         <Route exact path="/cdkeys/index" component={CDKeyIndexView}></Route>
         <Route exact path="/cdkeys/id/:id" component={CDKeyDetailView}></Route>
+        <Route exact path="/settings/i18n" component={I18nView}></Route>
         <Route component={HTTP404View}></Route>
       </Switch>
     );
@@ -82,14 +83,10 @@ const AppContentView = () => {
 
   useEffect(() => {
     
-    if (loginPlayer.dbname === "") {
+    if (loginPlayer.dbname === "" && playerToLogin) {
 
       dispatch(
-        setLoginAsPlayer(playerToLogin || {dbname: "",
-          name: "朋友",
-          isPremium: false,
-          games: [],} as Player
-        )
+        setLoginAsPlayer(playerToLogin)
       );
     }
 

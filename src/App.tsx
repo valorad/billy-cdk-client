@@ -2,6 +2,13 @@ import React, { useEffect } from "react";
 import { HashRouter as Router } from "react-router-dom";
 import { useSelector } from "react-redux";
 import MicroModal from "micromodal";
+import { I18nProvider } from '@lingui/react';
+import { i18n } from '@lingui/core';
+import { en as localeEn, fr as localeFr, zh as localeZh} from "make-plural/plurals"
+
+import { messages as messagesEn } from './locales/en/messages.js';
+import { messages as messagesFr } from './locales/fr/messages.js';
+import { messages as messagesZh } from './locales/zh/messages.js';
 
 import "./App.scss";
 import Navbar from "./components/navbar";
@@ -50,39 +57,59 @@ const App = () => {
 
   }
 
+  i18n.loadLocaleData({
+    en: {plurals: localeEn},
+    fr: {plurals: localeFr},
+    zh: {plurals: localeZh},
+  });
+
+  i18n.load({
+    en: messagesEn,
+    fr: messagesFr,
+    zh: messagesZh,
+  });
+
+  useEffect(() => {
+    if (!i18n.locale) {
+      i18n.activate("en");
+    }
+
+  });
+  
+
   return (
+    <I18nProvider i18n={i18n}>
+      <ApolloProvider client={GraphQLClient}>
+        <Router>
 
-    <ApolloProvider client={GraphQLClient}>
-      <Router>
+          <section className="App" tabIndex={0} onKeyDown={onAppKeyDown}>
+            <div className="overlay"></div>
+            <div className="scanline"></div>
+            <div className="wrapper">
+              <div className="appHolder">
+                <header>
+                  <div className="contentBox">
+                    <Navbar title={title} description={description} player={loginPlayer.name || loginPlayer.dbname} />
+                  </div>
+                </header>    
+                <main>
+                  <div className="contentBox">
 
-        <section className="App" tabIndex={0} onKeyDown={onAppKeyDown}>
-          <div className="overlay"></div>
-          <div className="scanline"></div>
-          <div className="wrapper">
-            <div className="appHolder">
-              <header>
-                <div className="contentBox">
-                  <Navbar title={title} description={description} player={loginPlayer.name || loginPlayer.dbname} />
-                </div>
-              </header>    
-              <main>
-                <div className="contentBox">
+                    <AppContentView />
 
-                  <AppContentView />
+                  </div>
+                </main>
 
-                </div>
-              </main>
-
+              </div>
             </div>
-          </div>
 
-          <Tips />
-          
-        </section>
+            <Tips />
+            
+          </section>
 
-      </Router>
-    </ApolloProvider>
-
+        </Router>
+      </ApolloProvider>
+    </I18nProvider>
   );
 }
 

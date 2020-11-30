@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@apollo/client": "^3.2.9",
+    "@lingui/react": "^3.2.3",
     "@reduxjs/toolkit": "^1.4.0",
     "bootstrap": "^4.5.0",
     "graphql": "^15.3.0",
@@ -15,6 +16,8 @@
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
+    "@lingui/cli": "^3.2.3",
+    "@lingui/macro": "^3.2.3",
     "@testing-library/jest-dom": "^5.10.1",
     "@testing-library/react": "^11.2.0",
     "@testing-library/user-event": "^12.0.7",
@@ -33,7 +36,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "i18nextract": "lingui extract",
+    "i18ncompile": "lingui compile"
   },
   "eslintConfig": {
     "extends": "react-app"

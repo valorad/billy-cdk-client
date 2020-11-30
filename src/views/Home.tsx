@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
+import { t } from "@lingui/macro";
+
 import Menu from "../components/menu";
 import { MenuItem } from "../models/menu.interface";
 import { setTitle, setDescription } from "../features/navbar";
@@ -21,23 +23,27 @@ const HomeView = () => {
 
   const menus: MenuItem[] = [
     {
-      name: "浏览商店",
+      name: t`Browse the store`,
       link: "#/store",
     },
     {
-      name: "我的好友",
+      name: t`My Friends`,
       link: "#/players/index",
     },
     {
-      name: "我的游戏",
+      name: t`My Games`,
       link: `#/players/dbname/${loginPlayer.dbname}/games`,
     },
     {
-      name: "我的CDKey",
+      name: t`My CDKeys`,
       link: `#/cdkeys/index`,
     },
     {
-      name: "退出",
+      name: t`Change Language`,
+      link: `#/settings/i18n`,
+    },
+    {
+      name: t`Exit`,
       action: () => {
         window.location.href = "https://www.wcnexus.com";
       }
