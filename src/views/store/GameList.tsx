@@ -5,9 +5,7 @@ import GameList from "../../components/game/list";
 import { setTitle, setDescription } from "../../features/navbar";
 import { useGameList } from "../../services/game";
 
-// import "./Dummy.scss";
-
-export default () => {
+const StoreGameListView = () => {
 
   const dispatch = useDispatch();
   const { isQueryLoading, queryError, games } = useGameList({}, {perPage: 1000});
@@ -73,3 +71,5 @@ export default () => {
     </section>
   );
 };
+
+export default StoreGameListView;

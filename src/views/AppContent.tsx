@@ -18,37 +18,37 @@ import CDKeyDetailView from "./cdkey/Detail";
 import HTTP404View from "./HTTP404";
 
 
-import { Switch, Route, Redirect } from "wouter";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { selectLoginAsPlayer, setLoginAsPlayer } from "../features/login";
 import { Player } from "../models/player.interface";
 
 // import "./Dummy.scss";
 
 
-export default () => {
+const AppContentView = () => {
 
   const { isQueryLoading, queryError, player: playerToLogin } = usePlayerDetail(`${"player-billy"}`);
 
   const placeRoutingTable = () => {
     return (
       <Switch>
-        <Route path="/">
+        <Route exact path="/">
           <Redirect to="/index" />
         </Route>
-        <Route path="/index" component={HomeView}></Route>
-        <Route path="/store" component={StoreView}></Route>
-        <Route path="/store/games" component={StoreGamesListView}></Route>
-        <Route path="/store/games/dbname/:dbname" component={StoreGamesDetailView}></Route>
-        <Route path="/store/games/dbname/:dbname/cdkeys/index" component={StoreGamesCDKeyIndexView}></Route>
-        <Route path="/store/games/dbname/:dbname/cdkeys" component={StoreGamesCDKeyListView}></Route>
-        <Route path="/players/index" component={PlayerIndexView}></Route>
-        <Route path="/players" component={PlayerListView}></Route>
-        <Route path="/players/dbname/:dbname" component={PlayerDetailView}></Route>
-        <Route path="/players/dbname/:dbname/games" component={PlayerGameListView}></Route>
-        <Route path="/players/dbname/:dbname/cdkeys" component={PlayerCDKeyListView}></Route>
-        <Route path="/cdkeys/index" component={CDKeyIndexView}></Route>
-        <Route path="/cdkeys/id/:id" component={CDKeyDetailView}></Route>
-        <Route path="/:rest*" component={HTTP404View}></Route>
+        <Route exact path="/index" component={HomeView}></Route>
+        <Route exact path="/store" component={StoreView}></Route>
+        <Route exact path="/store/games" component={StoreGamesListView}></Route>
+        <Route exact path="/store/games/dbname/:dbname" component={StoreGamesDetailView}></Route>
+        <Route exact path="/store/games/dbname/:dbname/cdkeys/index" component={StoreGamesCDKeyIndexView}></Route>
+        <Route exact path="/store/games/dbname/:dbname/cdkeys" component={StoreGamesCDKeyListView}></Route>
+        <Route exact path="/players/index" component={PlayerIndexView}></Route>
+        <Route exact path="/players" component={PlayerListView}></Route>
+        <Route exact path="/players/dbname/:dbname" component={PlayerDetailView}></Route>
+        <Route exact path="/players/dbname/:dbname/games" component={PlayerGameListView}></Route>
+        <Route exact path="/players/dbname/:dbname/cdkeys" component={PlayerCDKeyListView}></Route>
+        <Route exact path="/cdkeys/index" component={CDKeyIndexView}></Route>
+        <Route exact path="/cdkeys/id/:id" component={CDKeyDetailView}></Route>
+        <Route component={HTTP404View}></Route>
       </Switch>
     );
   };
@@ -82,10 +82,8 @@ export default () => {
 
   useEffect(() => {
     
-    // dispatch(setTitle("Dummy Page"));
-    // dispatch(setDescription("高端黑框框版"));
     if (loginPlayer.dbname === "") {
-      
+
       dispatch(
         setLoginAsPlayer(playerToLogin || {dbname: "",
           name: "朋友",
@@ -99,3 +97,5 @@ export default () => {
 
   return placeMainMenu();
 };
+
+export default AppContentView;

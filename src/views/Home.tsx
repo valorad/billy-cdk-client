@@ -7,7 +7,7 @@ import { setTitle, setDescription } from "../features/navbar";
 import { selectLoginAsPlayer } from "../features/login";
 // import "./Dummy.scss";
 
-export default () => {
+const HomeView = () => {
 
   const dispatch = useDispatch();
   const loginPlayer = useSelector(selectLoginAsPlayer);
@@ -51,3 +51,5 @@ export default () => {
     </section>
   );
 };
+
+export default HomeView;

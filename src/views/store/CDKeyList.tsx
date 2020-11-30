@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useRoute } from "wouter";
+import { useParams } from "react-router-dom";
 
 import CDKeyList from "../../components/cdkey/list";
 
@@ -12,11 +12,11 @@ import { useCDKeyList } from "../../services/cdkey";
 
 // import "./Dummy.scss";
 
-export default () => {
+const StoreGameCDKeyListView = () => {
 
   const dispatch = useDispatch();
 
-  const params = useRoute("/store/games/dbname/:dbname/cdkeys")[1];
+  const params: any = useParams();
 
   let dbname = params?.dbname || "game:non-existance";
   const name0 = "不存在的游戏";
@@ -109,3 +109,5 @@ export default () => {
     </section>
   );
 };
+
+export default StoreGameCDKeyListView;

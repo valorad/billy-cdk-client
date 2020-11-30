@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useRoute } from "wouter";
+import { useParams } from "react-router-dom";
 import MicroModal from "micromodal";
 
 import Menu from "../../components/menu";
@@ -15,11 +15,10 @@ import { CDKey } from "../../models/cdkey.interface";
 
 import { useCDKeyAddition } from "../../services/cdkey";
 import { useGameDetail } from "../../services/game";
-// import "./Dummy.scss";
 
-export default () => {
+const StoreGameCDKeyIndexView = () => {
 
-  const params = useRoute("/store/games/dbname/:dbname/cdkeys/index")[1];
+  const params: any = useParams();
   let dbname = params?.dbname || "game:non-existance";
   const name0 = "不存在的游戏";
   const { isQueryLoading: isGameQueryLoading, queryError: gameQueryError, game } = useGameDetail(dbname);
@@ -167,3 +166,5 @@ export default () => {
 
   return placeGameCDKeyIndex();
 };
+
+export default StoreGameCDKeyIndexView;

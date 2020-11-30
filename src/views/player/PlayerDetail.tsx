@@ -4,7 +4,7 @@ import MicroModal from "micromodal";
 
 import { setTitle, setDescription } from "../../features/navbar";
 import { MenuItem } from "../../models/menu.interface";
-import { useRoute } from "wouter";
+import { useParams } from "react-router-dom";
 import { Player } from "../../models/player.interface";
 
 
@@ -14,11 +14,9 @@ import DialogInput from "../../components/modal/dialogInput";
 import { usePlayerDetail, usePlayerUpdate, usePlayerDeletion } from "../../services/player";
 import { InputDialogResult } from "../../models/dialog.interface";
 
-// import "./Dummy.scss";
+const PlayerDetailView = () => {
 
-export default () => {
-
-  const params = useRoute("/players/dbname/:dbname")[1];
+  const params: any = useParams();
 
   let dbname = params?.dbname || "mr-stranger";
   const name0 = "神秘的陌生人";
@@ -272,3 +270,5 @@ export default () => {
 
   return placePlayerDetail();
 };
+
+export default PlayerDetailView;

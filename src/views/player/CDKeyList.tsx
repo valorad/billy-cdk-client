@@ -4,17 +4,17 @@ import { useDispatch } from "react-redux";
 import CDKeyList from "../../components/cdkey/list";
 
 import { setTitle, setDescription } from "../../features/navbar";
-import { useRoute } from "wouter";
+import { useParams } from "react-router-dom";
 import { useCDKeyList } from "../../services/cdkey";
 import { usePlayerDetail } from "../../services/player";
 
 // import "./Dummy.scss";
 
-export default () => {
+const CDKeyListView = () => {
 
   const dispatch = useDispatch();
 
-  const params = useRoute("/players/dbname/:dbname/cdkeys")[1];
+  const params: any = useParams();
 
   // test data
   // const cdkeys: CDKey[] = [
@@ -164,3 +164,5 @@ export default () => {
     </section>
   );
 };
+
+export default CDKeyListView;

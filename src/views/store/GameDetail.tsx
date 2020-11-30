@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRoute } from "wouter";
+import { useParams } from "react-router-dom";
 import MicroModal from "micromodal";
 
 import GameDetail from "../../components/game/detail";
@@ -17,9 +17,9 @@ import { usePlayerGameAddition } from "../../services/player";
 import { CUDMessage } from "../../models/cudmessage.interface";
 
 
-export default () => {
+const GameDetailView = () => {
 
-  const params = useRoute("/store/games/dbname/:dbname")[1];
+  const params: any = useParams();
 
   let dbname = params?.dbname || "game:non-existance";
   const name0 = "不存在的游戏";
@@ -351,3 +351,5 @@ export default () => {
     </section>
   );
 };
+
+export default GameDetailView;

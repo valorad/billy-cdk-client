@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useRoute } from "wouter";
+import { useParams } from "react-router-dom";
 
 import GameList from "../../components/game/list";
 import { setTitle, setDescription } from "../../features/navbar";
@@ -10,9 +10,9 @@ import { useGameList } from "../../services/game";
 
 // import "./Dummy.scss";
 
-export default () => {
+const GameListView = () => {
 
-  const params = useRoute("/players/dbname/:dbname/games")[1];
+  const params: any = useParams();
 
   let dbname = params?.dbname || "mr-stranger";
   const playerName0 = "神秘的陌生人";
@@ -104,3 +104,5 @@ export default () => {
     </section>
   );
 };
+
+export default GameListView;

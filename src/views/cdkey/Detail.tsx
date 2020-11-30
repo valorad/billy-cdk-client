@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useRoute } from "wouter";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import CDKeyDetail from "../../components/cdkey/detail";
@@ -31,12 +31,12 @@ interface CDKeyMutationStatus {
   },
 }
 
-export default () => {
+export const CDKeyDetailView = () => {
 
   const dispatch = useDispatch();
   const loginPlayer = useSelector(selectLoginAsPlayer);
 
-  const params = useRoute("/cdkeys/id/:id")[1];
+  const params: any = useParams();
 
   let id = params?.id || "unknown-id";
 
@@ -435,3 +435,5 @@ export default () => {
     </section>
   );
 };
+
+export default CDKeyDetailView;

@@ -15,7 +15,7 @@ import { Game } from "../../models/game.interface";
 import { useGameAddition } from "../../services/game";
 
 
-export default () => {
+const StoreIndexView = () => {
 
   const dispatch = useDispatch();
 
@@ -134,3 +134,5 @@ export default () => {
     </section>
   );
 };
+
+export default StoreIndexView;

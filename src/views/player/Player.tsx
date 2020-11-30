@@ -14,7 +14,7 @@ import { Player } from "../../models/player.interface";
 
 // import "./Player.scss";
 
-export default () => {
+const PlayerView = () => {
 
   const dispatch = useDispatch();
 
@@ -136,3 +136,5 @@ export default () => {
     </section>
   );
 };
+
+export default PlayerView;

@@ -11,8 +11,7 @@ const menus: MenuItem[] = [
   }
 ];
 
-
-export default () => {
+const HTTP404View = () => {
 
   const dispatch = useDispatch();
 
@@ -29,3 +28,5 @@ export default () => {
     </section>
   );
 };
+
+export default HTTP404View;

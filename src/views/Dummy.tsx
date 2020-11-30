@@ -7,7 +7,7 @@ import { MenuItem } from "../models/menu.interface";
 
 // import "./Dummy.scss";
 
-export default () => {
+const DummyView = () => {
 
   const dispatch = useDispatch();
 
@@ -42,3 +42,5 @@ export default () => {
     </section>
   );
 };
+
+export default DummyView;

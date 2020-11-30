@@ -7,7 +7,7 @@ import { usePlayerList } from "../../services/player";
 
 // import "./Dummy.scss";
 
-export default () => {
+const PlayerListView = () => {
 
   const dispatch = useDispatch();
   const { isQueryLoading, queryError, players } = usePlayerList({}, {perPage: 1000});
@@ -88,3 +88,5 @@ export default () => {
     </section>
   );
 };
+
+export default PlayerListView;

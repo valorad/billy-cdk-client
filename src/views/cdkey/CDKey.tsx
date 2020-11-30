@@ -15,10 +15,7 @@ import { CDKey } from "../../models/cdkey.interface";
 import { CDKeyCUDMessage } from "../../models/instanceCUDMessage.interface";
 import { useLazyGameDetail } from "../../services/game";
 
-
-// import "./CDKey.scss";
-
-export default () => {
+const CDKeyView = () => {
 
   const dispatch = useDispatch();
   const loginPlayer = useSelector(selectLoginAsPlayer);
@@ -202,3 +199,5 @@ export default () => {
     </section>
   );
 };
+
+export default CDKeyView;
