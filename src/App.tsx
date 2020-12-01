@@ -35,6 +35,12 @@ const App = () => {
   const loginPlayer = useSelector(selectLoginAsPlayer);
   // const [isLoggingIn, setIsLoggingIn] = useState(true);
 
+  const getBrowserLanguage = () => {
+    return navigator.language.replace('-', '_')
+        .toLowerCase()
+        .split('_');
+  };
+
   const onAppKeyDown = (e: React.KeyboardEvent) => {
     // e.preventDefault();
     
@@ -71,7 +77,8 @@ const App = () => {
 
   useEffect(() => {
     if (!i18n.locale) {
-      i18n.activate("en");
+      const [browserLang] = getBrowserLanguage(); 
+      i18n.activate(browserLang);
     }
 
   });

@@ -13,9 +13,76 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/views/cdkey/CDKey.tsx:45
+#: src/views/cdkey/Detail.tsx:32
+msgid "A game of non-existence"
+msgstr "Un jeu de non-existence"
+
+#: src/views/cdkey/Detail.tsx:242
+#~ msgid "Activate CDKey for yourself"
+#~ msgstr "Activer la CDKey pour vous-même"
+
+#: src/views/cdkey/Detail.tsx:242
+msgid "Activate a CDKey for yourself"
+msgstr "Activer la CDKey pour vous-même"
+
+#: src/views/cdkey/CDKey.tsx:50
+msgid "Activate a CDKey for youself, or manage your CDKey incentory"
+msgstr "Activer une CDKey pour vous-même ou gérer votre inventaire de CDkeys"
+
+#: src/views/cdkey/CDKey.tsx:90
+msgid "Activate a game"
+msgstr "Activer un jeu"
+
+#: src/views/cdkey/Detail.tsx:130
+msgid "Activate for yourself"
+msgstr "Activer pour vous-même"
+
+#: src/views/cdkey/Detail.tsx:143
+msgid "Activate for: {gameDisplayName}"
+msgstr "Activer pour: {gameDisplayName}"
+
+#: src/views/cdkey/CDKey.tsx:60
+#: src/views/cdkey/Detail.tsx:158
+msgid "Activating"
+msgstr "Activation en cours"
+
+#: src/views/cdkey/Detail.tsx:158
+msgid "Activating CDKey"
+msgstr "Activation de CDKey en cours"
+
+#: src/views/cdkey/CDKey.tsx:60
+msgid "Activating the CDKey"
+msgstr "Activation de CDKey en cours"
+
+#: src/components/cdkey/detail.tsx:9
+msgid "Attention: this CDKey has already been activated"
+msgstr "Attention: ce CDKey a déjà été activé"
+
+#: src/components/navbar.tsx:9
+msgid "Billy CDKey Remastered Edition"
+msgstr "Billy CDKey Édition remasterisée"
+
 #: src/views/Home.tsx:17
 msgid "Browse the store"
 msgstr "Visiter le magasin"
+
+#: src/views/cdkey/Detail.tsx:142
+msgid "CDKey Details"
+msgstr "Détails de CDKey"
+
+#: src/views/cdkey/CDKey.tsx:49
+msgid "CDKey Management"
+msgstr "Gestion de CDKey"
+
+#: src/components/cdkey/detail.tsx:11
+msgid "CDKey Value"
+msgstr "Valeur du CDKey"
+
+#: src/components/modal/dialogConfirmation.tsx:21
+#: src/components/modal/dialogInput.tsx:42
+msgid "Cancel"
+msgstr "Annuler"
 
 #: src/views/Home.tsx:33
 #: src/views/I18n.tsx:14
@@ -24,19 +91,151 @@ msgstr "Changer de langue"
 
 #: src/views/I18n.tsx:31
 msgid "Chinese Simplified"
-msgstr "Chinois simplifié"
+msgstr "Chinois Simplifié-简体中文"
+
+#: src/components/modal/dialogConfirmation.tsx:17
+msgid "Confirm"
+msgstr "Confirmer"
+
+#: src/views/cdkey/Detail.tsx:169
+msgid "Congratulations! You have successfully activated the game: {0}"
+msgstr "Félicitations! Vous avez activé le jeu avec succès: {0}"
+
+#: src/components/navbar.tsx:10
+msgid "Current Theme"
+msgstr "Thème Actuel"
+
+#: src/views/cdkey/Detail.tsx:226
+msgid "Delete CDKey"
+msgstr "Supprimer la CDKey"
+
+#: src/views/cdkey/Detail.tsx:153
+msgid "Deleting"
+msgstr "Suppression en cours"
+
+#: src/views/cdkey/Detail.tsx:153
+msgid "Deleting CDKey"
+msgstr "Suppression de la CDKey en cours"
+
+#: src/views/cdkey/Detail.tsx:243
+msgid "Do you wish to activate this CDKey for yourself?"
+msgstr "Souhaitez-vous activer cette CDKey pour vous-même?"
+
+#: src/views/cdkey/Detail.tsx:226
+msgid "Do you wish to proceed?"
+msgstr "Voulez-vous continuer?"
+
+#: src/views/cdkey/Detail.tsx:112
+msgid "Drop the CDKey"
+msgstr "Supprimer la CDKey"
 
 #: src/views/I18n.tsx:19
 msgid "English"
-msgstr "Anglais"
+msgstr "Anglais-English"
+
+#: src/views/cdkey/CDKey.tsx:41
+msgid "Enter and Activate a New CDKey"
+msgstr "Entrer et activer une nouvelle CDKey"
+
+#: src/views/cdkey/Detail.tsx:97
+#: src/views/cdkey/Detail.tsx:102
+msgid "Error"
+msgstr "Erreur"
 
 #: src/views/Home.tsx:37
 msgid "Exit"
 msgstr "Quitter"
 
+#: src/views/cdkey/CDKey.tsx:65
+msgid "Failed to activate CDKey. Please Check your Internet connection, double-check the input value and retry"
+msgstr "Échec de l'activation de CDKey. Veuillez vérifier votre connexion Internet, revérifier la valeur d'entrée et réessayer"
+
+#: src/views/cdkey/CDKey.tsx:72
+msgid "Failed to activate CDKey. The reason is: {0}"
+msgstr "Échec de l'activation de CDKey. La raison est: {0}"
+
+#: src/views/cdkey/Detail.tsx:183
+msgid "Failed to activate the CDKey. Please check your Internet conenction and try again later."
+msgstr "Échec de l'activation de CDKey. Veuillez vérifier votre connexion Internet et réessayez plus tard."
+
+#: src/views/cdkey/Detail.tsx:189
+msgid "Failed to activate the CDKey. The reason is: {0}"
+msgstr "Échec de l'activation de CDKey. La raison est: {0}"
+
+#: src/views/cdkey/Detail.tsx:178
+msgid "Failed to delete the CDKey."
+msgstr "Échec de la suppression de la CDKey."
+
+#: src/views/cdkey/Detail.tsx:172
+msgid "Failed to send your gift CDKey. Please try again later."
+msgstr "Échec de l'envoi de votre cadeau de CDKey. Veuillez réessayer plus tard."
+
+#: src/views/cdkey/CDKey.tsx:64
+#: src/views/cdkey/CDKey.tsx:72
+#: src/views/cdkey/Detail.tsx:172
+#: src/views/cdkey/Detail.tsx:178
+#: src/views/cdkey/Detail.tsx:183
+#: src/views/cdkey/Detail.tsx:189
+msgid "Failure"
+msgstr "Échec"
+
+#: src/components/navbar.tsx:10
+msgid "Fallout Terminal"
+msgstr "Terminal du Fallout"
+
 #: src/views/I18n.tsx:25
 msgid "French"
 msgstr "Français"
+
+#: src/components/cdkey/detail.tsx:12
+msgid "Game to Activate"
+msgstr "Jeu à activer"
+
+#: src/views/cdkey/Detail.tsx:121
+msgid "Gift the CDKey to a friend"
+msgstr "Offrer la CDkey à un ami"
+
+#: src/components/tips.tsx:6
+msgid "Go Back"
+msgstr "Retourner"
+
+#: src/components/tips.tsx:7
+msgid "Go Home"
+msgstr "Aller à l'accueil"
+
+#: src/features/navbar/navbarSlice.ts:5
+msgid "High-end Terminal Version"
+msgstr "Version de terminal dans la haut de gamme"
+
+#: src/views/cdkey/Detail.tsx:172
+#: src/views/cdkey/Detail.tsx:178
+msgid "If in doubt, please do not hesitate to contact your administrator."
+msgstr "En cas de doute, n'hésitez pas à contacter votre administrateur."
+
+#: src/views/cdkey/Detail.tsx:226
+msgid "If you no longer need this CDKey (e.g. The CDKey has been activated manually), you may delete it."
+msgstr "Si vous n'avez plus besoin de cette CDKey (par exemple, la CDKey a été activée manuellement), vous pouvez la supprimer."
+
+#: src/components/game/detail.tsx:10
+#: src/components/player/detail.tsx:14
+msgid "Introduction"
+msgstr "Introduction"
+
+#: src/views/cdkey/CDKey.tsx:37
+msgid "Manage My CDKey Inventory"
+msgstr "Gérer Mon Inventaire CDKey"
+
+#: src/views/cdkey/Detail.tsx:148
+msgid "Modifying"
+msgstr "Modification en cours"
+
+#: src/views/cdkey/Detail.tsx:148
+msgid "Modifying CDKey"
+msgstr "Modification de la CDKey en cours"
+
+#: src/views/cdkey/Detail.tsx:35
+msgid "Mr. Stranger"
+msgstr "M. Stranger"
 
 #: src/views/Home.tsx:29
 msgid "My CDKeys"
@@ -50,6 +249,121 @@ msgstr "Mes amis"
 msgid "My Games"
 msgstr "Mes jeux"
 
+#: src/features/login/loginSlice.ts:6
+msgid "My friend"
+msgstr "Mon ami(e)"
+
+#: src/components/modal/dialogConfirmation.tsx:31
+msgid "Okay"
+msgstr "D'accord"
+
+#: src/components/cdkey/detail.tsx:10
+msgid "Owner Player"
+msgstr "Propriétaire"
+
+#: src/components/cdkey/detail.tsx:14
+msgid "Platform"
+msgstr "Plate-forme"
+
+#: src/views/cdkey/Detail.tsx:199
+msgid "Player ID"
+msgstr "ID de Joueur"
+
+#: src/views/cdkey/Detail.tsx:195
+msgid "Please carefully fill in the database ID of a player. No idea about the ID? You may go visit the player page, and check the url segment after \"dbname\""
+msgstr "Veuillez remplir soigneusement l'ID de base de données d'un joueur. Aucune idée de l'ID? Vous pouvez aller visiter la page du joueur et vérifier le segment d'url après \"dbname \""
+
+#: src/views/cdkey/Detail.tsx:97
+#: src/views/cdkey/Detail.tsx:102
+msgid "Please contact the administrator."
+msgstr "Veuillez contacter l'administrateur."
+
+#: src/views/cdkey/CDKey.tsx:91
+msgid "Please enter your CDKey carefully"
+msgstr "Veuillez entrer soigneusement votre CDKey"
+
+#: src/views/cdkey/CDKey.tsx:60
+#: src/views/cdkey/Detail.tsx:92
+#: src/views/cdkey/Detail.tsx:148
+#: src/views/cdkey/Detail.tsx:153
+#: src/views/cdkey/Detail.tsx:158
+msgid "Please wait"
+msgstr "Veuillez patienter"
+
+#: src/components/cdkey/detail.tsx:13
+#: src/components/game/detail.tsx:9
+msgid "Price"
+msgstr "Prix"
+
+#: src/views/cdkey/Detail.tsx:92
+msgid "Retrieving CDKey info"
+msgstr "Récupéreration des informations CDKey en cours"
+
+#: src/views/cdkey/Detail.tsx:194
+msgid "Send a gift CDKey"
+msgstr "Envoyer un cadeau CDKey"
+
+#: src/components/modal/dialogInput.tsx:35
+msgid "Submit"
+msgstr "Soumettre"
+
+#: src/views/cdkey/CDKey.tsx:79
+#: src/views/cdkey/CDKey.tsx:85
+#: src/views/cdkey/Detail.tsx:163
+#: src/views/cdkey/Detail.tsx:169
+msgid "Success"
+msgstr "Succès"
+
+#: src/views/cdkey/CDKey.tsx:79
+#: src/views/cdkey/CDKey.tsx:85
+msgid "Successfully activated the game: {0}"
+msgstr "Activation réussie du jeu: {0}"
+
+#: src/views/cdkey/Detail.tsx:163
+msgid "Successfully sent your gift CDKey"
+msgstr "Votre cadeau CDKey a bien été envoyé"
+
 #: src/views/I18n.tsx:15
 msgid "Switch to a new language by selecting one option below"
 msgstr "Passez à une nouvelle langue en sélectionnant une option ci-dessous"
+
+#: src/components/game/detail.tsx:10
+msgid "This game is such a masterpiece that it does not need an intro at all."
+msgstr "Ce jeu est un tel chef-d'œuvre qu'il n'a pas du tout besoin d'une intro."
+
+#: src/components/player/detail.tsx:14
+msgid "This player is too busy playing to introduce himself/herself"
+msgstr "Ce joueur est trop occupé à jouer pour se présenter"
+
+#: src/components/player/detail.tsx:8
+msgid "TuHao Premium Membership"
+msgstr "Adhésion Premium TuHao"
+
+#: src/views/cdkey/Detail.tsx:102
+msgid "Unable to find this CDKey"
+msgstr "Impossible de trouver cette CDKey"
+
+#: src/views/cdkey/Detail.tsx:97
+msgid "Unable to obtain the CDKey information."
+msgstr "Impossible d'obtenir les informations CDKey."
+
+#: src/components/cdkey/detail.tsx:10
+#: src/components/cdkey/detail.tsx:11
+#: src/components/cdkey/detail.tsx:12
+#: src/components/cdkey/detail.tsx:13
+#: src/components/cdkey/detail.tsx:14
+msgid "Unknown"
+msgstr "Inconnue"
+
+#: src/components/navbar.tsx:11
+msgid "Welcome Back"
+msgstr "Nous saluons votre retour"
+
+#: src/components/navbar.tsx:15
+#: src/features/navbar/navbarSlice.ts:4
+msgid "Welcome to Billy CDKey!"
+msgstr "Bienvenue à Billy CDKey!"
+
+#: src/views/cdkey/Detail.tsx:273
+msgid "You have already owned this game"
+msgstr "Vous possédez déjà ce jeu"

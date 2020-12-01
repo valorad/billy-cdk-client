@@ -13,9 +13,72 @@ msgstr ""
 "Language-Team: \n"
 "Plural-Forms: \n"
 
+#: src/views/cdkey/CDKey.tsx:45
+#: src/views/cdkey/Detail.tsx:32
+msgid "A game of non-existence"
+msgstr "不存在的游戏"
+
+#: src/views/cdkey/Detail.tsx:242
+msgid "Activate a CDKey for yourself"
+msgstr "为自己激活CDKey"
+
+#: src/views/cdkey/CDKey.tsx:50
+msgid "Activate a CDKey for youself, or manage your CDKey incentory"
+msgstr "为自己激活CDKey，或是管理CDKey库存"
+
+#: src/views/cdkey/CDKey.tsx:90
+msgid "Activate a game"
+msgstr "激活游戏"
+
+#: src/views/cdkey/Detail.tsx:130
+msgid "Activate for yourself"
+msgstr "为自己激活"
+
+#: src/views/cdkey/Detail.tsx:143
+msgid "Activate for: {gameDisplayName}"
+msgstr "激活{gameDisplayName}的CDKey"
+
+#: src/views/cdkey/CDKey.tsx:60
+#: src/views/cdkey/Detail.tsx:158
+msgid "Activating"
+msgstr "激活中"
+
+#: src/views/cdkey/Detail.tsx:158
+msgid "Activating CDKey"
+msgstr "正在激活CDKey中"
+
+#: src/views/cdkey/CDKey.tsx:60
+msgid "Activating the CDKey"
+msgstr "正在激活CDKey中"
+
+#: src/components/cdkey/detail.tsx:9
+msgid "Attention: this CDKey has already been activated"
+msgstr "注意: 此CDKey已被激活"
+
+#: src/components/navbar.tsx:9
+msgid "Billy CDKey Remastered Edition"
+msgstr "Billy CDKey重制版"
+
 #: src/views/Home.tsx:17
 msgid "Browse the store"
 msgstr "浏览商店"
+
+#: src/views/cdkey/Detail.tsx:142
+msgid "CDKey Details"
+msgstr "CDKey详情"
+
+#: src/views/cdkey/CDKey.tsx:49
+msgid "CDKey Management"
+msgstr "CDKey管理"
+
+#: src/components/cdkey/detail.tsx:11
+msgid "CDKey Value"
+msgstr "激活码"
+
+#: src/components/modal/dialogConfirmation.tsx:21
+#: src/components/modal/dialogInput.tsx:42
+msgid "Cancel"
+msgstr "取消"
 
 #: src/views/Home.tsx:33
 #: src/views/I18n.tsx:14
@@ -26,17 +89,149 @@ msgstr "切换语言"
 msgid "Chinese Simplified"
 msgstr "简体中文"
 
+#: src/components/modal/dialogConfirmation.tsx:17
+msgid "Confirm"
+msgstr "确定"
+
+#: src/views/cdkey/Detail.tsx:169
+msgid "Congratulations! You have successfully activated the game: {0}"
+msgstr "恭喜您成功激活游戏{0}的CDKey"
+
+#: src/components/navbar.tsx:10
+msgid "Current Theme"
+msgstr "当前主题风格"
+
+#: src/views/cdkey/Detail.tsx:226
+msgid "Delete CDKey"
+msgstr "删除CDKey"
+
+#: src/views/cdkey/Detail.tsx:153
+msgid "Deleting"
+msgstr "删除中"
+
+#: src/views/cdkey/Detail.tsx:153
+msgid "Deleting CDKey"
+msgstr "正在删除CDKey中"
+
+#: src/views/cdkey/Detail.tsx:243
+msgid "Do you wish to activate this CDKey for yourself?"
+msgstr "是否要为自己激活此CDKey？"
+
+#: src/views/cdkey/Detail.tsx:226
+msgid "Do you wish to proceed?"
+msgstr "是否继续？"
+
+#: src/views/cdkey/Detail.tsx:112
+msgid "Drop the CDKey"
+msgstr "丢弃此CDKey"
+
 #: src/views/I18n.tsx:19
 msgid "English"
-msgstr "英语"
+msgstr "英语-English"
+
+#: src/views/cdkey/CDKey.tsx:41
+msgid "Enter and Activate a New CDKey"
+msgstr "输入新的CDKey并激活"
+
+#: src/views/cdkey/Detail.tsx:97
+#: src/views/cdkey/Detail.tsx:102
+msgid "Error"
+msgstr "错误"
 
 #: src/views/Home.tsx:37
 msgid "Exit"
 msgstr "退出"
 
+#: src/views/cdkey/CDKey.tsx:65
+msgid "Failed to activate CDKey. Please Check your Internet connection, double-check the input value and retry"
+msgstr "激活CDKey失败，请查看网络连接，检查输入值并重试。"
+
+#: src/views/cdkey/CDKey.tsx:72
+msgid "Failed to activate CDKey. The reason is: {0}"
+msgstr "激活CDKey失败，原因是：{0}"
+
+#: src/views/cdkey/Detail.tsx:183
+msgid "Failed to activate the CDKey. Please check your Internet conenction and try again later."
+msgstr "激活CDKey失败，请查看网络连接并重试。"
+
+#: src/views/cdkey/Detail.tsx:189
+msgid "Failed to activate the CDKey. The reason is: {0}"
+msgstr "激活CDKey失败，原因是：{0}"
+
+#: src/views/cdkey/Detail.tsx:178
+msgid "Failed to delete the CDKey."
+msgstr "删除CDKey失败。"
+
+#: src/views/cdkey/Detail.tsx:172
+msgid "Failed to send your gift CDKey. Please try again later."
+msgstr "赠予玩家操作失败，请重试。"
+
+#: src/views/cdkey/CDKey.tsx:64
+#: src/views/cdkey/CDKey.tsx:72
+#: src/views/cdkey/Detail.tsx:172
+#: src/views/cdkey/Detail.tsx:178
+#: src/views/cdkey/Detail.tsx:183
+#: src/views/cdkey/Detail.tsx:189
+msgid "Failure"
+msgstr "失败"
+
+#: src/components/navbar.tsx:10
+msgid "Fallout Terminal"
+msgstr "辐射控制台"
+
 #: src/views/I18n.tsx:25
 msgid "French"
-msgstr "法语"
+msgstr "法语-Français"
+
+#: src/components/cdkey/detail.tsx:12
+msgid "Game to Activate"
+msgstr "激活游戏"
+
+#: src/views/cdkey/Detail.tsx:121
+msgid "Gift the CDKey to a friend"
+msgstr "赠予他人"
+
+#: src/components/tips.tsx:6
+msgid "Go Back"
+msgstr "返回上级"
+
+#: src/components/tips.tsx:7
+msgid "Go Home"
+msgstr "前往主页"
+
+#: src/features/navbar/navbarSlice.ts:5
+msgid "High-end Terminal Version"
+msgstr "高端黑框框版"
+
+#: src/views/cdkey/Detail.tsx:172
+#: src/views/cdkey/Detail.tsx:178
+msgid "If in doubt, please do not hesitate to contact your administrator."
+msgstr "如有疑问，请联系管理员。"
+
+#: src/views/cdkey/Detail.tsx:226
+msgid "If you no longer need this CDKey (e.g. The CDKey has been activated manually), you may delete it."
+msgstr "如果您不再需要此CDKey（例如Key已被手动激活），可以删除此CDKey。"
+
+#: src/components/game/detail.tsx:10
+#: src/components/player/detail.tsx:14
+msgid "Introduction"
+msgstr "简介"
+
+#: src/views/cdkey/CDKey.tsx:37
+msgid "Manage My CDKey Inventory"
+msgstr "管理我的CDKey库存"
+
+#: src/views/cdkey/Detail.tsx:148
+msgid "Modifying"
+msgstr "修改中"
+
+#: src/views/cdkey/Detail.tsx:148
+msgid "Modifying CDKey"
+msgstr "正在修改CDKey信息中"
+
+#: src/views/cdkey/Detail.tsx:35
+msgid "Mr. Stranger"
+msgstr "神秘的陌生人"
 
 #: src/views/Home.tsx:29
 msgid "My CDKeys"
@@ -50,6 +245,121 @@ msgstr "我的好友"
 msgid "My Games"
 msgstr "我的游戏"
 
+#: src/features/login/loginSlice.ts:6
+msgid "My friend"
+msgstr "朋友"
+
+#: src/components/modal/dialogConfirmation.tsx:31
+msgid "Okay"
+msgstr "好的"
+
+#: src/components/cdkey/detail.tsx:10
+msgid "Owner Player"
+msgstr "持有玩家"
+
+#: src/components/cdkey/detail.tsx:14
+msgid "Platform"
+msgstr "游戏平台"
+
+#: src/views/cdkey/Detail.tsx:199
+msgid "Player ID"
+msgstr "玩家ID"
+
+#: src/views/cdkey/Detail.tsx:195
+msgid "Please carefully fill in the database ID of a player. No idea about the ID? You may go visit the player page, and check the url segment after \"dbname\""
+msgstr "请准确填写玩家的数据库ID。不知道ID？请前往玩家页面，查看网址中\"dbname\"后的字段"
+
+#: src/views/cdkey/Detail.tsx:97
+#: src/views/cdkey/Detail.tsx:102
+msgid "Please contact the administrator."
+msgstr "请联系管理员。"
+
+#: src/views/cdkey/CDKey.tsx:91
+msgid "Please enter your CDKey carefully"
+msgstr "请仔细填写CDKey"
+
+#: src/views/cdkey/CDKey.tsx:60
+#: src/views/cdkey/Detail.tsx:92
+#: src/views/cdkey/Detail.tsx:148
+#: src/views/cdkey/Detail.tsx:153
+#: src/views/cdkey/Detail.tsx:158
+msgid "Please wait"
+msgstr "请稍后"
+
+#: src/components/cdkey/detail.tsx:13
+#: src/components/game/detail.tsx:9
+msgid "Price"
+msgstr "价格"
+
+#: src/views/cdkey/Detail.tsx:92
+msgid "Retrieving CDKey info"
+msgstr "获取CDKey信息中"
+
+#: src/views/cdkey/Detail.tsx:194
+msgid "Send a gift CDKey"
+msgstr "赠予其他玩家"
+
+#: src/components/modal/dialogInput.tsx:35
+msgid "Submit"
+msgstr "完成"
+
+#: src/views/cdkey/CDKey.tsx:79
+#: src/views/cdkey/CDKey.tsx:85
+#: src/views/cdkey/Detail.tsx:163
+#: src/views/cdkey/Detail.tsx:169
+msgid "Success"
+msgstr "成功"
+
+#: src/views/cdkey/CDKey.tsx:79
+#: src/views/cdkey/CDKey.tsx:85
+msgid "Successfully activated the game: {0}"
+msgstr "成功激活游戏： {0}"
+
+#: src/views/cdkey/Detail.tsx:163
+msgid "Successfully sent your gift CDKey"
+msgstr "成功将CDKey赠予他人"
+
 #: src/views/I18n.tsx:15
 msgid "Switch to a new language by selecting one option below"
 msgstr "选择下列一个语言以进行切换"
+
+#: src/components/game/detail.tsx:10
+msgid "This game is such a masterpiece that it does not need an intro at all."
+msgstr "这个游戏如此优秀，根本不需要简介。"
+
+#: src/components/player/detail.tsx:14
+msgid "This player is too busy playing to introduce himself/herself"
+msgstr "这个玩家太忙，没时间写简介"
+
+#: src/components/player/detail.tsx:8
+msgid "TuHao Premium Membership"
+msgstr "黄金高端土豪会员"
+
+#: src/views/cdkey/Detail.tsx:102
+msgid "Unable to find this CDKey"
+msgstr "未找到此CDKey"
+
+#: src/views/cdkey/Detail.tsx:97
+msgid "Unable to obtain the CDKey information."
+msgstr "无法进行CDKey查询"
+
+#: src/components/cdkey/detail.tsx:10
+#: src/components/cdkey/detail.tsx:11
+#: src/components/cdkey/detail.tsx:12
+#: src/components/cdkey/detail.tsx:13
+#: src/components/cdkey/detail.tsx:14
+msgid "Unknown"
+msgstr "未知"
+
+#: src/components/navbar.tsx:11
+msgid "Welcome Back"
+msgstr "欢迎回来"
+
+#: src/components/navbar.tsx:15
+#: src/features/navbar/navbarSlice.ts:4
+msgid "Welcome to Billy CDKey!"
+msgstr "欢迎来到Billy CDKey！"
+
+#: src/views/cdkey/Detail.tsx:273
+msgid "You have already owned this game"
+msgstr "您已拥有此游戏"

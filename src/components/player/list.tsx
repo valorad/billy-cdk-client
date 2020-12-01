@@ -11,7 +11,7 @@ interface playerListProps {
   players: Player[],
 }
 
-export default (props: playerListProps) => {
+const PlayerList = (props: playerListProps) => {
 
   const menuItems: MenuItem[] = [];
 
@@ -30,3 +30,5 @@ export default (props: playerListProps) => {
     </div>
   );
 };
+
+export default PlayerList;

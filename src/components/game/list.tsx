@@ -11,7 +11,7 @@ interface gameListProps {
   games: Game[],
 }
 
-export default (props: gameListProps) => {
+const GameList = (props: gameListProps) => {
 
   const gameMenuItems: MenuItem[] = [];
 
@@ -30,3 +30,5 @@ export default (props: gameListProps) => {
     </div>
   );
 };
+
+export default GameList;

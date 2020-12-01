@@ -1,10 +1,12 @@
+import { t } from "@lingui/macro";
+
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Player } from "../../models/player.interface";
 
 const initialState = {
   loginAsPlayer: {
     dbname: "",
-    name: "朋友",
+    name: t`My friend`,
     isPremium: false,
     games: [],
   } as Player

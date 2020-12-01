@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MicroModal from "micromodal";
+import { t } from "@lingui/macro";
 
 import Menu from "../../components/menu";
 import DialogConfirmation from "../../components/modal/dialogConfirmation";
@@ -35,23 +36,23 @@ const CDKeyView = () => {
 
   const menus: MenuItem[] = [
     {
-      name: "管理我的CDKey库存",
+      name: t`Manage My CDKey Inventory`, // "管理我的CDKey库存"
       link: `#/players/dbname/${loginPlayer.dbname}/cdkeys`,
     },
     {
-      name: "输入新的CDKey并激活",
+      name: t`Enter and Activate a New CDKey`, // "输入新的CDKey并激活"
       action: activateCDKeyPopUp,
     },
   ];
 
-  const name0 = "不存在的游戏";
+  const name0 = t`A game of non-existence`; // "不存在的游戏"
   const { data: _gameData, getGameDetail } = useLazyGameDetail();
   const [gameActivated, setGameActivated] = useState(_gameData?.game);
 
   useEffect(() => {
     
-    dispatch(setTitle("CDKey 管理"));
-    dispatch(setDescription("为自己激活CDKey，或是管理CDKey库存"));
+    dispatch(setTitle(t`CDKey Management`)); // "CDKey 管理"
+    dispatch(setDescription(t`Activate a CDKey for youself, or manage your CDKey incentory`)); // "为自己激活CDKey，或是管理CDKey库存"
 
     if (_gameData && _gameData.game) {
       setGameActivated({..._gameData.game});
@@ -69,8 +70,8 @@ const CDKeyView = () => {
         <DialogConfirmation
           dialogID="dialogConfirmation-activatingCDKey"
           mode="INFO"
-          title="激活中..."
-          description="正在激活CDKey中，请稍后..."
+          title={t`Activating`+ "..."}
+          description={t`Activating the CDKey` + ", " + t`Please wait`+ "..."} //"正在激活CDKey中，请稍后..."
           isAutoShown={true}
         />
         :null
@@ -79,8 +80,8 @@ const CDKeyView = () => {
       <DialogConfirmation
         dialogID="dialogConfirmation-failedToActivateCDKey"
         mode="OKAY"
-        title="失败"
-        description="激活CDKey失败，请查看网络连接，检查输入值并重试。"
+        title={t`Failure`} //"失败"
+        description={t`Failed to activate CDKey. Please Check your Internet connection, double-check the input value and retry`} // "激活CDKey失败，请查看网络连接，检查输入值并重试。"
         onFinish={() => {
           MicroModal.close("dialogConfirmation-failedToActivateCDKey");
           MicroModal.show("dialogInput-activateCDKey");
@@ -92,8 +93,8 @@ const CDKeyView = () => {
         <DialogConfirmation
           dialogID="dialogConfirmation-failedToActivateCDKey2"
           mode="OKAY"
-          title="失败"
-          description={`激活CDKey失败，原因: ${activateCUDMessage.message}`}
+          title={t`Failure`}
+          description={t`Failed to activate CDKey. The reason is: ${activateCUDMessage.message}`}
           isAutoShown={true}
           onFinish={() => {
             MicroModal.close("dialogConfirmation-failedToActivateCDKey2");
@@ -108,8 +109,8 @@ const CDKeyView = () => {
         <DialogConfirmation
           dialogID="dialogConfirmation-activateCDKeySuccess1"
           mode="OKAY"
-          title="成功"
-          description={`成功激活游戏: ${activateCUDMessage.instance?.game || "(获取游戏信息中...)"}`}
+          title={t`Success`}
+          description={t`Successfully activated the game: ${activateCUDMessage.instance?.game || "(retrieving info...)"}`}
           isAutoShown={true}
           onFinish={() => {
             MicroModal.close("dialogConfirmation-activateCDKeySuccess1");
@@ -123,8 +124,8 @@ const CDKeyView = () => {
         <DialogConfirmation
           dialogID="dialogConfirmation-activateCDKeySuccess2"
           mode="OKAY"
-          title="成功"
-          description={`成功激活CDKey: ${gameActivated.name || gameActivated.dbname || name0}`}
+          title={t`Success`}
+          description={t`Successfully activated the game: ${gameActivated.name || gameActivated.dbname || name0}`}
           isAutoShown={true}
           onFinish={() => {
             MicroModal.close("dialogConfirmation-activateCDKeySuccess2");
@@ -135,8 +136,8 @@ const CDKeyView = () => {
 
       <DialogInput
         dialogID="dialogInput-activateCDKey"
-        title={`激活游戏`}
-        description="请仔细填写CDKey"
+        title={t`Activate a game`} //激活游戏
+        description={t`Please enter your CDKey carefully`} // "请仔细填写CDKey"
         items={[
           {
             propName: "value",
