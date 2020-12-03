@@ -71,7 +71,7 @@ const CDKeyView = () => {
           dialogID="dialogConfirmation-activatingCDKey"
           mode="INFO"
           title={t`Activating`+ "..."}
-          description={t`Activating the CDKey` + ", " + t`Please wait`+ "..."} //"正在激活CDKey中，请稍后..."
+          description={t`Activating the CDKey` + ", " + t`please wait`+ "..."} //"正在激活CDKey中，请稍后..."
           isAutoShown={true}
         />
         :null

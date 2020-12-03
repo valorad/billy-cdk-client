@@ -121,7 +121,7 @@ export const CDKeyDetailView = () => {
     if (isCDKeyQueryLoading) {
       return (
         <div className="statusInfo">
-          <h1><Trans>Retrieving CDKey info</Trans> <Trans>Please wait</Trans></h1>
+          <h1><Trans>Retrieving CDKey info</Trans>, <Trans>please wait</Trans></h1>
         </div>
       );
     } else if (cdkeyQueryError || cdkey === undefined) {
@@ -203,7 +203,7 @@ export const CDKeyDetailView = () => {
           dialogID="dialogConfirmation-updatingCDKey"
           mode="INFO"
           title={t`Modifying`+ "..."}
-          description={t`Modifying CDKey`+ ", " + t`Please wait`+ "..."} //"正在修改CDKey信息中，请稍后..."
+          description={t`Modifying CDKey`+ ", " + t`please wait`+ "..."} //"正在修改CDKey信息中，请稍后..."
           isAutoShown={true}
         />
         :null
@@ -215,7 +215,7 @@ export const CDKeyDetailView = () => {
           dialogID="dialogConfirmation-deletingCDKey"
           mode="INFO"
           title={t`Deleting`+ "..."}
-          description={t`Deleting CDKey`+ ", " + t`Please wait`+ "..."} //"正在删除CDKey中，请稍后..."
+          description={t`Deleting CDKey`+ ", " + t`please wait`+ "..."} //"正在删除CDKey中，请稍后..."
           isAutoShown={true}
         />
         :null
@@ -227,7 +227,7 @@ export const CDKeyDetailView = () => {
           dialogID="dialogConfirmation-activatingCDKey"
           mode="INFO"
           title={t`Activating`+ "..."}
-          description={t`Activating CDKey`+ ", " + t`Please wait`+ "..."} //"正在激活CDKey中，请稍后..."
+          description={t`Activating CDKey`+ ", " + t`please wait`+ "..."} //"正在激活CDKey中，请稍后..."
           isAutoShown={true}
         />
         :null

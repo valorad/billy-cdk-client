@@ -27,7 +27,7 @@ const PlayerDetail = (props: playerDetailProps) => {
     <div className="playerDetail">
       <header>
         {placePremiumBadge()}
-        <h1><Trans>Introduction</Trans>:{props.player.bio || t`This player is too busy playing to introduce himself/herself`}</h1>
+        <h1><Trans>Biography</Trans>: {props.player.bio || t`This player is too busy playing to introduce himself/herself`}</h1>
       </header>
 
       <Menu menus={props.menus} />

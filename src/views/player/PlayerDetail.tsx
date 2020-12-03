@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import MicroModal from "micromodal";
+import { t, Trans } from "@lingui/macro";
 
 import { setTitle, setDescription } from "../../features/navbar";
 import { MenuItem } from "../../models/menu.interface";
@@ -19,7 +20,7 @@ const PlayerDetailView = () => {
   const params: any = useParams();
 
   let dbname = params?.dbname || "mr-stranger";
-  const name0 = "神秘的陌生人";
+  const name0 = t`Mr. Stranger`;
 
   const dispatch = useDispatch();
   const { isQueryLoading, queryError, player } = usePlayerDetail(dbname);
@@ -44,26 +45,26 @@ const PlayerDetailView = () => {
 
   const menus: MenuItem[] = [
     {
-      name: "查看TA的游戏库",
+      name: t`View His/Her Game Inventory`, //"查看TA的游戏库",
       link: `#/players/dbname/${dbname}/games`,
     },
     {
-      name: "查看TA的CDKey库存",
+      name: t`View His/Her CDKey Inventory`, //"查看TA的CDKey库存",
       link: `#/players/dbname/${dbname}/cdkeys`,
     },
     {
-      name: "编辑玩家信息",
+      name: t`Edit Player`, //"编辑玩家信息",
       action: editPlayerPopUp,
     },
     {
-      name: "删除玩家",
+      name: t`Delete Player`, //"删除玩家",
       action: deletePlayerPopUp,
     },
   ];
 
   useEffect(() => {
     
-    dispatch(setTitle("玩家详情"));
+    dispatch(setTitle(t`Player Details`)); // "玩家详情"
     dispatch(setDescription(playerDisplayName));
     
   });
@@ -121,19 +122,19 @@ const PlayerDetailView = () => {
     if (isQueryLoading) {
       return (
         <div className="statusInfo">
-          <h1>载入中，请稍后...</h1>
+          <h1><Trans>Loading</Trans>, <Trans>please wait</Trans>...</h1>
         </div>
       );
     } else if (queryError || player === undefined) {
       return (
         <div className="statusInfo">
-          <h1>错误！无法进行玩家查询。请联系管理员。</h1>
+          <h1><Trans>Error</Trans>! <Trans>Failed to load player data.</Trans> <Trans>Please contact the administrator.</Trans> </h1>
         </div>
       );
     } else if (player === null) {
       return (
         <div className="statusInfo">
-          <h1>错误！未找到该玩家。请联系管理员。</h1>
+          <h1><Trans>Error</Trans>! <Trans>Unable to find the player.</Trans> <Trans>Please contact the administrator.</Trans></h1>
         </div>
       );
     } else {
@@ -146,8 +147,8 @@ const PlayerDetailView = () => {
             <DialogConfirmation
               dialogID="dialogConfirmation-updatingPlayer"
               mode="INFO"
-              title="修改中..."
-              description="正在修改玩家信息中，请稍后..."
+              title={t`Updating` + `...`} //"修改中..."
+              description={t`Updating player information` + `, ` + t`please wait` + `...`} //"正在修改玩家信息中，请稍后..."
               isAutoShown={true}
             />
             :null
@@ -158,8 +159,8 @@ const PlayerDetailView = () => {
             <DialogConfirmation
               dialogID="dialogConfirmation-deletingPlayer"
               mode="INFO"
-              title="删除中..."
-              description="正在删除玩家中，请稍后..."
+              title={t`Deleting` + `...`}
+              description={t`Deleting player` + `, ` + t`please wait` + `...`} // "正在删除玩家中，请稍后..."
               isAutoShown={true}
             />
             :null
@@ -168,8 +169,8 @@ const PlayerDetailView = () => {
           <DialogConfirmation
             dialogID="dialogConfirmation-failedToUpdatePlayer"
             mode="OKAY"
-            title="失败"
-            description="修改玩家信息失败，请重试。更多详情请查阅控制台或后台记录。"
+            title={t`Failure`}
+            description={t`Failed to edit the player, please retry.` + ` ` + t`Please refer to the console or server logs for more details.`} // "修改玩家信息失败，请重试。更多详情请查阅控制台或后台记录。"
             onFinish={() => {
               MicroModal.close("dialogConfirmation-failedToUpdatePlayer");
               MicroModal.show("dialogInput-editPlayer");
@@ -179,8 +180,8 @@ const PlayerDetailView = () => {
           <DialogConfirmation
             dialogID="dialogConfirmation-failedToDeletePlayer"
             mode="OKAY"
-            title="失败"
-            description="删除玩家失败，请重试。更多详情请查阅控制台或后台记录。"
+            title={t`Failure`}
+            description={t`Failed to delete the player, please retry.` + ` ` + t`Please refer to the console or server logs for more details.`} //"删除玩家失败，请重试。更多详情请查阅控制台或后台记录。"
             onFinish={() => {
               MicroModal.close("dialogConfirmation-failedToDeletePlayer");
             }}
@@ -188,24 +189,24 @@ const PlayerDetailView = () => {
 
           <DialogInput
             dialogID="dialogInput-editPlayer"
-            title={`编辑信息: ${playerDisplayName}`}
-            description="请填写以下信息"
+            title={t`Edit information: ${playerDisplayName}`} //`编辑信息: ${playerDisplayName}`
+            description={t`Please fill in the information below.`} //"请填写以下信息"
             items={[
               {
                 propName: "name",
-                name: "玩家名称",
+                name: t`Player Name`, //"玩家名称",
                 value: playerDisplayName,
                 isRequired: true,
               },
               {
                 propName: "bio",
-                name: "玩家简介",
+                name: t`Player Biography`, //"玩家简介",
                 value: player.bio || "",
                 type: "textArea",
               },
               {
                 propName: "isPremium",
-                name: "是黄金高端土豪会员",
+                name: t`Is Tuhao Premium Member`, //"是黄金高端土豪会员",
                 value: player.isPremium,
                 type: "checkBox",
               },
@@ -241,8 +242,8 @@ const PlayerDetailView = () => {
 
           <DialogConfirmation
             dialogID="dialogConfirmation-deletePlayer"
-            title={`删除玩家: ${playerDisplayName}`}
-            description={"警告！此操作无法回滚！"}
+            title={t`Delete Player: ${playerDisplayName}`} //`删除玩家: ${playerDisplayName}`
+            description={t`Warning! This cannot be undone!`} //"警告！此操作无法回滚！"
             onFinish={async () => {
               MicroModal.close("dialogConfirmation-deletePlayer");
 

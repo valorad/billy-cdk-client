@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import MicroModal from "micromodal";
+import { t } from "@lingui/macro";
 
 import Menu from "../../components/menu";
 import DialogInput from "../../components/modal/dialogInput";
@@ -20,12 +21,10 @@ const PlayerView = () => {
 
   useEffect(() => {
     
-    dispatch(setTitle("玩家管理"));
-    dispatch(setDescription("查看玩家列表或新增一名玩家。目前所有玩家都是您的好友。"));
+    dispatch(setTitle(t`Player Management`)); //"玩家管理"
+    dispatch(setDescription(t`You can take a look at the player list, or add a new player.` + t`Currently all the players are your friends.`)); //"查看玩家列表或新增一名玩家。目前所有玩家都是您的好友。"
     
   });
-
-  // const [createDialogResult, setCreateDialogResult] = useState({});
 
   const createPlayer = () => {
     MicroModal.show("dialogInput-createPlayer");
@@ -33,11 +32,11 @@ const PlayerView = () => {
 
   const menus: MenuItem[] = [
     {
-      name: "玩家列表",
+      name: t`Player List`, //"玩家列表",
       link: "#/players",
     },
     {
-      name: "新增玩家",
+      name: t`Add a new player`, //"新增玩家",
       action: createPlayer,
     },
   ];
@@ -45,25 +44,25 @@ const PlayerView = () => {
   const inputItems: DialogInputItem[] = [
     {
       propName: "dbname",
-      name: "玩家ID",
-      value: "player-<请替换英文ID>",
+      name: t`Player ID`, //"玩家ID",
+      value: t`player-<replace w/ alphabetic ID>`, // "player-<请替换英文ID>",
       isRequired: true,
     },
     {
       propName: "name",
-      name: "玩家名称",
+      name: t`Player Name`, //"玩家名称",
       value: "",
       isRequired: true,
     },
     {
       propName: "bio",
-      name: "玩家简介",
+      name: t`Player Biography`, //"玩家简介",
       value: "",
       type: "textArea",
     },
     {
       propName: "isPremium",
-      name: "任命玩家为黄金高端土豪会员",
+      name: t`Nominate as Tuhao Premium Member`, //"任命玩家为黄金高端土豪会员",
       value: false,
       type: "checkBox",
     },
@@ -81,8 +80,8 @@ const PlayerView = () => {
       <DialogConfirmation
         dialogID="dialogConfirmation-failedToCreatePlayer"
         mode="OKAY"
-        title="失败"
-        description="添加玩家失败，请重试。更多详情请查阅控制台或后台记录。"
+        title={t`Failure`}
+        description={t`Failed to add the player, please retry.` + ` ` + t`Please refer to the console or server logs for more details.`} //"添加玩家失败，请重试。更多详情请查阅控制台或后台记录。"
         onFinish={() => {
           MicroModal.close("dialogConfirmation-failedToCreatePlayer");
           MicroModal.show("dialogInput-createPlayer");
@@ -94,8 +93,8 @@ const PlayerView = () => {
         <DialogConfirmation
           dialogID="dialogConfirmation-creatingPlayer"
           mode="INFO"
-          title="添加中..."
-          description="正在添加玩家中，请稍后..."
+          title={t`Adding` + `...`} //"添加中..."
+          description={t`Adding a new player` + `, ` + t`please wait` + "..."}  // "正在添加玩家中，请稍后..."
           isAutoShown={true}
         />
         :null
@@ -103,8 +102,8 @@ const PlayerView = () => {
 
       <DialogInput
         dialogID="dialogInput-createPlayer"
-        title={`添加新玩家`}
-        description="请填写以下信息"
+        title={t`Add A New Player`} // `添加新玩家`
+        description={t`Please fill in the information below.`} // "请填写以下信息"
         items={inputItems}
         onFinish={async (result: InputDialogResult<any>) => {
 

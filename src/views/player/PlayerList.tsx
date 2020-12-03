@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { t, Trans } from "@lingui/macro";
 
 import PlayerList from "../../components/player/list";
 import { setTitle, setDescription } from "../../features/navbar";
@@ -52,19 +53,19 @@ const PlayerListView = () => {
     if (isQueryLoading) {
       return (
         <div className="statusInfo">
-          <h1>载入中，请稍后...</h1>
+          <h1> <Trans>Loading</Trans>, <Trans>please wait</Trans>...</h1>
         </div>
       );
     } else if (queryError || !players) {
       return (
         <div className="statusInfo">
-          <h1>错误！无法进行查询。请联系管理员。</h1>
+          <h1><Trans>Error</Trans>! <Trans>Failed to load player data.</Trans> <Trans>Please contact the administrator.</Trans></h1>
         </div>
       );
     } else if (players.length <= 0) {
       return (
         <div className="statusInfo">
-          <h1>错误！未找到任何玩家。请联系管理员。</h1>
+          <h1><Trans>Error</Trans>! <Trans>Unable to find any player.</Trans> <Trans>Please contact the administrator.</Trans></h1>
         </div>
       );
     } else {
@@ -77,8 +78,8 @@ const PlayerListView = () => {
 
   useEffect(() => {
     
-    dispatch(setTitle("玩家列表"));
-    dispatch(setDescription("所有玩家都是您的好友"));
+    dispatch(setTitle(t`Player List`)); //"玩家列表"
+    dispatch(setDescription(t`All the players are your friends`)); //"所有玩家都是您的好友"
     
   });
 
