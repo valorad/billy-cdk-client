@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useRoute } from "wouter";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Trans, t } from "@lingui/macro";
 
 import CDKeyDetail from "../../components/cdkey/detail";
 import DialogInput from "../../components/modal/dialogInput";
@@ -31,12 +32,12 @@ interface CDKeyMutationStatus {
   },
 }
 
-export default () => {
+export const CDKeyDetailView = () => {
 
   const dispatch = useDispatch();
   const loginPlayer = useSelector(selectLoginAsPlayer);
 
-  const params = useRoute("/cdkeys/id/:id")[1];
+  const params: any = useParams();
 
   let id = params?.id || "unknown-id";
 
@@ -44,11 +45,11 @@ export default () => {
   const loggedInPlayer = useSelector(selectLoginAsPlayer);
 
   const { isQueryLoading: isCDKeyQueryLoading, queryError: cdkeyQueryError, cdkey } = useCDKeyDetail({id});
-  const gameName0 = "不存在的游戏";
+  const gameName0 = t`A game of non-existence`;
   const { game } = useGameDetail(cdkey?.game || "");
   const gameDisplayName = game?.name || game?.dbname || gameName0;
 
-  const playerName0 = "神秘的陌生人";
+  const playerName0 = t`Mr. Stranger`; // "神秘的陌生人";
   const { player } = usePlayerDetail(cdkey?.player || "");
   const playerDisplayName = player?.name || player?.dbname || playerName0;
 
@@ -120,19 +121,19 @@ export default () => {
     if (isCDKeyQueryLoading) {
       return (
         <div className="statusInfo">
-          <h1>获取CDKey信息中，请稍后...</h1>
+          <h1><Trans>Retrieving CDKey info</Trans>, <Trans>please wait</Trans></h1>
         </div>
       );
     } else if (cdkeyQueryError || cdkey === undefined) {
       return (
         <div className="statusInfo">
-          <h1>错误！无法进行CDKey查询。请联系管理员。</h1>
+          <h1><Trans>Error</Trans>! <Trans>Unable to obtain the CDKey information.</Trans> <Trans>Please contact the administrator.</Trans></h1>
         </div>
       );
     } else if (cdkey === null) {
       return (
         <div className="statusInfo">
-          <h1>错误！未找到此CDKey，请联系管理员。</h1>
+          <h1><Trans>Error</Trans>! <Trans>Unable to find this CDKey</Trans>,  <Trans>Please contact the administrator.</Trans></h1>
         </div>
       );
     } else {
@@ -149,7 +150,7 @@ export default () => {
   let menus: MenuItem[] = [
 
     {
-      name: "丢弃此CDKey",
+      name: t`Drop the CDKey`, //"丢弃此CDKey",
       action: deleteCDKeyPopUp,
     },
   ];
@@ -160,7 +161,7 @@ export default () => {
     if (!cdkey.isActivated) {
       menus = [
         {
-          name: "赠予他人",
+          name: t`Gift the CDKey to a friend` + "赠予他人",
           action: updateCDKeyPopUp,
         },
         ...menus
@@ -170,12 +171,12 @@ export default () => {
     if (!loggedInPlayer?.games.includes(cdkey.game) || false) {
       menus = [
         {
-          name: "为自己激活",
+          name: t`Activate for yourself`, // "为自己激活"
           action: activateCDKeyPopUp,
         },
         ...menus
       ]
-      // menus.unshift();
+
     }
   }
 
@@ -187,8 +188,8 @@ export default () => {
 
   useEffect(() => {
     
-    dispatch(setTitle(`CDKey详情`));
-    dispatch(setDescription(`用于激活：${gameDisplayName}`));
+    dispatch(setTitle(t`CDKey Details`));
+    dispatch(setDescription(t`Activate for: ${gameDisplayName}`));
 
   });
 
@@ -201,8 +202,8 @@ export default () => {
         <DialogConfirmation
           dialogID="dialogConfirmation-updatingCDKey"
           mode="INFO"
-          title="修改中..."
-          description="正在修改CDKey信息中，请稍后..."
+          title={t`Modifying`+ "..."}
+          description={t`Modifying CDKey`+ ", " + t`please wait`+ "..."} //"正在修改CDKey信息中，请稍后..."
           isAutoShown={true}
         />
         :null
@@ -213,8 +214,8 @@ export default () => {
         <DialogConfirmation
           dialogID="dialogConfirmation-deletingCDKey"
           mode="INFO"
-          title="删除中..."
-          description="正在删除CDKey中，请稍后..."
+          title={t`Deleting`+ "..."}
+          description={t`Deleting CDKey`+ ", " + t`please wait`+ "..."} //"正在删除CDKey中，请稍后..."
           isAutoShown={true}
         />
         :null
@@ -225,8 +226,8 @@ export default () => {
         <DialogConfirmation
           dialogID="dialogConfirmation-activatingCDKey"
           mode="INFO"
-          title="激活中..."
-          description="正在激活CDKey中，请稍后..."
+          title={t`Activating`+ "..."}
+          description={t`Activating CDKey`+ ", " + t`please wait`+ "..."} //"正在激活CDKey中，请稍后..."
           isAutoShown={true}
         />
         :null
@@ -237,8 +238,8 @@ export default () => {
         <DialogConfirmation
           dialogID="dialogConfirmation-updateSuccess"
           mode="OKAY"
-          title="成功"
-          description="成功将CDKey赠予他人"
+          title={t`Success`}
+          description={t`Successfully sent your gift CDKey`} //"成功将CDKey赠予他人"
           isAutoShown={true}
         />
         :null
@@ -250,8 +251,8 @@ export default () => {
         <DialogConfirmation
           dialogID="dialogConfirmation-activateSuccess"
           mode="OKAY"
-          title="成功"
-          description={`恭喜您成功地为自己激活了游戏：${cdkeyMutationStatus.activate.cudMessage.instance?.game || gameDisplayName} `}
+          title={t`Success`}
+          description={t`Congratulations! You have successfully activated the game: ${cdkeyMutationStatus.activate.cudMessage.instance?.game || gameDisplayName} `}
           isAutoShown={true}
         />
         :null
@@ -260,8 +261,8 @@ export default () => {
       <DialogConfirmation
         dialogID="dialogConfirmation-failedToUpdateCDKey"
         mode="OKAY"
-        title="失败"
-        description="赠予玩家操作失败，请重试。如有疑问，请联系管理员。"
+        title={t`Failure`}
+        description={t`Failed to send your gift CDKey. Please try again later.` + " " + t`If in doubt, please do not hesitate to contact your administrator.`} //"赠予玩家操作失败，请重试。如有疑问，请联系管理员。"
         onFinish={() => {
           MicroModal.close("dialogConfirmation-failedToUpdateCDKey");
           MicroModal.show("dialogInput-editCDKey");
@@ -271,8 +272,8 @@ export default () => {
       <DialogConfirmation
         dialogID="dialogConfirmation-failedToDeleteCDKey"
         mode="OKAY"
-        title="失败"
-        description="删除CDKey失败，请重试。如有疑问，请联系管理员。"
+        title={t`Failure`}
+        description={t`Failed to delete the CDKey.` + " " + t`If in doubt, please do not hesitate to contact your administrator.`} //"删除CDKey失败，请重试。如有疑问，请联系管理员。"
         onFinish={() => {
           MicroModal.close("dialogConfirmation-failedToDeleteCDKey");
         }}
@@ -281,8 +282,8 @@ export default () => {
       <DialogConfirmation
         dialogID="dialogConfirmation-failedToActivateCDKey"
         mode="OKAY"
-        title="失败"
-        description="激活CDKey失败，请查看网络连接并重试。"
+        title={t`Failure`}
+        description={t`Failed to activate the CDKey. Please check your Internet conenction and try again later.`} //"激活CDKey失败，请查看网络连接并重试。"
         onFinish={() => {
           MicroModal.close("dialogConfirmation-failedToActivateCDKey");
         }}
@@ -293,8 +294,8 @@ export default () => {
         <DialogConfirmation
           dialogID="dialogConfirmation-failedToActivateCDKey2"
           mode="OKAY"
-          title="失败"
-          description={`激活CDKey失败，原因: ${cdkeyMutationStatus.activate.cudMessage.message}`}
+          title={t`Failure`}
+          description={t`Failed to activate the CDKey. The reason is: ${cdkeyMutationStatus.activate.cudMessage.message}`}
           isAutoShown={true}
           onFinish={() => {
             MicroModal.close("dialogConfirmation-failedToActivateCDKey2");
@@ -305,12 +306,12 @@ export default () => {
 
       <DialogInput
         dialogID="dialogInput-updateCDKey"
-        title={`赠予其他玩家`}
-        description={`请准确填写玩家的数据库ID。不知道ID？请访问玩家页面，查看网址中"dbname"后的字段`}
+        title={t`Send a gift CDKey`} //赠予其他玩家
+        description={t`Please carefully fill in the database ID of a player. No idea about the ID? You may go visit the player page, and check the url segment after "dbname"`} //请准确填写玩家的数据库ID。不知道ID？请访问玩家页面，查看网址中"dbname"后的字段
         items={[
           {
             propName: "player",
-            name: "玩家ID",
+            name: t`Player ID`, //"玩家ID",
             value: loggedInPlayer.dbname || "player-XXXXXX",
             isRequired: true,
           },
@@ -352,8 +353,8 @@ export default () => {
 
       <DialogConfirmation
         dialogID="dialogConfirmation-deleteCDKey"
-        title={`删除CDKey`}
-        description={"如果您不再需要此CDKey（例如Key已被手动激活），可以删除此CDKey。是否继续？"}
+        title={t`Delete CDKey`}
+        description={t`If you no longer need this CDKey (e.g. The CDKey has been activated manually), you may delete it.` + ` ` + t`Do you wish to proceed?`} // "如果您不再需要此CDKey（例如Key已被手动激活），可以删除此CDKey。是否继续？"
         onFinish={async () => {
           MicroModal.close("dialogConfirmation-deleteCDKey");
 
@@ -375,8 +376,8 @@ export default () => {
 
       <DialogConfirmation
         dialogID="dialogConfirmation-activateCDKey"
-        title={`为自己激活CDKey`}
-        description={"是否要为自己激活此CDKey？"}
+        title={t`Activate a CDKey for yourself`} //为自己激活CDKey
+        description={t`Do you wish to activate this CDKey for yourself?`} // "是否要为自己激活此CDKey？"
         onFinish={async () => {
           MicroModal.close("dialogConfirmation-activateCDKey");
 
@@ -426,7 +427,7 @@ export default () => {
 
       {
         loggedInPlayer?.games.includes(cdkey?.game || "") || false?
-        <h1>您已拥有此游戏。</h1>
+        <h1> <Trans>You have already owned this game.</Trans></h1>
         :null
       }
 
@@ -435,3 +436,5 @@ export default () => {
     </section>
   );
 };
+
+export default CDKeyDetailView;

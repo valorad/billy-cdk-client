@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { t } from "@lingui/macro";
 
 import "./dialog.scss";
 import "./dialogInput.scss";
@@ -7,17 +8,6 @@ import Menu from "../menu";
 import { MenuItem } from "../../models/menu.interface";
 import MicroModal from "micromodal";
 import { DialogInputItem } from "../../models/dialog.interface";
-
-// interface ItemStore {
-//   name: string,
-//   value: string | number | boolean,
-// }
-
-// interface InputItem extends ItemStore {
-//   propName: string, // the name of the field holding the property value
-//   type?: "text" | "textArea" | "checkBox" | "number",
-//   isRequired?: boolean,
-// }
 
 interface FormStore {
   [index: string]: DialogInputItem,
@@ -35,7 +25,7 @@ interface dialogInputProps {
   onFinish: (data: any) => any,
 }
 
-export default (props: dialogInputProps) => {
+const DialogInput = (props: dialogInputProps) => {
 
   const dialogID = `${props.dialogID}`;
 
@@ -74,18 +64,14 @@ export default (props: dialogInputProps) => {
 
   const menus: MenuItem[] = [
     {
-      name: "完成",
+      name: t`Submit`,
       action: () => {
         // -> if success
         returnResult(result);
-        // if (result.ok) {
-        //   setOutputData({});
-        //   setFormStore({...formStoreInitState});
-        // }
       },
     },
     {
-      name: "取消",
+      name: t`Cancel`,
       action: () => {
         setOutputData({});
         setFormStore({...formStoreInitState});
@@ -256,3 +242,5 @@ export default (props: dialogInputProps) => {
     </div>
   );
 };
+
+export default DialogInput;

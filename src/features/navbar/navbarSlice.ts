@@ -1,8 +1,10 @@
+import { t } from "@lingui/macro";
+
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
-  title: "欢迎来到Billy CDKey",
-  description: "高端黑框框版",
+  title: t`Welcome to Billy CDKey!`,
+  description: t`High-end Terminal Version`,
 };
 
 export default createSlice({

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { t } from "@lingui/macro";
 
 import Menu from "../menu";
 import { MenuItem } from "../../models/menu.interface";
@@ -15,7 +16,7 @@ interface dialogConfirmationProps {
   onFinish?: () => any,
 }
 
-export default (props: dialogConfirmationProps) => {
+const DialogConfirmation = (props: dialogConfirmationProps) => {
 
   props = {
     // set default values
@@ -34,11 +35,11 @@ export default (props: dialogConfirmationProps) => {
       case "YESNO":
         menus = [
           {
-            name: "确定",
+            name: t`Confirm`,
             action: props.onFinish || (() => {}),
           },
           {
-            name: "取消",
+            name: t`Cancel`,
             action: () => {
               MicroModal.close(dialogID);
             },
@@ -48,7 +49,7 @@ export default (props: dialogConfirmationProps) => {
       case "OKAY":
         menus = [
           {
-            name: "好的",
+            name: t`Okay`,
             action: props.onFinish || (() => {
               MicroModal.close(dialogID);
             }),
@@ -92,3 +93,5 @@ export default (props: dialogConfirmationProps) => {
     </div>
   );
 };
+
+export default DialogConfirmation;

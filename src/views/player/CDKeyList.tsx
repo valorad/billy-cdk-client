@@ -1,20 +1,21 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { t, Trans } from "@lingui/macro";
 
 import CDKeyList from "../../components/cdkey/list";
 
 import { setTitle, setDescription } from "../../features/navbar";
-import { useRoute } from "wouter";
+import { useParams } from "react-router-dom";
 import { useCDKeyList } from "../../services/cdkey";
 import { usePlayerDetail } from "../../services/player";
 
 // import "./Dummy.scss";
 
-export default () => {
+const CDKeyListView = () => {
 
   const dispatch = useDispatch();
 
-  const params = useRoute("/players/dbname/:dbname/cdkeys")[1];
+  const params: any = useParams();
 
   // test data
   // const cdkeys: CDKey[] = [
@@ -49,7 +50,7 @@ export default () => {
   // });
 
   let dbname = params?.dbname || "mr-stranger";
-  const playerName0 = "神秘的陌生人";
+  const playerName0 = t`Mr. Stranger`; //"神秘的陌生人";
   const { isQueryLoading: isPlayerQueryLoading, queryError: playerQueryError, player } = usePlayerDetail(dbname);
   const playerDisplayName = player?.name || player?.dbname || playerName0;
   const { isQueryLoading: isCDKeyQueryLoading, queryError: cdkeyQueryError, cdkeys } = useCDKeyList({player: dbname}, {perPage: 1000});
@@ -93,37 +94,37 @@ export default () => {
     if (isPlayerQueryLoading) {
       return (
         <div className="statusInfo">
-          <h1>读取玩家中，请稍后...</h1>
+          <h1><Trans>Loading player data</Trans>, <Trans>please wait</Trans>...</h1>
         </div>
       );
     } else if (playerQueryError || player === undefined) {
       return (
         <div className="statusInfo">
-          <h1>错误！无法进行玩家查询。请联系管理员。</h1>
+          <h1><Trans>Error</Trans>! <Trans>Failed to load player data.</Trans><Trans>Please contact the administrator.</Trans></h1>
         </div>
       );
     } else if (player === null) {
       return (
         <div className="statusInfo">
-          <h1>错误！未找到该玩家。请联系管理员。</h1>
+          <h1><Trans>Error</Trans>! <Trans>Unable to find the player.</Trans> <Trans>Please contact the administrator.</Trans></h1>
         </div>
       );
     } else if (isCDKeyQueryLoading) {
       return (
         <div className="statusInfo">
-          <h1>读取CDKey信息中，请稍后...</h1>
+          <h1><Trans>Loading CDKey data</Trans>, <Trans>please wait</Trans>...</h1>
         </div>
       );
     } else if (cdkeyQueryError || cdkeys === undefined) {
       return (
         <div className="statusInfo">
-          <h1>错误！无法进行CDKey查询。请联系管理员。</h1>
+          <h1><Trans>Error</Trans>! <Trans>Unable to load CDKey data.</Trans> <Trans>Please contact the administrator.</Trans></h1>
         </div>
       );
     } else if (cdkeys.length <= 0) {
       return (
         <div className="statusInfo">
-          <h1>{playerDisplayName}的库存中没有任何CDKey。如果你觉得不对劲，请联系管理员。</h1>
+          <h1><Trans>No CDKey found in the inventory of {playerDisplayName}.</Trans> <Trans>If you think there has been something wrong, please contact the administrator. </Trans></h1>
         </div>
       );
     } else {
@@ -150,8 +151,8 @@ export default () => {
 
   useEffect(() => {
     
-    dispatch(setTitle(`${playerDisplayName}的CDKey库存列表`));
-    dispatch(setDescription(`${playerDisplayName}的CDKey`));
+    dispatch(setTitle(t`CDKey Inventory of ${playerDisplayName}`)); //的CDKey库存列表
+    dispatch(setDescription(`CDKeys owned by ${playerDisplayName}`));
 
     
     
@@ -164,3 +165,5 @@ export default () => {
     </section>
   );
 };
+
+export default CDKeyListView;

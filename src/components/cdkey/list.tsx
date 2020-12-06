@@ -12,7 +12,7 @@ interface cdkeyListProps {
   detailedCDKeys?: DetailedCDKey[],
 }
 
-export default (props: cdkeyListProps) => {
+const CDKeyList = (props: cdkeyListProps) => {
 
 
   let cdkeyMenuItems: MenuItem[] = [];
@@ -42,3 +42,5 @@ export default (props: cdkeyListProps) => {
     </div>
   );
 };
+
+export default CDKeyList;

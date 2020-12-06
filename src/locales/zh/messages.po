@@ -1,0 +1,885 @@
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2020-11-30 21:59+0000\n"
+"Mime-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: @lingui/cli\n"
+"Language: zh\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Plural-Forms: \n"
+
+#: src/views/cdkey/CDKey.tsx:45
+#: src/views/cdkey/Detail.tsx:32
+#: src/views/store/CDKey.tsx:24
+#: src/views/store/CDKeyList.tsx:14
+#: src/views/store/GameDetail.tsx:25
+msgid "A game of non-existence"
+msgstr "不存在的游戏"
+
+#: src/views/cdkey/Detail.tsx:242
+msgid "Activate a CDKey for yourself"
+msgstr "为自己激活CDKey"
+
+#: src/views/cdkey/CDKey.tsx:50
+msgid "Activate a CDKey for youself, or manage your CDKey incentory"
+msgstr "为自己激活CDKey，或是管理CDKey库存"
+
+#: src/views/cdkey/CDKey.tsx:90
+msgid "Activate a game"
+msgstr "激活游戏"
+
+#: src/views/cdkey/Detail.tsx:130
+msgid "Activate for yourself"
+msgstr "为自己激活"
+
+#: src/views/cdkey/Detail.tsx:143
+msgid "Activate for: {gameDisplayName}"
+msgstr "激活{gameDisplayName}的CDKey"
+
+#: src/views/cdkey/CDKey.tsx:60
+#: src/views/cdkey/Detail.tsx:158
+msgid "Activating"
+msgstr "激活中"
+
+#: src/views/cdkey/Detail.tsx:158
+msgid "Activating CDKey"
+msgstr "正在激活CDKey中"
+
+#: src/views/cdkey/CDKey.tsx:60
+msgid "Activating the CDKey"
+msgstr "正在激活CDKey中"
+
+#: src/views/player/Player.tsx:83
+msgid "Add A New Player"
+msgstr "新增玩家"
+
+#: src/views/player/Player.tsx:35
+msgid "Add a new player"
+msgstr "添加新玩家"
+
+#: src/views/player/Player.tsx:78
+msgid "Adding"
+msgstr "添加中..."
+
+#: src/views/player/Player.tsx:79
+msgid "Adding a new player"
+msgstr "正在添加玩家中"
+
+#: src/views/player/PlayerList.tsx:66
+msgid "All the players are your friends"
+msgstr "所有玩家都是您的好友"
+
+#: src/components/cdkey/detail.tsx:9
+msgid "Attention: this CDKey has already been activated"
+msgstr "注意: 此CDKey已被激活"
+
+#: src/components/navbar.tsx:9
+msgid "Billy CDKey Remastered Edition"
+msgstr "Billy CDKey重制版"
+
+#: src/views/store/Store.tsx:35
+msgid "Billy Game Store"
+msgstr "Billy游戏商店"
+
+#: src/components/player/detail.tsx:14
+msgid "Biography"
+msgstr "简介"
+
+#: src/views/store/Store.tsx:36
+msgid "Browse the game list, or publish a new game."
+msgstr "浏览游戏列表，或是发布一款新游戏"
+
+#: src/views/Home.tsx:17
+msgid "Browse the store"
+msgstr "浏览商店"
+
+#: src/views/store/GameDetail.tsx:69
+msgid "Buy For Yourself"
+msgstr "为自己购买"
+
+#: src/views/store/CDKey.tsx:48
+msgid "CDKey"
+msgstr "CDKey"
+
+#: src/views/cdkey/Detail.tsx:142
+msgid "CDKey Details"
+msgstr "CDKey详情"
+
+#: src/views/player/CDKeyList.tsx:129
+msgid "CDKey Inventory of {playerDisplayName}"
+msgstr "{playerDisplayName}的CDKey库存列表"
+
+#: src/views/cdkey/CDKey.tsx:49
+msgid "CDKey Management"
+msgstr "CDKey管理"
+
+#: src/views/store/CDKey.tsx:54
+msgid "CDKey Price"
+msgstr "CDKey价格"
+
+#: src/components/cdkey/detail.tsx:11
+msgid "CDKey Value"
+msgstr "激活码"
+
+#: src/views/store/CDKey.tsx:37
+msgid "CDKey list of {gameDisplayName}"
+msgstr "{gameDisplayName}的CDKey列表"
+
+#: src/components/modal/dialogConfirmation.tsx:21
+#: src/components/modal/dialogInput.tsx:42
+msgid "Cancel"
+msgstr "取消"
+
+#: src/views/Home.tsx:33
+#: src/views/I18n.tsx:14
+msgid "Change Language"
+msgstr "切换语言"
+
+#: src/views/I18n.tsx:31
+msgid "Chinese Simplified"
+msgstr "简体中文"
+
+#: src/components/modal/dialogConfirmation.tsx:17
+msgid "Confirm"
+msgstr "确定"
+
+#: src/views/cdkey/Detail.tsx:169
+msgid "Congratulations! You have successfully activated the game: {0}"
+msgstr "恭喜您成功激活游戏：{0}"
+
+#: src/views/store/CDKey.tsx:95
+#: src/views/store/Store.tsx:50
+msgid "Creating"
+msgstr "创建中"
+
+#: src/components/navbar.tsx:10
+msgid "Current Theme"
+msgstr "当前主题风格"
+
+#: src/views/player/Player.tsx:24
+msgid "Currently all the players are your friends."
+msgstr "目前所有玩家都是您的好友。"
+
+#: src/views/cdkey/Detail.tsx:226
+msgid "Delete CDKey"
+msgstr "删除CDKey"
+
+#: src/views/store/GameDetail.tsx:57
+msgid "Delete From Store"
+msgstr "从商店删除"
+
+#: src/views/store/GameDetail.tsx:218
+msgid "Delete Game From Store: {gameDisplayName}"
+msgstr "删除商店游戏: {gameDisplayName}"
+
+#: src/views/player/PlayerDetail.tsx:55
+msgid "Delete Player"
+msgstr "删除玩家"
+
+#: src/views/player/PlayerDetail.tsx:192
+msgid "Delete Player: {playerDisplayName}"
+msgstr "删除玩家：{playerDisplayName}"
+
+#: src/views/cdkey/Detail.tsx:153
+#: src/views/player/PlayerDetail.tsx:133
+#: src/views/store/GameDetail.tsx:116
+msgid "Deleting"
+msgstr "删除中"
+
+#: src/views/cdkey/Detail.tsx:153
+msgid "Deleting CDKey"
+msgstr "正在删除CDKey中"
+
+#: src/views/player/PlayerDetail.tsx:133
+msgid "Deleting player"
+msgstr "正在删除玩家中"
+
+#: src/views/store/GameDetail.tsx:117
+msgid "Deleting the game from the store"
+msgstr "正在删除商店游戏中"
+
+#: src/views/cdkey/Detail.tsx:243
+msgid "Do you wish to activate this CDKey for yourself?"
+msgstr "是否要为自己激活此CDKey？"
+
+#: src/views/cdkey/Detail.tsx:226
+#: src/views/store/GameDetail.tsx:144
+msgid "Do you wish to proceed?"
+msgstr "是否继续？"
+
+#: src/views/cdkey/Detail.tsx:112
+msgid "Drop the CDKey"
+msgstr "丢弃此CDKey"
+
+#: src/views/Dummy.tsx:10
+msgid "Dummy Page"
+msgstr "Dummy Page"
+
+#: src/views/store/GameDetail.tsx:53
+msgid "Edit Game Information"
+msgstr "修改游戏信息"
+
+#: src/views/player/PlayerDetail.tsx:51
+msgid "Edit Player"
+msgstr "编辑玩家信息"
+
+#: src/views/store/GameDetail.tsx:174
+msgid "Edit information: {gameDisplayName}"
+msgstr "编辑信息：{gameDisplayName}"
+
+#: src/views/player/PlayerDetail.tsx:148
+msgid "Edit information: {playerDisplayName}"
+msgstr "编辑信息：{playerDisplayName}"
+
+#: src/views/I18n.tsx:19
+msgid "English"
+msgstr "英语-English"
+
+#: src/views/cdkey/CDKey.tsx:41
+msgid "Enter and Activate a New CDKey"
+msgstr "输入新的CDKey并激活"
+
+#: src/views/AppContent.tsx:57
+#: src/views/cdkey/Detail.tsx:97
+#: src/views/cdkey/Detail.tsx:102
+#: src/views/player/CDKeyList.tsx:88
+#: src/views/player/CDKeyList.tsx:93
+#: src/views/player/CDKeyList.tsx:103
+#: src/views/player/GameList.tsx:54
+#: src/views/player/GameList.tsx:59
+#: src/views/player/GameList.tsx:69
+#: src/views/player/PlayerDetail.tsx:114
+#: src/views/player/PlayerDetail.tsx:119
+#: src/views/player/PlayerList.tsx:52
+#: src/views/player/PlayerList.tsx:57
+#: src/views/store/CDKey.tsx:74
+#: src/views/store/CDKey.tsx:79
+#: src/views/store/CDKeyList.tsx:56
+#: src/views/store/CDKeyList.tsx:61
+#: src/views/store/CDKeyList.tsx:71
+#: src/views/store/GameDetail.tsx:86
+#: src/views/store/GameDetail.tsx:91
+#: src/views/store/GameList.tsx:43
+#: src/views/store/GameList.tsx:48
+msgid "Error"
+msgstr "错误"
+
+#: src/views/Home.tsx:37
+msgid "Exit"
+msgstr "退出"
+
+#: src/views/cdkey/CDKey.tsx:65
+msgid "Failed to activate CDKey. Please Check your Internet connection, double-check the input value and retry"
+msgstr "激活CDKey失败，请查看网络连接，检查输入值并重试。"
+
+#: src/views/cdkey/CDKey.tsx:72
+msgid "Failed to activate CDKey. The reason is: {0}"
+msgstr "激活CDKey失败，原因是：{0}"
+
+#: src/views/cdkey/Detail.tsx:183
+msgid "Failed to activate the CDKey. Please check your Internet conenction and try again later."
+msgstr "激活CDKey失败，请查看网络连接并重试。"
+
+#: src/views/cdkey/Detail.tsx:189
+msgid "Failed to activate the CDKey. The reason is: {0}"
+msgstr "激活CDKey失败，原因是：{0}"
+
+#: src/views/player/Player.tsx:71
+msgid "Failed to add the player, please retry."
+msgstr "添加玩家失败，请重试。"
+
+#: src/views/cdkey/Detail.tsx:178
+msgid "Failed to delete the CDKey."
+msgstr "删除CDKey失败。"
+
+#: src/views/store/GameDetail.tsx:138
+msgid "Failed to delete the game from the store, please try again later."
+msgstr "删除商店游戏失败，请重试。"
+
+#: src/views/player/PlayerDetail.tsx:143
+msgid "Failed to delete the player, please retry."
+msgstr "删除玩家失败，请重试。"
+
+#: src/views/player/PlayerDetail.tsx:137
+msgid "Failed to edit the player, please retry."
+msgstr "修改玩家信息失败，请重试。"
+
+#: src/views/store/CDKey.tsx:88
+msgid "Failed to issue the new CDKey, please try again."
+msgstr "新CDKey签发失败，请重试。"
+
+#: src/views/player/CDKeyList.tsx:88
+#: src/views/player/GameList.tsx:54
+#: src/views/player/PlayerDetail.tsx:114
+#: src/views/player/PlayerList.tsx:52
+msgid "Failed to load player data."
+msgstr "无法进行玩家查询。"
+
+#: src/views/AppContent.tsx:62
+msgid "Failed to log in."
+msgstr "登录失败。"
+
+#: src/views/store/Store.tsx:43
+msgid "Failed to publish the new game."
+msgstr "创建新游戏失败。"
+
+#: src/views/store/GameDetail.tsx:121
+msgid "Failed to purchase the game, please try again later."
+msgstr "购买游戏失败，请稍后重试。"
+
+#: src/views/store/CDKey.tsx:74
+#: src/views/store/CDKeyList.tsx:56
+#: src/views/store/GameDetail.tsx:86
+#: src/views/store/GameList.tsx:43
+msgid "Failed to retrieve game information."
+msgstr "无法进行游戏查询。"
+
+#: src/views/cdkey/Detail.tsx:172
+msgid "Failed to send your gift CDKey. Please try again later."
+msgstr "赠予玩家操作失败，请稍后重试。"
+
+#: src/views/store/GameDetail.tsx:132
+msgid "Failed to update the game information from the store, please try again later."
+msgstr "修改商店游戏信息失败，请稍后重试。"
+
+#: src/views/cdkey/CDKey.tsx:64
+#: src/views/cdkey/CDKey.tsx:72
+#: src/views/cdkey/Detail.tsx:172
+#: src/views/cdkey/Detail.tsx:178
+#: src/views/cdkey/Detail.tsx:183
+#: src/views/cdkey/Detail.tsx:189
+#: src/views/player/Player.tsx:71
+#: src/views/player/PlayerDetail.tsx:137
+#: src/views/player/PlayerDetail.tsx:143
+#: src/views/store/CDKey.tsx:88
+#: src/views/store/GameDetail.tsx:121
+#: src/views/store/GameDetail.tsx:127
+#: src/views/store/GameDetail.tsx:132
+#: src/views/store/GameDetail.tsx:138
+#: src/views/store/Store.tsx:43
+msgid "Failure"
+msgstr "失败"
+
+#: src/components/navbar.tsx:10
+msgid "Fallout Terminal"
+msgstr "辐射控制台"
+
+#: src/views/I18n.tsx:25
+msgid "French"
+msgstr "法语-Français"
+
+#: src/views/store/CDKeyList.tsx:20
+msgid "Game"
+msgstr "游戏"
+
+#: src/views/store/GameDetail.tsx:184
+#: src/views/store/Store.tsx:72
+msgid "Game Description"
+msgstr "游戏简介"
+
+#: src/views/store/GameDetail.tsx:75
+msgid "Game Details"
+msgstr "游戏详情"
+
+#: src/views/store/Store.tsx:60
+msgid "Game ID"
+msgstr "游戏ID"
+
+#: src/views/store/GameDetail.tsx:178
+#: src/views/store/Store.tsx:66
+msgid "Game Name"
+msgstr "游戏名称"
+
+#: src/views/store/CDKey.tsx:60
+msgid "Game Platform"
+msgstr "游戏平台"
+
+#: src/views/store/GameDetail.tsx:190
+#: src/views/store/Store.tsx:78
+msgid "Game Price"
+msgstr "游戏价格"
+
+#: src/components/cdkey/detail.tsx:12
+msgid "Game to Activate"
+msgstr "激活游戏"
+
+#: src/views/store/GameList.tsx:11
+msgid "Games In Store"
+msgstr "商店游戏列表"
+
+#: src/views/player/GameList.tsx:43
+msgid "Games owned by {playerDisplayName}"
+msgstr "{playerDisplayName}的游戏"
+
+#: src/views/cdkey/Detail.tsx:121
+msgid "Gift the CDKey to a friend"
+msgstr "赠予他人"
+
+#: src/components/tips.tsx:6
+msgid "Go Back"
+msgstr "返回上级"
+
+#: src/components/tips.tsx:7
+#: src/views/Dummy.tsx:15
+#: src/views/Dummy.tsx:19
+#: src/views/Dummy.tsx:23
+#: src/views/HTTP404.tsx:10
+msgid "Go Home"
+msgstr "前往主页"
+
+#: src/features/navbar/navbarSlice.ts:5
+#: src/views/Dummy.tsx:11
+msgid "High-end Terminal Version"
+msgstr "高端黑框框版"
+
+#: src/views/cdkey/Detail.tsx:172
+#: src/views/cdkey/Detail.tsx:178
+#: src/views/store/GameDetail.tsx:121
+msgid "If in doubt, please do not hesitate to contact your administrator."
+msgstr "如有疑问，请联系管理员。"
+
+#: src/views/cdkey/Detail.tsx:226
+msgid "If you no longer need this CDKey (e.g. The CDKey has been activated manually), you may delete it."
+msgstr "如果您不再需要此CDKey（例如Key已被手动激活），可以删除此CDKey。"
+
+#: src/views/player/CDKeyList.tsx:108
+#: src/views/player/GameList.tsx:74
+#: src/views/store/CDKeyList.tsx:76
+msgid "If you think there has been something wrong, please contact the administrator."
+msgstr "如果你觉得不对劲，请联系管理员。"
+
+#: src/components/game/detail.tsx:10
+msgid "Introduction"
+msgstr "简介"
+
+#: src/views/player/PlayerDetail.tsx:165
+msgid "Is Tuhao Premium Member"
+msgstr "是黄金高端土豪会员"
+
+#: src/views/store/CDKey.tsx:41
+msgid "Issue A New CDKey"
+msgstr "签发新的CDKey"
+
+#: src/views/store/CDKey.tsx:100
+msgid "Issue the new CDKey"
+msgstr "签发新CDKey"
+
+#: src/views/store/CDKeyList.tsx:19
+msgid "Issued CDKeys"
+msgstr "已签发的CDKey"
+
+#: src/views/store/CDKey.tsx:96
+msgid "Issuing the new CDKey"
+msgstr "正在签发新CDKey中"
+
+#: src/views/player/PlayerDetail.tsx:109
+#: src/views/player/PlayerList.tsx:47
+#: src/views/store/GameDetail.tsx:81
+#: src/views/store/GameList.tsx:38
+msgid "Loading"
+msgstr "载入中"
+
+#: src/views/player/CDKeyList.tsx:98
+#: src/views/store/CDKeyList.tsx:66
+msgid "Loading CDKey data"
+msgstr "读取CDKey信息中"
+
+#: src/views/player/CDKeyList.tsx:83
+#: src/views/player/GameList.tsx:49
+msgid "Loading player data"
+msgstr "读取玩家中"
+
+#: src/views/AppContent.tsx:52
+msgid "Logging in"
+msgstr "登录中"
+
+#: src/views/cdkey/CDKey.tsx:37
+msgid "Manage My CDKey Inventory"
+msgstr "管理我的CDKey库存"
+
+#: src/views/store/GameDetail.tsx:61
+msgid "Manage the CDKeys of {gameDisplayName}"
+msgstr "管理{gameDisplayName}的CDKey"
+
+#: src/views/cdkey/Detail.tsx:148
+msgid "Modifying"
+msgstr "修改中"
+
+#: src/views/cdkey/Detail.tsx:148
+msgid "Modifying CDKey"
+msgstr "正在修改CDKey信息中"
+
+#: src/views/cdkey/Detail.tsx:35
+#: src/views/player/CDKeyList.tsx:44
+#: src/views/player/GameList.tsx:13
+#: src/views/player/PlayerDetail.tsx:23
+msgid "Mr. Stranger"
+msgstr "神秘的陌生人"
+
+#: src/views/Home.tsx:29
+msgid "My CDKeys"
+msgstr "我的CDKey"
+
+#: src/views/Home.tsx:21
+msgid "My Friends"
+msgstr "我的好友"
+
+#: src/views/Home.tsx:25
+msgid "My Games"
+msgstr "我的游戏"
+
+#: src/features/login/loginSlice.ts:6
+msgid "My friend"
+msgstr "朋友"
+
+#: src/views/player/CDKeyList.tsx:108
+msgid "No CDKey found in the inventory of {playerDisplayName}."
+msgstr "{playerDisplayName}的库存中没有任何CDKey。"
+
+#: src/views/store/CDKeyList.tsx:76
+msgid "No CDKeys are issued for this game."
+msgstr "这个游戏还没有签发任何CDKey。"
+
+#: src/views/player/GameList.tsx:74
+msgid "No Games found owned by {playerDisplayName}."
+msgstr "{playerDisplayName}没有任何游戏。"
+
+#: src/views/HTTP404.tsx:16
+msgid "No worries, just go back to home page."
+msgstr "别担心，回主页就好。"
+
+#: src/views/player/Player.tsx:60
+msgid "Nominate as Tuhao Premium Member"
+msgstr "任命玩家为黄金高端土豪会员"
+
+#: src/components/modal/dialogConfirmation.tsx:31
+msgid "Okay"
+msgstr "好的"
+
+#: src/components/cdkey/detail.tsx:10
+msgid "Owner Player"
+msgstr "持有玩家"
+
+#: src/components/cdkey/detail.tsx:14
+msgid "Platform"
+msgstr "游戏平台"
+
+#: src/views/player/Player.tsx:54
+#: src/views/player/PlayerDetail.tsx:159
+msgid "Player Biography"
+msgstr "玩家简介"
+
+#: src/views/player/PlayerDetail.tsx:60
+msgid "Player Details"
+msgstr "玩家详情"
+
+#: src/views/cdkey/Detail.tsx:199
+#: src/views/player/Player.tsx:42
+msgid "Player ID"
+msgstr "玩家ID"
+
+#: src/views/player/Player.tsx:31
+#: src/views/player/PlayerList.tsx:65
+msgid "Player List"
+msgstr "玩家列表"
+
+#: src/views/player/Player.tsx:23
+msgid "Player Management"
+msgstr "玩家管理"
+
+#: src/views/player/Player.tsx:48
+#: src/views/player/PlayerDetail.tsx:153
+msgid "Player Name"
+msgstr "玩家名称"
+
+#: src/views/cdkey/Detail.tsx:195
+msgid "Please carefully fill in the database ID of a player. No idea about the ID? You may go visit the player page, and check the url segment after \"dbname\""
+msgstr "请准确填写玩家的数据库ID。不知道ID？请前往玩家页面，查看网址中\"dbname\"后的字段"
+
+#: src/views/AppContent.tsx:57
+#: src/views/AppContent.tsx:62
+#: src/views/cdkey/Detail.tsx:97
+#: src/views/cdkey/Detail.tsx:102
+#: src/views/player/CDKeyList.tsx:88
+#: src/views/player/CDKeyList.tsx:93
+#: src/views/player/CDKeyList.tsx:103
+#: src/views/player/GameList.tsx:54
+#: src/views/player/GameList.tsx:59
+#: src/views/player/GameList.tsx:69
+#: src/views/player/PlayerDetail.tsx:114
+#: src/views/player/PlayerDetail.tsx:119
+#: src/views/player/PlayerList.tsx:52
+#: src/views/player/PlayerList.tsx:57
+#: src/views/store/GameDetail.tsx:86
+#: src/views/store/GameDetail.tsx:91
+#: src/views/store/GameList.tsx:43
+#: src/views/store/GameList.tsx:48
+msgid "Please contact the administrator."
+msgstr "请联系管理员。"
+
+#: src/views/cdkey/CDKey.tsx:91
+msgid "Please enter your CDKey carefully"
+msgstr "请仔细填写CDKey"
+
+#: src/views/player/Player.tsx:84
+#: src/views/player/PlayerDetail.tsx:149
+#: src/views/store/CDKey.tsx:101
+#: src/views/store/Store.tsx:56
+msgid "Please fill in the information below."
+msgstr "请填写以下信息"
+
+#: src/views/store/CDKeyList.tsx:76
+msgid "Please issue a CDKey first."
+msgstr "请先签发一个CDKey"
+
+#: src/views/player/Player.tsx:71
+#: src/views/player/PlayerDetail.tsx:137
+#: src/views/player/PlayerDetail.tsx:143
+#: src/views/store/CDKey.tsx:74
+#: src/views/store/CDKey.tsx:79
+#: src/views/store/CDKey.tsx:88
+#: src/views/store/CDKeyList.tsx:56
+#: src/views/store/CDKeyList.tsx:61
+#: src/views/store/CDKeyList.tsx:71
+#: src/views/store/GameDetail.tsx:132
+#: src/views/store/GameDetail.tsx:138
+#: src/views/store/Store.tsx:43
+msgid "Please refer to the console or server logs for more details."
+msgstr "更多详情请查阅控制台或后台记录。"
+
+#: src/components/cdkey/detail.tsx:13
+#: src/components/game/detail.tsx:9
+msgid "Price"
+msgstr "价格"
+
+#: src/views/store/Store.tsx:30
+#: src/views/store/Store.tsx:55
+msgid "Publish A New Game"
+msgstr "发布新游戏"
+
+#: src/views/store/Store.tsx:51
+msgid "Publishing a new game"
+msgstr "正在发布新游戏中"
+
+#: src/views/store/GameDetail.tsx:143
+msgid "Purchase {gameDisplayName}"
+msgstr "购买{gameDisplayName}"
+
+#: src/views/store/GameDetail.tsx:104
+msgid "Purchasing"
+msgstr "购买中"
+
+#: src/views/store/GameDetail.tsx:105
+msgid "Purchasing the game for you"
+msgstr "正在为您购买游戏中"
+
+#: src/views/cdkey/Detail.tsx:92
+msgid "Retrieving CDKey info"
+msgstr "获取CDKey信息中"
+
+#: src/views/store/CDKey.tsx:69
+#: src/views/store/CDKeyList.tsx:51
+msgid "Retrieving game information"
+msgstr "获取游戏信息中"
+
+#: src/views/player/GameList.tsx:64
+msgid "Retrieving game list"
+msgstr "获取游戏列表中"
+
+#: src/views/player/GameList.tsx:44
+#: src/views/store/GameList.tsx:12
+msgid "Select a game to view its details."
+msgstr "选择一款游戏以查看详情"
+
+#: src/views/cdkey/Detail.tsx:194
+msgid "Send a gift CDKey"
+msgstr "赠予其他玩家"
+
+#: src/views/store/Store.tsx:26
+msgid "Store Game List"
+msgstr "商店游戏列表"
+
+#: src/components/modal/dialogInput.tsx:35
+msgid "Submit"
+msgstr "完成"
+
+#: src/views/cdkey/CDKey.tsx:79
+#: src/views/cdkey/CDKey.tsx:85
+#: src/views/cdkey/Detail.tsx:163
+#: src/views/cdkey/Detail.tsx:169
+msgid "Success"
+msgstr "成功"
+
+#: src/views/cdkey/CDKey.tsx:79
+#: src/views/cdkey/CDKey.tsx:85
+msgid "Successfully activated the game: {0}"
+msgstr "成功激活游戏： {0}"
+
+#: src/views/cdkey/Detail.tsx:163
+msgid "Successfully sent your gift CDKey"
+msgstr "成功将CDKey赠予他人"
+
+#: src/views/I18n.tsx:15
+msgid "Switch to a new language by selecting one option below."
+msgstr "选择下列一个语言以进行切换"
+
+#: src/views/HTTP404.tsx:15
+msgid "System Error!"
+msgstr "系统错误！"
+
+#: src/views/store/GameList.tsx:48
+msgid "There are no games in the store."
+msgstr "商店里没有任何游戏。"
+
+#: src/components/game/detail.tsx:10
+msgid "This game is such a masterpiece that it does not need an intro at all."
+msgstr "这个游戏如此优秀，根本不需要简介。"
+
+#: src/components/player/detail.tsx:14
+msgid "This player is too busy playing to introduce himself/herself"
+msgstr "这个玩家太忙，没时间写简介"
+
+#: src/components/player/detail.tsx:8
+msgid "TuHao Premium Membership"
+msgstr "黄金高端土豪会员"
+
+#: src/views/player/PlayerList.tsx:57
+msgid "Unable to find any player."
+msgstr "未能找到任何玩家"
+
+#: src/views/store/CDKey.tsx:79
+#: src/views/store/CDKeyList.tsx:61
+#: src/views/store/GameDetail.tsx:91
+msgid "Unable to find the game."
+msgstr "未找到该游戏。"
+
+#: src/views/AppContent.tsx:62
+#: src/views/player/CDKeyList.tsx:93
+#: src/views/player/GameList.tsx:59
+#: src/views/player/PlayerDetail.tsx:119
+msgid "Unable to find the player."
+msgstr "未找到该玩家。"
+
+#: src/views/cdkey/Detail.tsx:102
+msgid "Unable to find this CDKey"
+msgstr "未找到此CDKey"
+
+#: src/views/player/CDKeyList.tsx:103
+#: src/views/store/CDKeyList.tsx:71
+msgid "Unable to load CDKey data."
+msgstr "无法进行CDKey查询。"
+
+#: src/views/AppContent.tsx:57
+msgid "Unable to log in."
+msgstr "无法登录。"
+
+#: src/views/cdkey/Detail.tsx:97
+msgid "Unable to obtain the CDKey information."
+msgstr "无法进行CDKey查询"
+
+#: src/views/player/GameList.tsx:69
+msgid "Unable to retrieve game list"
+msgstr "无法进行游戏查询"
+
+#: src/components/cdkey/detail.tsx:10
+#: src/components/cdkey/detail.tsx:11
+#: src/components/cdkey/detail.tsx:12
+#: src/components/cdkey/detail.tsx:13
+#: src/components/cdkey/detail.tsx:14
+msgid "Unknown"
+msgstr "未知"
+
+#: src/views/player/PlayerDetail.tsx:127
+#: src/views/store/GameDetail.tsx:110
+msgid "Updating"
+msgstr "修改中"
+
+#: src/views/player/PlayerDetail.tsx:128
+msgid "Updating player information"
+msgstr "正在修改玩家信息中"
+
+#: src/views/store/GameDetail.tsx:111
+msgid "Updating the game information from the store"
+msgstr "正在修改商店游戏信息中"
+
+#: src/views/player/PlayerDetail.tsx:47
+msgid "View His/Her CDKey Inventory"
+msgstr "查看TA的CDKey库存"
+
+#: src/views/player/PlayerDetail.tsx:43
+msgid "View His/Her Game Inventory"
+msgstr "查看TA的游戏库"
+
+#: src/views/store/CDKey.tsx:30
+msgid "View the CDKey list of {gameDisplayName}, or issue a new CDKey"
+msgstr "查看{gameDisplayName}的CDKey列表，或签发一条新的CDKey"
+
+#: src/views/player/PlayerDetail.tsx:193
+#: src/views/store/GameDetail.tsx:219
+msgid "Warning! This cannot be undone!"
+msgstr "警告！此操作无法回滚！"
+
+#: src/components/navbar.tsx:11
+msgid "Welcome Back"
+msgstr "欢迎回来"
+
+#: src/components/navbar.tsx:15
+#: src/features/navbar/navbarSlice.ts:4
+#: src/views/Home.tsx:12
+msgid "Welcome to Billy CDKey!"
+msgstr "欢迎来到Billy CDKey！"
+
+#: src/views/store/GameDetail.tsx:144
+msgid "You are about to purchase {gameDisplayName} for yourself."
+msgstr "即将为您自己购买${gameDisplayName}。"
+
+#: src/views/player/Player.tsx:24
+msgid "You can take a look at the player list, or add a new player."
+msgstr "查看玩家列表或新增一名玩家。"
+
+#: src/views/cdkey/Detail.tsx:273
+#: src/views/store/GameDetail.tsx:98
+msgid "You have already owned this game."
+msgstr "您已拥有此游戏。"
+
+#: src/views/AppContent.tsx:52
+#: src/views/cdkey/CDKey.tsx:60
+#: src/views/cdkey/Detail.tsx:92
+#: src/views/cdkey/Detail.tsx:148
+#: src/views/cdkey/Detail.tsx:153
+#: src/views/cdkey/Detail.tsx:158
+#: src/views/player/CDKeyList.tsx:83
+#: src/views/player/CDKeyList.tsx:98
+#: src/views/player/GameList.tsx:49
+#: src/views/player/GameList.tsx:64
+#: src/views/player/Player.tsx:79
+#: src/views/player/PlayerDetail.tsx:109
+#: src/views/player/PlayerDetail.tsx:128
+#: src/views/player/PlayerDetail.tsx:133
+#: src/views/player/PlayerList.tsx:47
+#: src/views/store/CDKey.tsx:69
+#: src/views/store/CDKey.tsx:96
+#: src/views/store/CDKeyList.tsx:51
+#: src/views/store/CDKeyList.tsx:66
+#: src/views/store/GameDetail.tsx:81
+#: src/views/store/GameDetail.tsx:105
+#: src/views/store/GameDetail.tsx:111
+#: src/views/store/GameDetail.tsx:117
+#: src/views/store/GameList.tsx:38
+#: src/views/store/Store.tsx:51
+msgid "please wait"
+msgstr "请稍后"
+
+#: src/views/player/Player.tsx:43
+#: src/views/store/Store.tsx:61
+msgid "replace w/ alphabetic ID"
+msgstr "请替换英文ID"
+
+#: src/views/store/CDKey.tsx:29
+msgid "{gameDisplayName} CDKey Management"
+msgstr "{gameDisplayName}的CDKey管理"

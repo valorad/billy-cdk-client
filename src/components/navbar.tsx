@@ -1,4 +1,4 @@
-import React from "react";
+import { Trans, t } from "@lingui/macro";
 
 import "./navbar.scss";
 
@@ -8,7 +8,7 @@ interface navbarProps {
   player?: string
 }
 
-export default (props: navbarProps) => {
+const Navbar = (props: navbarProps) => {
 
   return (
     <div className="navbar">
@@ -16,13 +16,13 @@ export default (props: navbarProps) => {
       <nav>
         <header>
           <ul>
-            <li><small>Billy CDKey Remastered Edition</small></li>
-            <li><small>当前主题风格：Fallout Terminal</small></li>
-            <li><small>欢迎回来，{props.player}</small> {/* Player name */}</li>
+            <li><small><Trans>Billy CDKey Remastered Edition</Trans></small></li>
+            <li><small><Trans>Current Theme</Trans>: <Trans>Fallout Terminal</Trans></small></li>
+            <li><small><Trans>Welcome Back</Trans>, {props.player}</small> {/* Player name */}</li>
           </ul>
         </header>
         <main>
-          <h1>{props.title || "欢迎来到Billy CDKey！"}</h1>{/* title */}
+          <h1>{props.title || t`Welcome to Billy CDKey!`}</h1>{/* title */}
           <h2>{props.description}</h2>{/* Description */}
         </main>
       </nav>
@@ -31,3 +31,5 @@ export default (props: navbarProps) => {
   );
 
 };
+
+export default Navbar;

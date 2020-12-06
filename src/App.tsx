@@ -1,7 +1,14 @@
 import React, { useEffect } from "react";
-import { Router } from "wouter";
+import { HashRouter as Router } from "react-router-dom";
 import { useSelector } from "react-redux";
 import MicroModal from "micromodal";
+import { I18nProvider } from '@lingui/react';
+import { i18n } from '@lingui/core';
+import { en as localeEn, fr as localeFr, zh as localeZh} from "make-plural/plurals"
+
+import { messages as messagesEn } from './locales/en/messages.js';
+import { messages as messagesFr } from './locales/fr/messages.js';
+import { messages as messagesZh } from './locales/zh/messages.js';
 
 import "./App.scss";
 import Navbar from "./components/navbar";
@@ -15,47 +22,7 @@ import { selectLoginAsPlayer } from "./features/login";
 import { ApolloProvider } from "@apollo/client";
 import GraphQLClient from "./app/graph";
 
-// const placeRoutingTable = () => {
-//   return (
-//     <Switch>
-//       <Route path="/">
-//         <Redirect to="/index" />
-//       </Route>
-//       <Route path="/index" component={HomeView}></Route>
-//       <Route path="/store" component={StoreView}></Route>
-//       <Route path="/store/games" component={StoreGamesListView}></Route>
-//       <Route path="/store/games/dbname/:dbname" component={StoreGamesDetailView}></Route>
-//       <Route path="/store/games/dbname/:dbname/cdkeys/index" component={StoreGamesCDKeyIndexView}></Route>
-//       <Route path="/store/games/dbname/:dbname/cdkeys" component={StoreGamesCDKeyListView}></Route>
-//       <Route path="/players/index" component={PlayerIndexView}></Route>
-//       <Route path="/players" component={PlayerListView}></Route>
-//       <Route path="/players/dbname/:dbname" component={PlayerDetailView}></Route>
-//       <Route path="/players/dbname/:dbname/games" component={PlayerGameListView}></Route>
-//       <Route path="/players/dbname/:dbname/cdkeys" component={PlayerCDKeyListView}></Route>
-//       <Route path="/cdkeys/index" component={CDKeyIndexView}></Route>
-//       <Route path="/cdkeys/id/:id" component={CDKeyDetailView}></Route>
-//       <Route path="/:rest*" component={HTTP404View}></Route>
-//     </Switch>
-//   );
-// };
-
-// const requestLogIn = () => {
-//   return new Promise<Player>((resolve, reject) => {
-//     setTimeout(() => {
-//       resolve({
-//         dbname: "player-billy",
-//         name: "Billy",
-//         bio: "Master of CDKey!",
-//         isPremium: true,
-//         games: [
-//           "game-cyberpunk2077"
-//         ],
-//       })
-//     }, 500);
-//   });
-// }
-
-export default () => {
+const App = () => {
 
   // const { isQueryLoading, queryError, player: playerToLogin } = usePlayerDetail(`${"player-billy"}`);
   // const playerDisplayName = playerToLogin?.name || playerToLogin?.dbname;
@@ -67,6 +34,12 @@ export default () => {
   const description = useSelector(selectDescription);
   const loginPlayer = useSelector(selectLoginAsPlayer);
   // const [isLoggingIn, setIsLoggingIn] = useState(true);
+
+  const getBrowserLanguage = () => {
+    return navigator.language.replace('-', '_')
+        .toLowerCase()
+        .split('_');
+  };
 
   const onAppKeyDown = (e: React.KeyboardEvent) => {
     // e.preventDefault();
@@ -90,85 +63,61 @@ export default () => {
 
   }
 
-  // const login = async (dbname: string, password: string) => {
-  //   const playerToLogIn = await requestLogIn();
-  //   dispatch(setLoginAsPlayer(playerToLogIn));
-  //   setIsLoggingIn(false);
-  // };
-
-  // const placeMainMenu = () => {
-  //   if (isQueryLoading) {
-  //     return (
-  //       <div className="statusInfo">
-  //         <h1>登录中，请稍后...</h1>
-  //       </div>
-  //     );
-  //   } else if (queryError || playerToLogin === undefined) {
-  //     return (
-  //       <div className="statusInfo">
-  //         <h1>错误！无法登录。请联系管理员。</h1>
-  //       </div>
-  //     );
-  //   } else if (playerToLogin === null) {
-  //     return (
-  //       <div className="statusInfo">
-  //         <h1>登录失败，未找到该玩家。请联系管理员。</h1>
-  //       </div>
-  //     );
-  //   } else {
-  //     return placeRoutingTable();
-  //   }
-  // }
-
-  useEffect(() => {
-
-    // if (loginPlayer.dbname === "") {
-    //   console.log("login");
-      
-    //   dispatch(
-    //     setLoginAsPlayer(playerToLogin || {dbname: "",
-    //       name: "朋友",
-    //       isPremium: false,
-    //       games: [],} as Player
-    //     )
-    //   );
-    // }
-
+  i18n.loadLocaleData({
+    en: {plurals: localeEn},
+    fr: {plurals: localeFr},
+    zh: {plurals: localeZh},
   });
 
+  i18n.load({
+    en: messagesEn,
+    fr: messagesFr,
+    zh: messagesZh,
+  });
+
+  useEffect(() => {
+    if (!i18n.locale) {
+      const [browserLang] = getBrowserLanguage(); 
+      i18n.activate(browserLang);
+    }
+
+  });
+  
+
   return (
+    <I18nProvider i18n={i18n}>
+      <ApolloProvider client={GraphQLClient}>
+        <Router>
 
-    <ApolloProvider client={GraphQLClient}>
-      <Router hook={useHashLocation}>
+          <section className="App" tabIndex={0} onKeyDown={onAppKeyDown}>
+            <div className="overlay"></div>
+            <div className="scanline"></div>
+            <div className="wrapper">
+              <div className="appHolder">
+                <header>
+                  <div className="contentBox">
+                    <Navbar title={title} description={description} player={loginPlayer.name || loginPlayer.dbname} />
+                  </div>
+                </header>    
+                <main>
+                  <div className="contentBox">
 
-        <section className="App" tabIndex={0} onKeyDown={onAppKeyDown}>
-          <div className="overlay"></div>
-          <div className="scanline"></div>
-          <div className="wrapper">
-            <div className="appHolder">
-              <header>
-                <div className="contentBox">
-                  <Navbar title={title} description={description} player={loginPlayer.name || loginPlayer.dbname} />
-                </div>
-              </header>    
-              <main>
-                <div className="contentBox">
+                    <AppContentView />
 
-                  <AppContentView />
+                  </div>
+                </main>
 
-                </div>
-              </main>
-
+              </div>
             </div>
-          </div>
 
-          <Tips />
-          
-        </section>
+            <Tips />
+            
+          </section>
 
-      </Router>
-    </ApolloProvider>
-
+        </Router>
+      </ApolloProvider>
+    </I18nProvider>
   );
 }
 
+export default App;

@@ -6,10 +6,12 @@ interface dummyProps {
 
 }
 
-export default (props: dummyProps) => {
+const Dummy = (props: dummyProps) => {
   return (
     <div className="dummy">
       Dummy works
     </div>
   );
 };
+
+export default Dummy;

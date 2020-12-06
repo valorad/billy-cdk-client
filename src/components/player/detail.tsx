@@ -1,4 +1,5 @@
 import React from "react";
+import { Trans, t } from "@lingui/macro";
 
 import { Player } from "../../models/player.interface";
 import { MenuItem } from "../../models/menu.interface";
@@ -12,12 +13,12 @@ interface playerDetailProps {
   menus: MenuItem[],
 }
 
-export default (props: playerDetailProps) => {
+const PlayerDetail = (props: playerDetailProps) => {
 
   const placePremiumBadge = () => {
     if (props.player.isPremium) {
       return (
-        <h1> <span role="img" aria-label="star">🌟</span> 黄金高端土豪会员 <span role="img" aria-label="star">🌟</span></h1>
+        <h1> <span role="img" aria-label="star">🌟</span> <Trans>TuHao Premium Membership</Trans> <span role="img" aria-label="star">🌟</span></h1>
       );
     }
   };
@@ -26,10 +27,12 @@ export default (props: playerDetailProps) => {
     <div className="playerDetail">
       <header>
         {placePremiumBadge()}
-        <h1>简介：{props.player.bio || "这个玩家太忙，没时间写简介"}</h1>
+        <h1><Trans>Biography</Trans>: {props.player.bio || t`This player is too busy playing to introduce himself/herself`}</h1>
       </header>
 
       <Menu menus={props.menus} />
     </div>
   );
 };
+
+export default PlayerDetail;

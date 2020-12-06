@@ -11,7 +11,7 @@ interface menuProps {
   isAutoFocus?: boolean,
 }
 
-export default (props: menuProps) => {
+const Menu = (props: menuProps) => {
 
   // fill default values
   props = {
@@ -80,7 +80,6 @@ export default (props: menuProps) => {
         className={`menu${index}`}
         onMouseEnter={onMenuItemHover}
         onClick={onMenuClick}
-        // onKeyDown={onMenuKeyDown}
         data-index-number={index}
       >{ele.name}</a>
       );
@@ -115,3 +114,5 @@ export default (props: menuProps) => {
     </div>
   );
 };
+
+export default Menu;

@@ -1,26 +1,28 @@
 import React, { useEffect } from "react";
+import { t } from "@lingui/macro";
+
 import Menu from "../components/menu";
 import { useDispatch } from "react-redux";
 import { MenuItem } from "../models/menu.interface";
 import { setTitle, setDescription } from "../features/navbar";
 
-const menus: MenuItem[] = [
-  {
-    name: "返回首页",
-    link: "#/index",
-  }
-];
 
-
-export default () => {
+const HTTP404View = () => {
 
   const dispatch = useDispatch();
 
+  const menus: MenuItem[] = [
+    {
+      name: t`Go Home`,
+      link: "#/index",
+    }
+  ];
+
+
   useEffect(() => {
     
-    dispatch(setTitle("系统错误！Error 404"));
-    dispatch(setDescription("别担心，回主页就好。"));
-    
+    dispatch(setTitle(t`System Error!` + ` (404)`));// "系统错误！Error 404"
+    dispatch(setDescription(t`No worries, just go back to home page.`));  //"别担心，回主页就好。"
   });
 
   return (
@@ -29,3 +31,5 @@ export default () => {
     </section>
   );
 };
+
+export default HTTP404View;

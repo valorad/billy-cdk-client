@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRoute } from "wouter";
+import { useParams } from "react-router-dom";
 import MicroModal from "micromodal";
+import { t, Trans } from "@lingui/macro";
 
 import GameDetail from "../../components/game/detail";
 import DialogConfirmation from "../../components/modal/dialogConfirmation";
@@ -17,12 +18,12 @@ import { usePlayerGameAddition } from "../../services/player";
 import { CUDMessage } from "../../models/cudmessage.interface";
 
 
-export default () => {
+const GameDetailView = () => {
 
-  const params = useRoute("/store/games/dbname/:dbname")[1];
+  const params: any = useParams();
 
   let dbname = params?.dbname || "game:non-existance";
-  const name0 = "不存在的游戏";
+  const name0 = t`A game of non-existence`;
 
   const dispatch = useDispatch();
   const { isQueryLoading, queryError, game } = useGameDetail(dbname);
@@ -61,15 +62,15 @@ export default () => {
 
   const menus: MenuItem[] = [
     {
-      name: "修改游戏信息",
+      name: t`Edit Game Information`, //"修改游戏信息"
       action: editGamePopUp,
     },
     {
-      name: "从商店删除",
+      name: t`Delete From Store`, //"从商店删除"
       action: deleteGamePopUp,
     },
     {
-      name: `管理${gameDisplayName}的CDKey`,
+      name: t`Manage the CDKeys of ${gameDisplayName}`, //`管理${gameDisplayName}的CDKey`
       link: `#/store/games/dbname/${dbname}/cdkeys/index`,
     },
   ];
@@ -79,7 +80,7 @@ export default () => {
   // add but menu if game not owned by logged in player
   if (!doesPlayerOwnThisGame) {
     menus.unshift({
-      name: "为自己购买",
+      name: t`Buy For Yourself`, //"为自己购买"
       action: purchasePopUp,
     });
   }
@@ -87,7 +88,7 @@ export default () => {
   const [addGameResponse, setAddGameResponse] = useState({} as CUDMessage);
 
   useEffect(() => {
-    dispatch(setTitle("游戏详情"));
+    dispatch(setTitle(t`Game Details`)); //"游戏详情"
     dispatch(setDescription(gameDisplayName));
   });
 
@@ -96,19 +97,19 @@ export default () => {
     if (isQueryLoading) {
       return (
         <div className="statusInfo">
-          <h1>载入中，请稍后...</h1>
+          <h1> <Trans>Loading</Trans>, <Trans>please wait</Trans>...</h1>
         </div>
       );
     } else if (queryError || game === undefined) {
       return (
         <div className="statusInfo">
-          <h1>错误！无法进行游戏查询。请联系管理员。</h1>
+          <h1><Trans>Error</Trans>! <Trans>Failed to retrieve game information.</Trans> <Trans>Please contact the administrator.</Trans></h1>
         </div>
       );
     } else if (game === null) {
       return (
         <div className="statusInfo">
-          <h1>错误！未找到该游戏。请联系管理员。</h1>
+          <h1><Trans>Error</Trans>! <Trans>Unable to find the game.</Trans> <Trans>Please contact the administrator.</Trans></h1>
         </div>
       );
     } else {
@@ -117,7 +118,7 @@ export default () => {
 
           {
             doesPlayerOwnThisGame?
-            <h1>您已拥有此游戏。</h1>
+            <h1><Trans>You have already owned this game.</Trans></h1>
             :null
           }
 
@@ -128,8 +129,8 @@ export default () => {
             <DialogConfirmation
               dialogID="dialogConfirmation-purchasingGame"
               mode="INFO"
-              title="购买中..."
-              description="正在为您购买游戏中，请稍后..."
+              title={t`Purchasing` + `...`} //"购买中..."
+              description={t`Purchasing the game for you` + `, ` + t`please wait` + `...`} //"正在为您购买游戏中，请稍后..."
               isAutoShown={true}
             />
             :null
@@ -140,8 +141,8 @@ export default () => {
             <DialogConfirmation
               dialogID="dialogConfirmation-updatingGame"
               mode="INFO"
-              title="修改中..."
-              description="正在修改商店游戏信息中，请稍后..."
+              title={t`Updating` + `...`} //"修改中..."
+              description={t`Updating the game information from the store` + `, ` + t`please wait` + `...`} //"正在修改商店游戏信息中，请稍后..."
               isAutoShown={true}
             />
             :null
@@ -152,8 +153,8 @@ export default () => {
             <DialogConfirmation
               dialogID="dialogConfirmation-deletingGame"
               mode="INFO"
-              title="删除中..."
-              description="正在删除商店游戏中，请稍后..."
+              title={t`Deleting` + `...`} //"删除中..."
+              description={t`Deleting the game from the store` + `, ` + t`please wait` + `...`} //"正在删除商店游戏中，请稍后..."
               isAutoShown={true}
             />
             :null
@@ -162,8 +163,8 @@ export default () => {
           <DialogConfirmation
             dialogID="dialogConfirmation-failedToPurchaseAGame"
             mode="OKAY"
-            title="失败"
-            description="购买游戏失败，请重试。如有疑问请联系管理员。"
+            title={t`Failure`}
+            description={t`Failed to purchase the game, please try again later.` + ` ` + t`If in doubt, please do not hesitate to contact your administrator.`} //"购买游戏失败，请重试。如有疑问请联系管理员。"
             onFinish={() => {
               MicroModal.close("dialogConfirmation-failedToPurchaseAGame");
             }}
@@ -174,8 +175,8 @@ export default () => {
             <DialogConfirmation
               dialogID="dialogConfirmation-failedToPurchaseAGameOther"
               mode="OKAY"
-              title="失败"
-              description={`购买游戏失败，原因:${addGameResponse.message}`}
+              title={t`Failure`}
+              description={`Failed to purchase the game, the reason is: ${addGameResponse.message}`} //`购买游戏失败，原因:${addGameResponse.message}`
               isAutoShown={true}
               onFinish={() => {
                 MicroModal.close("dialogConfirmation-failedToPurchaseAGameOther");
@@ -186,8 +187,8 @@ export default () => {
           <DialogConfirmation
             dialogID="dialogConfirmation-failedToUpdateGame"
             mode="OKAY"
-            title="失败"
-            description="修改商店游戏信息失败，请重试。更多详情请查阅控制台或后台记录。"
+            title={t`Failure`}
+            description={t`Failed to update the game information from the store, please try again later.` + ` ` + t`Please refer to the console or server logs for more details.`} //"修改商店游戏信息失败，请重试。更多详情请查阅控制台或后台记录。"
             onFinish={() => {
               MicroModal.close("dialogConfirmation-failedToUpdateGame");
               MicroModal.show("dialogInput-editGame");
@@ -197,8 +198,8 @@ export default () => {
           <DialogConfirmation
             dialogID="dialogConfirmation-failedToDeleteGame"
             mode="OKAY"
-            title="失败"
-            description="删除商店游戏失败，请重试。更多详情请查阅控制台或后台记录。"
+            title={t`Failure`}
+            description={t`Failed to delete the game from the store, please try again later.` + ` ` + t`Please refer to the console or server logs for more details.`} //"删除商店游戏失败，请重试。更多详情请查阅控制台或后台记录。"
             onFinish={() => {
               MicroModal.close("dialogConfirmation-failedToDeleteGame");
             }}
@@ -207,8 +208,8 @@ export default () => {
           <DialogConfirmation
             dialogID="dialogConfirmation-purchaseAGame"
             mode="YESNO"
-            title={`购买${gameDisplayName}`}
-            description={`即将为您自己购买${gameDisplayName}，是否继续？`}
+            title={t`Purchase ${gameDisplayName}`} //购买${gameDisplayName}
+            description={t`You are about to purchase ${gameDisplayName} for yourself.` + ` ` + t`Do you wish to proceed?`} // 即将为您自己购买${gameDisplayName}，是否继续？
             onFinish={async () => {
 
               MicroModal.close("dialogConfirmation-purchaseAGame");
@@ -256,24 +257,24 @@ export default () => {
 
           <DialogInput
             dialogID="dialogInput-editGame"
-            title={`编辑信息: ${gameDisplayName}`}
-            description="请填写以下信息"
+            title={t`Edit information: ${gameDisplayName}`} // 编辑信息: ${gameDisplayName}
+            description="Please fill in the information below."
             items={[
               {
                 propName: "name",
-                name: "游戏名称",
+                name: t`Game Name`, //"游戏名称"
                 value: gameDisplayName,
                 isRequired: true,
               },
               {
                 propName: "description",
-                name: "游戏简介",
+                name: t`Game Description`, //"游戏简介"
                 value: game.description || "",
                 type: "textArea",
               },
               {
                 propName: "price",
-                name: "游戏售价",
+                name: t`Game Price`, //"游戏售价"
                 value: game.price,
                 type: "number",
                 isRequired: true,
@@ -310,8 +311,8 @@ export default () => {
 
           <DialogConfirmation
             dialogID="dialogConfirmation-deleteGame"
-            title={`删除商店游戏: ${gameDisplayName}`}
-            description={"警告！此操作无法回滚！"}
+            title={t`Delete Game From Store: ${gameDisplayName}`} // `删除商店游戏: ${gameDisplayName}`
+            description={t`Warning! This cannot be undone!`}
             onFinish={async () => {
               MicroModal.close("dialogConfirmation-deleteGame");
 
@@ -351,3 +352,5 @@ export default () => {
     </section>
   );
 };
+
+export default GameDetailView;

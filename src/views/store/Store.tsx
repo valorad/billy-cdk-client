@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import MicroModal from "micromodal";
+import { t } from "@lingui/macro";
 
 // import "./Store.scss";
 import { MenuItem } from "../../models/menu.interface";
@@ -15,7 +16,7 @@ import { Game } from "../../models/game.interface";
 import { useGameAddition } from "../../services/game";
 
 
-export default () => {
+const StoreIndexView = () => {
 
   const dispatch = useDispatch();
 
@@ -25,19 +26,19 @@ export default () => {
 
   const menus: MenuItem[] = [
     {
-      name: "商店游戏列表",
+      name: t`Store Game List`, //"商店游戏列表",
       link: "#/store/games",
     },
     {
-      name: "发布新游戏",
+      name: t`Publish A New Game`, //"发布新游戏",
       action: createGamePopUp,
     },
   ];
 
   useEffect(() => {
     
-    dispatch(setTitle("Billy游戏商店"));
-    dispatch(setDescription("浏览游戏列表，或是发布一款新游戏"));
+    dispatch(setTitle(t`Billy Game Store`)); // "Billy游戏商店"
+    dispatch(setDescription(t`Browse the game list, or publish a new game.`)); // "浏览游戏列表，或是发布一款新游戏"
     
   });
 
@@ -52,8 +53,8 @@ export default () => {
       <DialogConfirmation
         dialogID="dialogConfirmation-failedToCreateGame"
         mode="OKAY"
-        title="失败"
-        description="创建新游戏失败，请重试。更多详情请查阅控制台或后台记录。"
+        title={t`Failure`}
+        description={t`Failed to publish the new game.` + ` ` + t`Please refer to the console or server logs for more details.`} //"创建新游戏失败，请重试。更多详情请查阅控制台或后台记录。"
         onFinish={() => {
           MicroModal.close("dialogConfirmation-failedToCreateGame");
           MicroModal.show("dialogInput-createGame");
@@ -65,8 +66,8 @@ export default () => {
         <DialogConfirmation
           dialogID="dialogConfirmation-creatingGame"
           mode="INFO"
-          title="创建中..."
-          description="正在创建新游戏中，请稍后..."
+          title={t`Creating` + `...`} //"创建中..."
+          description={t`Publishing a new game` + `, ` + t`please wait` + `...`} // "正在发布新游戏中，请稍后..."
           isAutoShown={true}
         />
         :null
@@ -74,30 +75,30 @@ export default () => {
 
       <DialogInput
         dialogID="dialogInput-createGame"
-        title={`创建新游戏`}
-        description="请填写以下信息"
+        title={t`Publish A New Game`} // 创建新游戏
+        description={t`Please fill in the information below.`} //"请填写以下信息"
         items={[
           {
             propName: "dbname",
-            name: "游戏ID",
-            value: "game-<请替换英文ID>",
+            name: t`Game ID`, //"游戏ID",
+            value: `game-<` + t`replace w/ alphabetic ID` + `>`, //"game-<请替换英文ID>",
             isRequired: true,
           },
           {
             propName: "name",
-            name: "游戏名称",
+            name: t`Game Name`, //"游戏名称",
             value: "",
             isRequired: true,
           },
           {
             propName: "description",
-            name: "游戏简介",
+            name: t`Game Description`, //"游戏简介",
             value: "",
             type: "textArea",
           },
           {
             propName: "price",
-            name: "游戏售价",
+            name: t`Game Price`, //"游戏售价",
             value: 0,
             type: "number",
             isRequired: true,
@@ -134,3 +135,5 @@ export default () => {
     </section>
   );
 };
+
+export default StoreIndexView;
