@@ -20,7 +20,7 @@ const I18nView = () => {
   useEffect(() => {
     
     dispatch(setTitle(t`Change Language`));
-    dispatch(setDescription(t`Switch to a new language by selecting one option below`));
+    dispatch(setDescription(t`Switch to a new language by selecting one option below.`));
     
   });
 

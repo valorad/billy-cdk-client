@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { t } from "@lingui/macro";
 
 import Menu from "../components/menu";
 import { setTitle, setDescription } from "../features/navbar";
@@ -13,22 +14,22 @@ const DummyView = () => {
 
   useEffect(() => {
     
-    dispatch(setTitle("Dummy Page"));
-    dispatch(setDescription("高端黑框框版"));
+    dispatch(setTitle(t`Dummy Page`));
+    dispatch(setDescription(t`High-end Terminal Version`));
     
   });
 
   const menus: MenuItem[] = [
     {
-      name: "返回首页",
+      name: t`Go Home`,
       link: "#/index",
     },
     {
-      name: "返回首页",
+      name: t`Go Home`,
       link: "#/index",
     },
     {
-      name: "返回首页",
+      name: t`Go Home`,
       link: "#/index",
     },
   ];

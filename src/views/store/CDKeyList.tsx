@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import { t, Trans } from "@lingui/macro";
 
 import CDKeyList from "../../components/cdkey/list";
 
@@ -19,7 +20,7 @@ const StoreGameCDKeyListView = () => {
   const params: any = useParams();
 
   let dbname = params?.dbname || "game:non-existance";
-  const name0 = "不存在的游戏";
+  const name0 = t`A game of non-existence`;
   const { isQueryLoading: isGameQueryLoading, queryError: gameQueryError, game } = useGameDetail(dbname);
   const gameDisplayName = game?.name || game?.dbname || name0;
   const { isQueryLoading: isCDKeyQueryLoading, queryError: cdkeyQueryError, cdkeys } = useCDKeyList({game: dbname}, {perPage: 1000});
@@ -27,8 +28,8 @@ const StoreGameCDKeyListView = () => {
 
   useEffect(() => {
     
-    dispatch(setTitle("已签发的CDKey"));
-    dispatch(setDescription(`游戏：${gameDisplayName}`));
+    dispatch(setTitle(t`Issued CDKeys`)); // "已签发的CDKey"
+    dispatch(setDescription(t`Game` + `: ${gameDisplayName}`)); // 游戏：${gameDisplayName}
     
   });
 
@@ -64,37 +65,37 @@ const StoreGameCDKeyListView = () => {
     if (isGameQueryLoading) {
       return (
         <div className="statusInfo">
-          <h1>读取游戏信息中，请稍后...</h1>
+          <h1><Trans>Retrieving game information</Trans>, <Trans>please wait</Trans>...</h1>
         </div>
       );
     } else if (gameQueryError || game === undefined) {
       return (
         <div className="statusInfo">
-          <h1>错误！无法进行游戏查询。请查看控制台或后台日志。</h1>
+          <h1><Trans>Error</Trans>! <Trans>Failed to retrieve game information.</Trans> <Trans>Please refer to the console or server logs for more details.</Trans></h1>
         </div>
       );
     } else if (game === null) {
       return (
         <div className="statusInfo">
-          <h1>错误！未找到该游戏。请查看控制台或后台日志。</h1>
+          <h1><Trans>Error</Trans>! <Trans>Unable to find the game.</Trans> <Trans>Please refer to the console or server logs for more details.</Trans></h1>
         </div>
       );
     } else if (isCDKeyQueryLoading) {
       return (
         <div className="statusInfo">
-          <h1>读取CDKey信息中，请稍后...</h1>
+          <h1><Trans>Loading CDKey data</Trans>, <Trans>please wait</Trans>...</h1>
         </div>
       );
     } else if (cdkeyQueryError || cdkeys === undefined) {
       return (
         <div className="statusInfo">
-          <h1>错误！无法进行CDKey查询。请查看控制台或后台日志。</h1>
+          <h1><Trans>Error</Trans>! <Trans>Unable to load CDKey data.</Trans> <Trans>Please refer to the console or server logs for more details.</Trans></h1>
         </div>
       );
     } else if (cdkeys.length <= 0) {
       return (
         <div className="statusInfo">
-          <h1>该游戏未签发任何CDKey。请签发一条CDKey。如果你觉得不对劲，请查看控制台或后台日志。</h1>
+          <h1><Trans>No CDKeys are issued for this game.</Trans> <Trans>Please issue a CDKey first.</Trans> <Trans>If you think there has been something wrong, please contact the administrator.</Trans></h1>
         </div>
       );
     } else {

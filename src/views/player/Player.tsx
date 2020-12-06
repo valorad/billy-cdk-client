@@ -45,7 +45,7 @@ const PlayerView = () => {
     {
       propName: "dbname",
       name: t`Player ID`, //"玩家ID",
-      value: t`player-<replace w/ alphabetic ID>`, // "player-<请替换英文ID>",
+      value: `player-<` + t`replace w/ alphabetic ID` + `>`, // "player-<请替换英文ID>",
       isRequired: true,
     },
     {

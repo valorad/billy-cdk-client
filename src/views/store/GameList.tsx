@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { t, Trans } from "@lingui/macro";
 
 import GameList from "../../components/game/list";
 import { setTitle, setDescription } from "../../features/navbar";
@@ -12,8 +13,8 @@ const StoreGameListView = () => {
 
   useEffect(() => {
     
-    dispatch(setTitle("商店游戏列表"));
-    dispatch(setDescription("选择一款游戏以查看详情"));
+    dispatch(setTitle(t`Games In Store`)); // "商店游戏列表"
+    dispatch(setDescription(t`Select a game to view its details.`)); // "选择一款游戏以查看详情"
     
   });
 
@@ -44,19 +45,19 @@ const StoreGameListView = () => {
     if (isQueryLoading) {
       return (
         <div className="statusInfo">
-          <h1>载入中，请稍后...</h1>
+          <h1><Trans>Loading</Trans>, <Trans>please wait</Trans>...</h1>
         </div>
       );
     } else if (queryError || !games) {
       return (
         <div className="statusInfo">
-          <h1>错误！无法进行查询。请联系管理员。</h1>
+          <h1><Trans>Error</Trans>! <Trans>Failed to retrieve game information.</Trans> <Trans>Please contact the administrator.</Trans></h1>
         </div>
       );
     } else if (games.length <= 0) {
       return (
         <div className="statusInfo">
-          <h1>错误！商店里没有任何游戏。请联系管理员。</h1>
+          <h1><Trans>Error</Trans>! <Trans>There are no games in the store.</Trans> <Trans>Please contact the administrator.</Trans></h1>
         </div>
       );
     } else {

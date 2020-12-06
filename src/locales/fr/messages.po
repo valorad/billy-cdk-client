@@ -15,6 +15,9 @@ msgstr ""
 
 #: src/views/cdkey/CDKey.tsx:45
 #: src/views/cdkey/Detail.tsx:32
+#: src/views/store/CDKey.tsx:24
+#: src/views/store/CDKeyList.tsx:14
+#: src/views/store/GameDetail.tsx:25
 msgid "A game of non-existence"
 msgstr "Un jeu de non-existence"
 
@@ -79,13 +82,29 @@ msgstr "Attention: ce CDKey a déjà été activé"
 msgid "Billy CDKey Remastered Edition"
 msgstr "Billy CDKey Édition remasterisée"
 
+#: src/views/store/Store.tsx:35
+msgid "Billy Game Store"
+msgstr "Magasin de Jeux de Billy"
+
 #: src/components/player/detail.tsx:14
 msgid "Biography"
 msgstr "Biographie"
 
+#: src/views/store/Store.tsx:36
+msgid "Browse the game list, or publish a new game."
+msgstr "Parcourer la liste des jeux ou publier un nouveau jeu."
+
 #: src/views/Home.tsx:17
 msgid "Browse the store"
 msgstr "Visiter le magasin"
+
+#: src/views/store/GameDetail.tsx:69
+msgid "Buy For Yourself"
+msgstr "Achetez Pour Vous-même"
+
+#: src/views/store/CDKey.tsx:48
+msgid "CDKey"
+msgstr "CDKey"
 
 #: src/views/cdkey/Detail.tsx:142
 msgid "CDKey Details"
@@ -99,9 +118,17 @@ msgstr "CDKey Inventaire de {playerDisplayName}"
 msgid "CDKey Management"
 msgstr "Gestion de CDKey"
 
+#: src/views/store/CDKey.tsx:54
+msgid "CDKey Price"
+msgstr "Prix de la CDKey"
+
 #: src/components/cdkey/detail.tsx:11
 msgid "CDKey Value"
 msgstr "Valeur du CDKey"
+
+#: src/views/store/CDKey.tsx:37
+msgid "CDKey list of {gameDisplayName}"
+msgstr "CDKey liste de {gameDisplayName}"
 
 #: src/components/modal/dialogConfirmation.tsx:21
 #: src/components/modal/dialogInput.tsx:42
@@ -125,6 +152,11 @@ msgstr "Confirmer"
 msgid "Congratulations! You have successfully activated the game: {0}"
 msgstr "Félicitations! Vous avez activé le jeu avec succès: {0}"
 
+#: src/views/store/CDKey.tsx:95
+#: src/views/store/Store.tsx:50
+msgid "Creating"
+msgstr "Création en cours"
+
 #: src/components/navbar.tsx:10
 msgid "Current Theme"
 msgstr "Thème Actuel"
@@ -137,6 +169,14 @@ msgstr "En ce moment, tous les joueurs sont vos amis."
 msgid "Delete CDKey"
 msgstr "Supprimer la CDKey"
 
+#: src/views/store/GameDetail.tsx:57
+msgid "Delete From Store"
+msgstr "Supprimer du magasin"
+
+#: src/views/store/GameDetail.tsx:218
+msgid "Delete Game From Store: {gameDisplayName}"
+msgstr "Supprimer le jeu du magasin: {gameDisplayName}"
+
 #: src/views/player/PlayerDetail.tsx:55
 msgid "Delete Player"
 msgstr "Supprimer le joueur"
@@ -147,6 +187,7 @@ msgstr "Supprimer le joueur: {playerDisplayName}"
 
 #: src/views/cdkey/Detail.tsx:153
 #: src/views/player/PlayerDetail.tsx:133
+#: src/views/store/GameDetail.tsx:116
 msgid "Deleting"
 msgstr "Suppression en cours"
 
@@ -158,11 +199,16 @@ msgstr "Suppression de la CDKey en cours"
 msgid "Deleting player"
 msgstr "Suppression du joueur en cours"
 
+#: src/views/store/GameDetail.tsx:117
+msgid "Deleting the game from the store"
+msgstr "Suppression du jeu du magasin en cours"
+
 #: src/views/cdkey/Detail.tsx:243
 msgid "Do you wish to activate this CDKey for yourself?"
 msgstr "Souhaitez-vous activer cette CDKey pour vous-même?"
 
 #: src/views/cdkey/Detail.tsx:226
+#: src/views/store/GameDetail.tsx:144
 msgid "Do you wish to proceed?"
 msgstr "Voulez-vous continuer?"
 
@@ -170,9 +216,21 @@ msgstr "Voulez-vous continuer?"
 msgid "Drop the CDKey"
 msgstr "Supprimer la CDKey"
 
+#: src/views/Dummy.tsx:10
+msgid "Dummy Page"
+msgstr "Page Factice"
+
+#: src/views/store/GameDetail.tsx:53
+msgid "Edit Game Information"
+msgstr "Modifier les Informations du Jeu"
+
 #: src/views/player/PlayerDetail.tsx:51
 msgid "Edit Player"
 msgstr "Modifier le joueur"
+
+#: src/views/store/GameDetail.tsx:174
+msgid "Edit information: {gameDisplayName}"
+msgstr "Modifier les Informations"
 
 #: src/views/player/PlayerDetail.tsx:148
 msgid "Edit information: {playerDisplayName}"
@@ -186,6 +244,7 @@ msgstr "Anglais-English"
 msgid "Enter and Activate a New CDKey"
 msgstr "Entrer et activer une nouvelle CDKey"
 
+#: src/views/AppContent.tsx:57
 #: src/views/cdkey/Detail.tsx:97
 #: src/views/cdkey/Detail.tsx:102
 #: src/views/player/CDKeyList.tsx:88
@@ -198,6 +257,15 @@ msgstr "Entrer et activer une nouvelle CDKey"
 #: src/views/player/PlayerDetail.tsx:119
 #: src/views/player/PlayerList.tsx:52
 #: src/views/player/PlayerList.tsx:57
+#: src/views/store/CDKey.tsx:74
+#: src/views/store/CDKey.tsx:79
+#: src/views/store/CDKeyList.tsx:56
+#: src/views/store/CDKeyList.tsx:61
+#: src/views/store/CDKeyList.tsx:71
+#: src/views/store/GameDetail.tsx:86
+#: src/views/store/GameDetail.tsx:91
+#: src/views/store/GameList.tsx:43
+#: src/views/store/GameList.tsx:48
 msgid "Error"
 msgstr "Erreur"
 
@@ -229,6 +297,10 @@ msgstr "Échec de l'ajout du joueur, veuillez réessayer."
 msgid "Failed to delete the CDKey."
 msgstr "Échec de la suppression de la CDKey."
 
+#: src/views/store/GameDetail.tsx:138
+msgid "Failed to delete the game from the store, please try again later."
+msgstr "Échec de la suppression du jeu du magasin, veuillez réessayer plus tard."
+
 #: src/views/player/PlayerDetail.tsx:143
 msgid "Failed to delete the player, please retry."
 msgstr "Échec de la suppression du joueur, veuillez réessayer."
@@ -237,6 +309,10 @@ msgstr "Échec de la suppression du joueur, veuillez réessayer."
 msgid "Failed to edit the player, please retry."
 msgstr "Échec de la modification du joueur, veuillez réessayer."
 
+#: src/views/store/CDKey.tsx:88
+msgid "Failed to issue the new CDKey, please try again."
+msgstr "Échec de l'émission de la nouvelle CDKey, veuillez réessayer."
+
 #: src/views/player/CDKeyList.tsx:88
 #: src/views/player/GameList.tsx:54
 #: src/views/player/PlayerDetail.tsx:114
@@ -244,9 +320,32 @@ msgstr "Échec de la modification du joueur, veuillez réessayer."
 msgid "Failed to load player data."
 msgstr "Échec du chargement des données du joueur."
 
+#: src/views/AppContent.tsx:62
+msgid "Failed to log in."
+msgstr "Échec de la connexion."
+
+#: src/views/store/Store.tsx:43
+msgid "Failed to publish the new game."
+msgstr "Échec de la publication du nouveau jeu."
+
+#: src/views/store/GameDetail.tsx:121
+msgid "Failed to purchase the game, please try again later."
+msgstr "Échec de l'achat du jeu, veuillez réessayer plus tard."
+
+#: src/views/store/CDKey.tsx:74
+#: src/views/store/CDKeyList.tsx:56
+#: src/views/store/GameDetail.tsx:86
+#: src/views/store/GameList.tsx:43
+msgid "Failed to retrieve game information."
+msgstr "Échec de la récupération des informations sur le jeu."
+
 #: src/views/cdkey/Detail.tsx:172
 msgid "Failed to send your gift CDKey. Please try again later."
 msgstr "Échec de l'envoi de votre cadeau de CDKey. Veuillez réessayer plus tard."
+
+#: src/views/store/GameDetail.tsx:132
+msgid "Failed to update the game information from the store, please try again later."
+msgstr "Échec de la mise à jour des informations du jeu du magasin, veuillez réessayer plus tard."
 
 #: src/views/cdkey/CDKey.tsx:64
 #: src/views/cdkey/CDKey.tsx:72
@@ -257,6 +356,12 @@ msgstr "Échec de l'envoi de votre cadeau de CDKey. Veuillez réessayer plus tar
 #: src/views/player/Player.tsx:71
 #: src/views/player/PlayerDetail.tsx:137
 #: src/views/player/PlayerDetail.tsx:143
+#: src/views/store/CDKey.tsx:88
+#: src/views/store/GameDetail.tsx:121
+#: src/views/store/GameDetail.tsx:127
+#: src/views/store/GameDetail.tsx:132
+#: src/views/store/GameDetail.tsx:138
+#: src/views/store/Store.tsx:43
 msgid "Failure"
 msgstr "Échec"
 
@@ -268,9 +373,44 @@ msgstr "Terminal du Fallout"
 msgid "French"
 msgstr "Français"
 
+#: src/views/store/CDKeyList.tsx:20
+msgid "Game"
+msgstr "Jeu"
+
+#: src/views/store/GameDetail.tsx:184
+#: src/views/store/Store.tsx:72
+msgid "Game Description"
+msgstr "Description du Jeu"
+
+#: src/views/store/GameDetail.tsx:75
+msgid "Game Details"
+msgstr "Détails du Jeu"
+
+#: src/views/store/Store.tsx:60
+msgid "Game ID"
+msgstr "ID du Jeu"
+
+#: src/views/store/GameDetail.tsx:178
+#: src/views/store/Store.tsx:66
+msgid "Game Name"
+msgstr "Nom du Jeu"
+
+#: src/views/store/CDKey.tsx:60
+msgid "Game Platform"
+msgstr "Plate-forme du Jeu"
+
+#: src/views/store/GameDetail.tsx:190
+#: src/views/store/Store.tsx:78
+msgid "Game Price"
+msgstr "Prix du Jeu"
+
 #: src/components/cdkey/detail.tsx:12
 msgid "Game to Activate"
 msgstr "Jeu à activer"
+
+#: src/views/store/GameList.tsx:11
+msgid "Games In Store"
+msgstr "Jeux En Magasin"
 
 #: src/views/player/GameList.tsx:43
 msgid "Games owned by {playerDisplayName}"
@@ -285,15 +425,21 @@ msgid "Go Back"
 msgstr "Retourner"
 
 #: src/components/tips.tsx:7
+#: src/views/Dummy.tsx:15
+#: src/views/Dummy.tsx:19
+#: src/views/Dummy.tsx:23
+#: src/views/HTTP404.tsx:10
 msgid "Go Home"
 msgstr "Aller à l'accueil"
 
 #: src/features/navbar/navbarSlice.ts:5
+#: src/views/Dummy.tsx:11
 msgid "High-end Terminal Version"
 msgstr "Version de terminal dans la haut de gamme"
 
 #: src/views/cdkey/Detail.tsx:172
 #: src/views/cdkey/Detail.tsx:178
+#: src/views/store/GameDetail.tsx:121
 msgid "If in doubt, please do not hesitate to contact your administrator."
 msgstr "En cas de doute, n'hésitez pas à contacter votre administrateur."
 
@@ -303,6 +449,7 @@ msgstr "Si vous n'avez plus besoin de cette CDKey (par exemple, la CDKey a été
 
 #: src/views/player/CDKeyList.tsx:108
 #: src/views/player/GameList.tsx:74
+#: src/views/store/CDKeyList.tsx:76
 msgid "If you think there has been something wrong, please contact the administrator."
 msgstr "Si vous pensez qu'il y a eu un problème, veuillez contacter l'administrateur."
 
@@ -314,12 +461,31 @@ msgstr "Introduction"
 msgid "Is Tuhao Premium Member"
 msgstr "Être Un Membre Premium TuHao"
 
+#: src/views/store/CDKey.tsx:41
+msgid "Issue A New CDKey"
+msgstr "Émettre une nouvelle CDKey"
+
+#: src/views/store/CDKey.tsx:100
+msgid "Issue the new CDKey"
+msgstr "Émettre une nouvelle CDKey"
+
+#: src/views/store/CDKeyList.tsx:19
+msgid "Issued CDKeys"
+msgstr "CDKeys Émis"
+
+#: src/views/store/CDKey.tsx:96
+msgid "Issuing the new CDKey"
+msgstr "Émission de la nouvelle CDKey en cours"
+
 #: src/views/player/PlayerDetail.tsx:109
 #: src/views/player/PlayerList.tsx:47
+#: src/views/store/GameDetail.tsx:81
+#: src/views/store/GameList.tsx:38
 msgid "Loading"
 msgstr "Chargement en cours"
 
 #: src/views/player/CDKeyList.tsx:98
+#: src/views/store/CDKeyList.tsx:66
 msgid "Loading CDKey data"
 msgstr "Chargement des données CDKey en cours"
 
@@ -328,9 +494,17 @@ msgstr "Chargement des données CDKey en cours"
 msgid "Loading player data"
 msgstr "Chargement des données du joueur en cours"
 
+#: src/views/AppContent.tsx:52
+msgid "Logging in"
+msgstr "Connexion en cours"
+
 #: src/views/cdkey/CDKey.tsx:37
 msgid "Manage My CDKey Inventory"
 msgstr "Gérer Mon Inventaire CDKey"
+
+#: src/views/store/GameDetail.tsx:61
+msgid "Manage the CDKeys of {gameDisplayName}"
+msgstr "Gérer les CDKeys de {gameDisplayName}"
 
 #: src/views/cdkey/Detail.tsx:148
 msgid "Modifying"
@@ -367,9 +541,17 @@ msgstr "Mon ami(e)"
 msgid "No CDKey found in the inventory of {playerDisplayName}."
 msgstr "Aucune CDKey trouvée dans l'inventaire de {playerDisplayName}."
 
+#: src/views/store/CDKeyList.tsx:76
+msgid "No CDKeys are issued for this game."
+msgstr "Aucune CDKey n'est émis pour ce jeu."
+
 #: src/views/player/GameList.tsx:74
 msgid "No Games found owned by {playerDisplayName}."
 msgstr "Aucun jeu trouvé appartenant à {playerDisplayName}."
+
+#: src/views/HTTP404.tsx:16
+msgid "No worries, just go back to home page."
+msgstr "Pas de soucis, retournez simplement à la page d'accueil."
 
 #: src/views/player/Player.tsx:60
 msgid "Nominate as Tuhao Premium Member"
@@ -419,6 +601,8 @@ msgstr "Nom de Joueur"
 msgid "Please carefully fill in the database ID of a player. No idea about the ID? You may go visit the player page, and check the url segment after \"dbname\""
 msgstr "Veuillez remplir soigneusement l'ID de base de données d'un joueur. Aucune idée de l'ID? Vous pouvez aller visiter la page du joueur et vérifier le segment d'url après \"dbname \""
 
+#: src/views/AppContent.tsx:57
+#: src/views/AppContent.tsx:62
 #: src/views/cdkey/Detail.tsx:97
 #: src/views/cdkey/Detail.tsx:102
 #: src/views/player/CDKeyList.tsx:88
@@ -431,6 +615,10 @@ msgstr "Veuillez remplir soigneusement l'ID de base de données d'un joueur. Auc
 #: src/views/player/PlayerDetail.tsx:119
 #: src/views/player/PlayerList.tsx:52
 #: src/views/player/PlayerList.tsx:57
+#: src/views/store/GameDetail.tsx:86
+#: src/views/store/GameDetail.tsx:91
+#: src/views/store/GameList.tsx:43
+#: src/views/store/GameList.tsx:48
 msgid "Please contact the administrator."
 msgstr "Veuillez contacter l'administrateur."
 
@@ -440,12 +628,27 @@ msgstr "Veuillez entrer soigneusement votre CDKey"
 
 #: src/views/player/Player.tsx:84
 #: src/views/player/PlayerDetail.tsx:149
+#: src/views/store/CDKey.tsx:101
+#: src/views/store/Store.tsx:56
 msgid "Please fill in the information below."
 msgstr "Veuillez remplir les informations ci-dessous."
+
+#: src/views/store/CDKeyList.tsx:76
+msgid "Please issue a CDKey first."
+msgstr "Veuillez d'abord émettre une CDKey."
 
 #: src/views/player/Player.tsx:71
 #: src/views/player/PlayerDetail.tsx:137
 #: src/views/player/PlayerDetail.tsx:143
+#: src/views/store/CDKey.tsx:74
+#: src/views/store/CDKey.tsx:79
+#: src/views/store/CDKey.tsx:88
+#: src/views/store/CDKeyList.tsx:56
+#: src/views/store/CDKeyList.tsx:61
+#: src/views/store/CDKeyList.tsx:71
+#: src/views/store/GameDetail.tsx:132
+#: src/views/store/GameDetail.tsx:138
+#: src/views/store/Store.tsx:43
 msgid "Please refer to the console or server logs for more details."
 msgstr "Veuillez consulter les journaux de la console ou du serveur pour plus de détails."
 
@@ -454,21 +657,52 @@ msgstr "Veuillez consulter les journaux de la console ou du serveur pour plus de
 msgid "Price"
 msgstr "Prix"
 
+#: src/views/store/Store.tsx:30
+#: src/views/store/Store.tsx:55
+msgid "Publish A New Game"
+msgstr "Publier Un Nouveau Jeu"
+
+#: src/views/store/Store.tsx:51
+msgid "Publishing a new game"
+msgstr "Publier un nouveau jeu"
+
+#: src/views/store/GameDetail.tsx:143
+msgid "Purchase {gameDisplayName}"
+msgstr "Acheter {gameDisplayName}"
+
+#: src/views/store/GameDetail.tsx:104
+msgid "Purchasing"
+msgstr "Achat En Cours"
+
+#: src/views/store/GameDetail.tsx:105
+msgid "Purchasing the game for you"
+msgstr "L'achat du jeu en cours pour vous"
+
 #: src/views/cdkey/Detail.tsx:92
 msgid "Retrieving CDKey info"
 msgstr "Récupéreration des informations CDKey en cours"
+
+#: src/views/store/CDKey.tsx:69
+#: src/views/store/CDKeyList.tsx:51
+msgid "Retrieving game information"
+msgstr "Récupération des informations sur le jeu en cours"
 
 #: src/views/player/GameList.tsx:64
 msgid "Retrieving game list"
 msgstr "Récupération de la liste des jeux en cours"
 
 #: src/views/player/GameList.tsx:44
+#: src/views/store/GameList.tsx:12
 msgid "Select a game to view its details."
 msgstr "Sélectionnez un jeu pour afficher ses détails."
 
 #: src/views/cdkey/Detail.tsx:194
 msgid "Send a gift CDKey"
 msgstr "Envoyer un cadeau CDKey"
+
+#: src/views/store/Store.tsx:26
+msgid "Store Game List"
+msgstr "Liste des Jeux de Magasin"
 
 #: src/components/modal/dialogInput.tsx:35
 msgid "Submit"
@@ -491,8 +725,16 @@ msgid "Successfully sent your gift CDKey"
 msgstr "Votre cadeau CDKey a bien été envoyé"
 
 #: src/views/I18n.tsx:15
-msgid "Switch to a new language by selecting one option below"
-msgstr "Passez à une nouvelle langue en sélectionnant une option ci-dessous"
+msgid "Switch to a new language by selecting one option below."
+msgstr "Passez à une nouvelle langue en sélectionnant une option ci-dessous."
+
+#: src/views/HTTP404.tsx:15
+msgid "System Error!"
+msgstr "Erreur Système!"
+
+#: src/views/store/GameList.tsx:48
+msgid "There are no games in the store."
+msgstr "Il n'y a pas de jeux dans le magasin."
 
 #: src/components/game/detail.tsx:10
 msgid "This game is such a masterpiece that it does not need an intro at all."
@@ -510,6 +752,13 @@ msgstr "Adhésion Premium TuHao"
 msgid "Unable to find any player."
 msgstr "Impossible de trouver un joueur."
 
+#: src/views/store/CDKey.tsx:79
+#: src/views/store/CDKeyList.tsx:61
+#: src/views/store/GameDetail.tsx:91
+msgid "Unable to find the game."
+msgstr "Impossible de trouver le jeu."
+
+#: src/views/AppContent.tsx:62
 #: src/views/player/CDKeyList.tsx:93
 #: src/views/player/GameList.tsx:59
 #: src/views/player/PlayerDetail.tsx:119
@@ -521,8 +770,13 @@ msgid "Unable to find this CDKey"
 msgstr "Impossible de trouver cette CDKey"
 
 #: src/views/player/CDKeyList.tsx:103
+#: src/views/store/CDKeyList.tsx:71
 msgid "Unable to load CDKey data."
 msgstr "Impossible de charger les données CDKey."
+
+#: src/views/AppContent.tsx:57
+msgid "Unable to log in."
+msgstr "Impossible de se connecter."
 
 #: src/views/cdkey/Detail.tsx:97
 msgid "Unable to obtain the CDKey information."
@@ -541,12 +795,17 @@ msgid "Unknown"
 msgstr "Inconnue"
 
 #: src/views/player/PlayerDetail.tsx:127
+#: src/views/store/GameDetail.tsx:110
 msgid "Updating"
 msgstr "Mise à jour en cours"
 
 #: src/views/player/PlayerDetail.tsx:128
 msgid "Updating player information"
 msgstr "Mise à jour des informations du joueur en cours"
+
+#: src/views/store/GameDetail.tsx:111
+msgid "Updating the game information from the store"
+msgstr "Mise à jour des informations de jeu dans le magasin"
 
 #: src/views/player/PlayerDetail.tsx:47
 msgid "View His/Her CDKey Inventory"
@@ -556,7 +815,12 @@ msgstr "Voir son inventaire CDKey"
 msgid "View His/Her Game Inventory"
 msgstr "Voir son inventaire de jeux"
 
+#: src/views/store/CDKey.tsx:30
+msgid "View the CDKey list of {gameDisplayName}, or issue a new CDKey"
+msgstr "Afficher la liste CDKey de {gameDisplayName}, ou émettre une nouvelle CDKey"
+
 #: src/views/player/PlayerDetail.tsx:193
+#: src/views/store/GameDetail.tsx:219
 msgid "Warning! This cannot be undone!"
 msgstr "Attention! Ça ne peut pas être annulé!"
 
@@ -566,21 +830,24 @@ msgstr "Nous saluons votre retour"
 
 #: src/components/navbar.tsx:15
 #: src/features/navbar/navbarSlice.ts:4
+#: src/views/Home.tsx:12
 msgid "Welcome to Billy CDKey!"
 msgstr "Bienvenue à Billy CDKey!"
+
+#: src/views/store/GameDetail.tsx:144
+msgid "You are about to purchase {gameDisplayName} for yourself."
+msgstr "Vous êtes sur le point d'acheter {gameDisplayName} pour vous-même."
 
 #: src/views/player/Player.tsx:24
 msgid "You can take a look at the player list, or add a new player."
 msgstr "Vous pouvez consulter la liste des joueurs ou ajouter un nouveau joueur."
 
 #: src/views/cdkey/Detail.tsx:273
-msgid "You have already owned this game"
-msgstr "Vous possédez déjà ce jeu"
+#: src/views/store/GameDetail.tsx:98
+msgid "You have already owned this game."
+msgstr "Vous avez déjà possédé ce jeu."
 
-#: src/views/player/Player.tsx:43
-msgid "player-<replace w/ alphabetic ID>"
-msgstr "player-<remplacer par un ID alphabétique>"
-
+#: src/views/AppContent.tsx:52
 #: src/views/cdkey/CDKey.tsx:60
 #: src/views/cdkey/Detail.tsx:92
 #: src/views/cdkey/Detail.tsx:148
@@ -595,5 +862,24 @@ msgstr "player-<remplacer par un ID alphabétique>"
 #: src/views/player/PlayerDetail.tsx:128
 #: src/views/player/PlayerDetail.tsx:133
 #: src/views/player/PlayerList.tsx:47
+#: src/views/store/CDKey.tsx:69
+#: src/views/store/CDKey.tsx:96
+#: src/views/store/CDKeyList.tsx:51
+#: src/views/store/CDKeyList.tsx:66
+#: src/views/store/GameDetail.tsx:81
+#: src/views/store/GameDetail.tsx:105
+#: src/views/store/GameDetail.tsx:111
+#: src/views/store/GameDetail.tsx:117
+#: src/views/store/GameList.tsx:38
+#: src/views/store/Store.tsx:51
 msgid "please wait"
 msgstr "veuillez patienter"
+
+#: src/views/player/Player.tsx:43
+#: src/views/store/Store.tsx:61
+msgid "replace w/ alphabetic ID"
+msgstr "remplacer p/ ID alphabétique"
+
+#: src/views/store/CDKey.tsx:29
+msgid "{gameDisplayName} CDKey Management"
+msgstr "Gestion CDKey de {gameDisplayName}"

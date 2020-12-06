@@ -427,7 +427,7 @@ export const CDKeyDetailView = () => {
 
       {
         loggedInPlayer?.games.includes(cdkey?.game || "") || false?
-        <h1> <Trans>You have already owned this game</Trans>.</h1>
+        <h1> <Trans>You have already owned this game.</Trans></h1>
         :null
       }
 

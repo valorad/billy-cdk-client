@@ -16,8 +16,8 @@ const HomeView = () => {
 
   useEffect(() => {
     
-    dispatch(setTitle("欢迎来到Billy CDKey"));
-    dispatch(setDescription("高端黑框框版"));
+    dispatch(setTitle(t`Welcome to Billy CDKey!`));
+    dispatch(setDescription("High-end Terminal Version"));
     
   });
 

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import MicroModal from "micromodal";
+import { t, Trans } from "@lingui/macro";
 
 import Menu from "../../components/menu";
 import DialogInput from "../../components/modal/dialogInput";
@@ -20,7 +21,7 @@ const StoreGameCDKeyIndexView = () => {
 
   const params: any = useParams();
   let dbname = params?.dbname || "game:non-existance";
-  const name0 = "不存在的游戏";
+  const name0 = t`A game of non-existence`;
   const { isQueryLoading: isGameQueryLoading, queryError: gameQueryError, game } = useGameDetail(dbname);
   const gameDisplayName = game?.name || game?.dbname || name0;
 
@@ -28,8 +29,8 @@ const StoreGameCDKeyIndexView = () => {
 
   useEffect(() => {
     
-    dispatch(setTitle(`${gameDisplayName}的CDKey管理`));
-    dispatch(setDescription(`查看${gameDisplayName}的CDKey列表，或签发一条新的CDKey`));
+    dispatch(setTitle(t`${gameDisplayName} CDKey Management`)); //${gameDisplayName}的CDKey管理
+    dispatch(setDescription(t`View the CDKey list of ${gameDisplayName}, or issue a new CDKey`)); //查看${gameDisplayName}的CDKey列表，或签发一条新的CDKey
     
   });
 
@@ -41,11 +42,11 @@ const StoreGameCDKeyIndexView = () => {
 
   const menus: MenuItem[] = [
     {
-      name: `${gameDisplayName}的CDKey列表`,
+      name: t`CDKey list of ${gameDisplayName}`, //${gameDisplayName}的CDKey列表
       link: `#/store/games/dbname/${dbname}/cdkeys`,
     },
     {
-      name: "签发新的CDKey",
+      name: t`Issue A New CDKey`, // "签发新的CDKey"
       action: issueCDKeyPopUp,
     },
   ];
@@ -53,19 +54,19 @@ const StoreGameCDKeyIndexView = () => {
   const inputItems: DialogInputItem[] = [
     {
       propName: "value",
-      name: "CDKey",
+      name: t`CDKey`, //"CDKey"
       value: "XXXXX-XXXXX-XXXXX",
       isRequired: true,
     },
     {
       propName: "price",
-      name: "CDKey价格",
+      name: t`CDKey Price`, //"CDKey价格"
       value: game?.price || 0,
       type: "number",
     },
     {
       propName: "platform",
-      name: "游戏平台",
+      name: t`Game Platform`, //"游戏平台"
       value: "Steam",
     },
   ];
@@ -78,19 +79,19 @@ const StoreGameCDKeyIndexView = () => {
     if (isGameQueryLoading) {
       return (
         <div className="statusInfo">
-          <h1>获取游戏信息中，请稍后...</h1>
+          <h1><Trans>Retrieving game information</Trans>, <Trans>please wait</Trans>...</h1>
         </div>
       );
     } else if (gameQueryError || game === undefined) {
       return (
         <div className="statusInfo">
-          <h1>错误！无法进行游戏查询。请查看控制台或后台日志。</h1>
+          <h1><Trans>Error</Trans>! <Trans>Failed to retrieve game information.</Trans> <Trans>Please refer to the console or server logs for more details.</Trans></h1>
         </div>
       );
     } else if (game === null) {
       return (
         <div className="statusInfo">
-          <h1>错误！未找到该游戏。请查看控制台或后台日志。</h1>
+          <h1><Trans>Error</Trans>! <Trans>Unable to find the game.</Trans> <Trans>Please refer to the console or server logs for more details.</Trans></h1>
         </div>
       );
     } else {
@@ -103,8 +104,8 @@ const StoreGameCDKeyIndexView = () => {
         <DialogConfirmation
           dialogID="dialogConfirmation-failedToCreateCDKey"
           mode="OKAY"
-          title="失败"
-          description="新CDKey签发失败，请重试。更多详情请查阅控制台或后台记录。"
+          title={t`Failure`}
+          description={t`Failed to issue the new CDKey, please try again.` + ` ` + t`Please refer to the console or server logs for more details.`} //"新CDKey签发失败，请重试。更多详情请查阅控制台或后台记录。"
           onFinish={() => {
             MicroModal.close("dialogConfirmation-failedToCreateCDKey");
             MicroModal.show("dialogInput-createCDKey");
@@ -116,8 +117,8 @@ const StoreGameCDKeyIndexView = () => {
           <DialogConfirmation
             dialogID="dialogConfirmation-creatingCDKey"
             mode="INFO"
-            title="创建中..."
-            description="正在签发新CDKey中，请稍后..."
+            title={t`Creating` + `...`} //"创建中..."
+            description={t`Issuing the new CDKey` + `, ` + t`please wait` + `...`} //"正在签发新CDKey中，请稍后..."
             isAutoShown={true}
           />
           :null
@@ -125,8 +126,8 @@ const StoreGameCDKeyIndexView = () => {
   
         <DialogInput
           dialogID="dialogInput-createCDKey"
-          title={`签发新CDKey`}
-          description="请填写以下信息"
+          title={t`Issue the new CDKey`} //签发新CDKey
+          description={t`Please fill in the information below.`}
           items={inputItems}
           onFinish={async (result: InputDialogResult<any>) => {
   
