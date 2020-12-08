@@ -130,6 +130,10 @@ msgstr "Valeur du CDKey"
 msgid "CDKey list of {gameDisplayName}"
 msgstr "CDKey liste de {gameDisplayName}"
 
+#: src/views/player/CDKeyList.tsx:130
+msgid "CDKeys owned by {playerDisplayName}"
+msgstr "CDKeys de {playerDisplayName}"
+
 #: src/components/modal/dialogConfirmation.tsx:21
 #: src/components/modal/dialogInput.tsx:42
 msgid "Cancel"
@@ -434,6 +438,7 @@ msgstr "Aller à l'accueil"
 
 #: src/features/navbar/navbarSlice.ts:5
 #: src/views/Dummy.tsx:11
+#: src/views/Home.tsx:13
 msgid "High-end Terminal Version"
 msgstr "Version de terminal dans la haut de gamme"
 

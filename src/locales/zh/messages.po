@@ -130,6 +130,10 @@ msgstr "激活码"
 msgid "CDKey list of {gameDisplayName}"
 msgstr "{gameDisplayName}的CDKey列表"
 
+#: src/views/player/CDKeyList.tsx:130
+msgid "CDKeys owned by {playerDisplayName}"
+msgstr "{playerDisplayName}的CDKey"
+
 #: src/components/modal/dialogConfirmation.tsx:21
 #: src/components/modal/dialogInput.tsx:42
 msgid "Cancel"
@@ -434,6 +438,7 @@ msgstr "前往主页"
 
 #: src/features/navbar/navbarSlice.ts:5
 #: src/views/Dummy.tsx:11
+#: src/views/Home.tsx:13
 msgid "High-end Terminal Version"
 msgstr "高端黑框框版"
 
@@ -635,7 +640,7 @@ msgstr "请填写以下信息"
 
 #: src/views/store/CDKeyList.tsx:76
 msgid "Please issue a CDKey first."
-msgstr "请先签发一个CDKey"
+msgstr "请先签发一个CDKey。"
 
 #: src/views/player/Player.tsx:71
 #: src/views/player/PlayerDetail.tsx:137
@@ -836,7 +841,7 @@ msgstr "欢迎来到Billy CDKey！"
 
 #: src/views/store/GameDetail.tsx:144
 msgid "You are about to purchase {gameDisplayName} for yourself."
-msgstr "即将为您自己购买${gameDisplayName}。"
+msgstr "即将为您自己购买{gameDisplayName}。"
 
 #: src/views/player/Player.tsx:24
 msgid "You can take a look at the player list, or add a new player."

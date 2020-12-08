@@ -17,7 +17,7 @@ const HomeView = () => {
   useEffect(() => {
     
     dispatch(setTitle(t`Welcome to Billy CDKey!`));
-    dispatch(setDescription("High-end Terminal Version"));
+    dispatch(setDescription(t`High-end Terminal Version`));
     
   });
 

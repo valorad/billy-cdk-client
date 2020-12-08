@@ -152,10 +152,8 @@ const CDKeyListView = () => {
   useEffect(() => {
     
     dispatch(setTitle(t`CDKey Inventory of ${playerDisplayName}`)); //的CDKey库存列表
-    dispatch(setDescription(`CDKeys owned by ${playerDisplayName}`));
+    dispatch(setDescription(t`CDKeys owned by ${playerDisplayName}`));
 
-    
-    
   });
 
   return (

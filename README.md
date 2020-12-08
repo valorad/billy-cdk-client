@@ -1,7 +1,8 @@
 # billy-cdk-client
+
 Client interface of BillyCDK
 
-![Home Page](https://i.imgur.com/MOHsCG0.png)
+![Home Page](https://i.imgur.com/L0gHjk2.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 

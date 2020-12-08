@@ -161,7 +161,7 @@ export const CDKeyDetailView = () => {
     if (!cdkey.isActivated) {
       menus = [
         {
-          name: t`Gift the CDKey to a friend` + "赠予他人",
+          name: t`Gift the CDKey to a friend`,
           action: updateCDKeyPopUp,
         },
         ...menus
